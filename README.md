@@ -76,7 +76,8 @@ marker <- unique(geneset$Gene)
 info <- TimiCheckEvent(SKCM06info)
 rna <- TimiPrePropress(marker = marker,rna = SKCM06rna,cohort = rownames(info))
 ```
-### 2.1   Pairwise Comparison
+### 2 Gene Interaction
+#### 2.1   Pairwise Comparison
 `TimiGenePair` will Capture logical relation of any two marker pairs, and generate a matrix of Marker Pair Score(MPS):
 
   - 1 or TRUE = the expression of gene A > that of gene B, 
@@ -85,79 +86,73 @@ rna <- TimiPrePropress(marker = marker,rna = SKCM06rna,cohort = rownames(info))
 ```R
 #4. Generate marker pair score: TimiGenePair  ----
 mps <- TimiGenePair(rna)
-#5. Perform univariate Cox regression to find the association between marker pair and survival: TimiCOX ----
 ```
+#### 2.2   Directed IRGP Selection
+`TimiCOX` will perform univariate Cox regression that fits each marker pair as a variable. The result of Cox regression is returned as the first list. If a Pair A_B associated with poor prognosis(HR > 1), even not significant, it will be changed to B_A and reverse its value in the matrix of pair. The new matrix of Marker Pair Score(MPS) is returned as the second list.
+
+This step takes about 20-30 min, which depends on the number of gene pairs.
+
+```R
+#5. Perform univariate Cox regression to find the association between marker pair and survival: TimiCOX ----
 res <- TimiCOX(mps = mps,info = info,p.adj = "BH")
 mps <- res[[1]]
 cox_res <- res[[2]]
 
-Galon2013c_COX_MP_SKCM06 <- cox_res
-Galon2013c_MPS_SKCM06 <- mps
-
 # This step takes about 20-30 min, the result has been saved in data as examples
-#save(Galon2013c_COX_MP_SKCM06, file = "data/Galon2013c_COX_MP_SKCM06.rda")
-
-
-xx <- cox_res[order(cox_res[,2]),]
-sum(xx[,3]<0.05)  # 2644
-sum(xx[,3]<0.05)/nrow(xx) # 2%
-remove(xx)
-
-
-
-#B Gene Pair and gene network ###################################################
+# Galon2013c_COX_MP_SKCM06 <- cox_res
+# save(Galon2013c_COX_MP_SKCM06, file = "data/Galon2013c_COX_MP_SKCM06.rda")
+```
+#### 2.3   Directed Gene Network
+By setting "export = TRUE", `TimiGeneNetwork` generates three files that can be used to build network in Cytoscape: 
+ - network files: simple interaction file (network.sif); 
+ - node attributes (node.txt); 
+ - edge attributes (edge.txt). 
+The function also returns a list of above files that can be modified in R.
+```R
 rm(list=ls())
 # 6. Generate Directed Gene Network:TimiGeneNetwork  ----
 data(Galon2013c_COX_MP_SKCM06)
 cox_res <- Galon2013c_COX_MP_SKCM06
-# I saved the output files in notebook. Please choose yours
-# You can use Cytoscape to visualize the network
+# You can use Cytoscape to visualize the network by setting "export = TRUE"
 NET <- TimiGeneNetwork(resdata = cox_res,dataset = "Galon2013_Cancer",export =TRUE, path = "./")
-head(NET$network,n = 3)
-head(NET$node,n = 3)
-head(NET$edge,n = 3)
-
-
-#B Cell interaction and network ###########################################
+```
+### 3 Cell Interaction
+#### 3.1   Cell Pair Annotation
+```R
 rm(list=ls())
 # 7. Generate Cell Pair Annotation: TimiCellPair ----
-
 data(CellType_Galon2013_cancer)
 geneset <- CellType_Galon2013_cancer
 cell_pair <- TimiCellPair(geneset = geneset,core = 20)
-
-# 8. Select marker pairs A_B=1 associated with good prognosis ----
+```
+#### 3.2   Prepare Enrichment Background
+```R
+# 8. generate background: TimiBG ----
+background <- TimiBG(marker.pair = row.names(cox_res))
+```
+#### 3.3   Enrichment Analysis
+```R
+# 9. Select marker pairs A_B=1 significantly associated with good prognosis ----
 data(Galon2013c_COX_MP_SKCM06)
 cox_res <- Galon2013c_COX_MP_SKCM06
 GP <- rownames(cox_res)[which(cox_res$QV<0.05)]
-
-# 9. generate background: TimiBG ----
-background <- TimiBG(marker.pair = row.names(cox_res))
-
 # 10. Enrichment Analysis: TimiEnrich ----
 res <- TimiEnrich(gene = GP, background = background, 
                   geneset = cell_pair, p.adj = "BH",core=20)
 # This has been saved to data as an example
-#Galon2013c_enrich <- res
-#save(Galon2013c_enrich,file = "data/Galon2013c_enrich.rda")
-
-# 11. Generate Directed Cell Network:TimiCellNetwork  ----
-# You can use Cytoscape to visualize the network
-rm(list=ls())
-data("Galon2013c_enrich")
-res <- Galon2013c_enrich
-NET <- TimiCellNetwork(resdata = res,dataset = "Galon2013_Cancer",export =TRUE, path = "./")
-
-# C Visualization##########################################################
-
-# 12. Visualization: Dot plot of selected cell pair enrichment: TimiDotplot-----
+# Galon2013c_enrich <- res
+# save(Galon2013c_enrich,file = "data/Galon2013c_enrich.rda")
+```
+```R
+# 11. Visualization: Dot plot of selected cell pair enrichment: TimiDotplot-----
 rm(list=ls())
 data("Galon2013c_enrich")
 res <- Galon2013c_enrich
 p <- TimiDotplot(resdata = res,select = c(1:10))
 p
-
-# 13. Visualization: Chord Diagram of significant cell pair enrichment: TimiCellChord----
+```
+```R
+# 12. Visualization: Chord Diagram of significant cell pair enrichment: TimiCellChord----
 rm(list=ls())
 data("Galon2013c_enrich")
 res <- Galon2013c_enrich
@@ -165,9 +160,20 @@ res <- Galon2013c_enrich
 TimiCellChord(resdata = res,dataset = "Galon2013_Cancer")
 # Chord Diagram of marker pairs in seltect cell pair
 TimiGeneChord(resdata = res,select = 1)
-
+```
+#### 3.4  Cell Interaction Network
+```R
+# 13. Generate Directed Cell Network:TimiCellNetwork  ----
+# You can use Cytoscape to visualize the network
+rm(list=ls())
+data("Galon2013c_enrich")
+res <- Galon2013c_enrich
+NET <- TimiCellNetwork(resdata = res,dataset = "Galon2013_Cancer",export =TRUE, path = "./")
+```
+#### 3.5  Favorability Score
+```R
 # 13. Calculate favorability score: TimiFS ----
-# Visualization: Timi 
+# Visualization: TimiFSBar 
 rm(list=ls())
 data("Galon2013c_enrich")
 res <- Galon2013c_enrich
@@ -177,4 +183,4 @@ head(score)
 # Visualization
 p <- TimiFSBar(score)
 p
-
+```
