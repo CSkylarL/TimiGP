@@ -51,7 +51,7 @@ data(Tcell_COX_MP_SKCM06)
 cox_res <- Tcell_COX_MP_SKCM06
 # I saved the output files in notebook. Please choose yours
 # You can use Cytoscape to visualize the network
-NET <- TimiGeneNetwork(resdata = cox_res,dataset = "Galon2013_Cancer",path = "./")
+NET <- TimiGeneNetwork(resdata = cox_res,dataset = "Zhang2021S2",export =TRUE, path = "./")
 head(NET$network,n = 3)
 head(NET$node,n = 3)
 head(NET$edge,n = 3)
@@ -79,7 +79,7 @@ res <- TimiEnrich(gene = GP, background = background,
 
 # 11. Generate Directed Cell Network:TimiCellNetwork  ----
 # You can use Cytoscape to visualize the network
-NET <- TimiCellNetwork(resdata = res,dataset = "Zhang2021S2",path = "./")
+NET <- TimiCellNetwork(resdata = res,dataset = "Zhang2021S2",export =TRUE, path = "./")
 
 # 12. Visualization: Dot plot of selected cell pair enrichment: TimiDotplot-----
 

@@ -50,7 +50,7 @@ data(Immune3_COX_MP_SKCM06)
 cox_res <- Immune3_COX_MP_SKCM06
 # I saved the output files in notebook. Please choose yours
 # You can use Cytoscape to visualize the network
-NET1 <- TimiGeneNetwork(resdata = cox_res,dataset = "Immune3",path = "./")
+NET1 <- TimiGeneNetwork(resdata = cox_res,dataset = "Immune3",export =FALSE, path = "./")
 
 
 #B Cell interaction and network ###########################################
@@ -89,9 +89,9 @@ for (i in 1:3) {
 
 # 11. Generate Directed Cell Network:TimiCellNetwork  ----
 # You can use Cytoscape to visualize the network
-NET1 <- TimiCellNetwork(resdata = res$Charoentong2017,dataset = "Charoentong2017",path = "./")
-NET2 <- TimiCellNetwork(resdata = res$Galon2013,dataset = "Galon2013",path = "./")
-NET3 <- TimiCellNetwork(resdata = res$TIP,dataset = "TIP",path = "./")
+NET1 <- TimiCellNetwork(resdata = res$Charoentong2017,dataset = "Charoentong2017",export =FALSE, path = "./")
+NET2 <- TimiCellNetwork(resdata = res$Galon2013,dataset = "Galon2013",export =FALSE, path = "./")
+NET3 <- TimiCellNetwork(resdata = res$TIP,dataset = "TIP",export =FALSE, path = "./")
 
 # 12. Visualization: Dot plot of selected cell pair enrichment: TimiDotplot-----
 

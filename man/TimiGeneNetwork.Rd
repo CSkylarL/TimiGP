@@ -9,6 +9,7 @@ TimiGeneNetwork(
   select = NULL,
   dataset = NULL,
   geneset = NULL,
+  export = TRUE,
   path = NULL
 )
 }
@@ -25,11 +26,14 @@ If you use other dataset or want to change group and colors,
 please choose "Other".}
 
 \item{geneset}{a data.frame of cell markers, 
-in which the 1st is cell type, 
+in which the 1st column is cell type, 
 the 2nd column is the marker gene 
 and the 3rd column is the name of the dataset(optional)}
 
-\item{path}{a directory to export the network files.}
+\item{export}{a logical value. If TRUE, it will generate network files 
+for Cytoscape analysis. The default value is TRUE.}
+
+\item{path}{a directory to export the network files when "export = TRUE".}
 }
 \value{
 A list of network required files(network,node,edge)

@@ -21,7 +21,9 @@
 ##' in which the 1st is cell type, 
 ##' the 2nd column is the marker gene 
 ##' and the 3rd column is the name of the dataset(optional)
-##' @param path a directory to export the network files.
+##' @param export a logical value. If TRUE, it will generate network files 
+##' for Cytoscape analysis. The default value is TRUE.
+##' @param path a directory to export the network files when "export = TRUE".
 ##' @return A list of network required files(network,node,edge)
 ##' @import dplyr
 ##' @export 
@@ -38,6 +40,7 @@ TimiCellNetwork<-  function(resdata = NULL,
                             dataset = NULL,
                             group = NULL,
                             geneset = NULL,
+                            export = TRUE,
                             path = NULL){
   # Examine required parameters
   if (is.null(resdata)){
@@ -50,11 +53,7 @@ TimiCellNetwork<-  function(resdata = NULL,
     stop('Please choose one of c("Galon2013","Galon2013_Cancer","Charoentong2017", "Alex2020_Levi2019","Zhang2021S2","TIP","Other")')
     
   }
-  
-  if (is.null(path)){
-    warning('No output directory was provided. Export to working directory')
-    path <- getwd()
-  }
+
   
   # selection
   if (is.null(select)) {
@@ -78,15 +77,13 @@ TimiCellNetwork<-  function(resdata = NULL,
   colnames(net) <- c("Source","Target")
   net$Interaction <- "TimiGP"
   net <- net[c("Source","Interaction", "Target")]
-  write.table(net,file = paste0(path,"/network.sif"),quote = F,
-              row.names = F,col.names = F,sep = "\t")
+  
   
   # Generate edge file
   edge <- resdata
   edge$Key <- paste0(edge$Favorable.Cell.Type, " (TimiGP) ", edge$Unfavorable.Cell.Type)
   edge <- edge[c(ncol(edge),1:(ncol(edge)-1))]
-  write.table(edge,file = paste0(path,"/edge.txt"),quote = F,
-              row.names = F,col.names = T,sep = "\t")
+ 
   
   # Generate node file
   selected <- unique(c(resdata$Unfavorable.Cell.Type, resdata$Favorable.Cell.Type))
@@ -330,9 +327,23 @@ TimiCellNetwork<-  function(resdata = NULL,
     node <- node[se,]
 
   }
+  if (export == TRUE) {
+    
+    if (is.null(path)){
+      warning('No output directory was provided. Export to working directory')
+      path <- getwd()
+    }
+    
+    write.table(node,file = paste0(path,"/node.txt"),quote = F,
+                row.names = F,col.names = T,sep = "\t")
+    write.table(net,file = paste0(path,"/network.sif"),quote = F,
+                row.names = F,col.names = F,sep = "\t")
+    write.table(edge,file = paste0(path,"/edge.txt"),quote = F,
+                row.names = F,col.names = T,sep = "\t")
+  } else {
+    warning('No network file has been export. If you need these file for Cytoscape, please set "export=TRUE"')
+  }
   
-  write.table(node,file = paste0(path,"/node.txt"),quote = F,
-              row.names = F,col.names = T,sep = "\t")
   
   combined.list <- list(net,node,edge)
   names(combined.list ) <- c("network","node","edge")
@@ -358,10 +369,12 @@ TimiCellNetwork<-  function(resdata = NULL,
 ##' If you use other dataset or want to change group and colors, 
 ##' please choose "Other".
 ##' @param geneset a data.frame of cell markers, 
-##' in which the 1st is cell type, 
+##' in which the 1st column is cell type, 
 ##' the 2nd column is the marker gene 
 ##' and the 3rd column is the name of the dataset(optional)
-##' @param path a directory to export the network files.
+##' @param export a logical value. If TRUE, it will generate network files 
+##' for Cytoscape analysis. The default value is TRUE.
+##' @param path a directory to export the network files when "export = TRUE".
 ##' @return A list of network required files(network,node,edge)
 ##' @import dplyr
 ##' @export 
@@ -377,6 +390,7 @@ TimiGeneNetwork<-  function(resdata = NULL,
                             select = NULL,
                             dataset = NULL,
                             geneset = NULL,
+                            export = TRUE,
                             path = NULL){
   # Examine required parameters
   if (is.null(resdata)){
@@ -388,11 +402,6 @@ TimiGeneNetwork<-  function(resdata = NULL,
   } else if(sum(dataset %in% c("Galon2013_Cancer","Immune3", "Alex2020_Levi2019","Zhang2021S2","Other")) == 0){
     stop('Please choose one of c("Galon2013_Cancer","Immune3", "Alex2020_Levi2019","Zhang2021S2","Other")')
     
-  }
-  
-  if (is.null(path)){
-    warning('No output directory was provided. Export to working directory')
-    path <- getwd()
   }
   
   # selection
@@ -424,15 +433,13 @@ TimiGeneNetwork<-  function(resdata = NULL,
   colnames(net) <- c("Source","Target")
   net$Interaction <- "TimiGP"
   net <- net[c("Source","Interaction", "Target")]
-  write.table(net,file = paste0(path,"/network.sif"),quote = F,
-              row.names = F,col.names = F,sep = "\t")
+
   
   # Generate edge file
   edge <- resdata
   edge$Key <- paste0(edge$Favorable.Gene, " (TimiGP) ", edge$Unfavorable.Gene)
   edge <- edge[c(ncol(edge),1:(ncol(edge)-1))]
-  write.table(edge,file = paste0(path,"/edge.txt"),quote = F,
-              row.names = F,col.names = T,sep = "\t")
+
   
   # Generate node file
   selected <- unique(c(resdata$Favorable.Gene, resdata$Unfavorable.Gene))
@@ -517,8 +524,23 @@ TimiGeneNetwork<-  function(resdata = NULL,
     
   }
   
-  write.table(node,file = paste0(path,"/node.txt"),quote = F,
-              row.names = F,col.names = T,sep = "\t")
+  if (export == TRUE) {
+    
+    if (is.null(path)){
+      warning('No output directory was provided. Export to working directory')
+      path <- getwd()
+    }
+    
+    write.table(node,file = paste0(path,"/node.txt"),quote = F,
+                row.names = F,col.names = T,sep = "\t")
+    write.table(net,file = paste0(path,"/network.sif"),quote = F,
+                row.names = F,col.names = F,sep = "\t")
+    write.table(edge,file = paste0(path,"/edge.txt"),quote = F,
+                row.names = F,col.names = T,sep = "\t")
+  } else {
+    warning('No network file has been export. If you need these file for Cytoscape, please set "export=TRUE"')
+  }
+
   
   combined.list <- list(net,node,edge)
   names(combined.list ) <- c("network","node","edge")
