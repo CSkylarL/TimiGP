@@ -49,7 +49,7 @@ rm(list=ls())
 # 6. Generate Directed Gene Network:TimiGeneNetwork  ----
 data(Tcell_COX_MP_SKCM06)
 cox_res <- Tcell_COX_MP_SKCM06
-# I saved the output files in notebook. Please choose yours
+
 # You can use Cytoscape to visualize the network
 NET <- TimiGeneNetwork(resdata = cox_res,dataset = "Zhang2021S2",export =TRUE, path = "./")
 head(NET$network,n = 3)

@@ -3,7 +3,7 @@
 ##' Capture logical relation of any two marker pairs, 
 ##' and generate a matrix of Marker Pair Score:
 ##' 1 or TRUE = the expression of gene A > that of gene B, 
-##' 0 or FALSE = the expression of gene A < that of gene B, 
+##' 0 or FALSE = the expression of gene A < that of gene B. 
 ##' 
 ##'
 ##' @param rna a data.frame of preprocessed transcriptomic profile

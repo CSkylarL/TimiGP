@@ -46,8 +46,8 @@ A list of network required files(network,node,edge)
 \description{
 It generates three files that can be used to build network in Cytoscape:
 1. network files: simple interaction file (network.sif);
-2. node attributes (node.txt format);
-3. edge attributes (edge.txt format).
+2. node attributes (node.txt);
+3. edge attributes (edge.txt).
 The function also returns a list of above files that can be modified in R.
 }
 \examples{
