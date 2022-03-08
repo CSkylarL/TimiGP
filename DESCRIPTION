@@ -1,0 +1,6 @@
+Package: TimiGP
+Type: Package
+Title: Infer molecular and cellular interactions in tumor immune microenvironment through gene pairs
+Version: 1.0.0.0
+RoxygenNote: 7.1.2
+Encoding: UTF-8
