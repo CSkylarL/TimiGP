@@ -159,7 +159,7 @@ res <- Galon2013c_enrich
 # Cell Chord Diagram
 TimiCellChord(resdata = res,dataset = "Galon2013_Cancer")
 # Chord Diagram of marker pairs in seltect cell pair
-TimiGeneChord(resdata = res,select = 1)
+TimiGeneChord(resdata = res,select = 3)
 ```
 #### 3.4  Cell Interaction Network
 ```R
@@ -181,6 +181,6 @@ res <- Galon2013c_enrich
 score <- TimiFS(res)
 head(score)
 # Visualization
-p <- TimiFSBar(score)
+p <- TimiFSBar(score,select = c(1:5,(nrow(score)-2):nrow(score)))
 p
 ```
