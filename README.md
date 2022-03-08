@@ -177,7 +177,8 @@ res <- Galon2013c_enrich
 TimiCellChord(resdata = res,dataset = "Galon2013_Cancer")
 ```
 ![Supp3B](/assets/images/Supp3B.png)
-If you interested in enriched marker pairs in specific cell pair such as Cytotoxic cells_Cancer cells, please use `TimiGeneChord`.
+
+If you are interested in enriched marker pairs in specific cell pair such as Cytotoxic cells_Cancer cells, please use `TimiGeneChord`.
 ```R
 # Chord Diagram of marker pairs in seltect cell pair
 TimiGeneChord(resdata = res,select = 3)
