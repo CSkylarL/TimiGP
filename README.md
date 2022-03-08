@@ -1,7 +1,12 @@
 # TimiGP
  A R package to infer molecular and cellular interactions in tumor immune microenvironment through gene pairs.
+ 
+ Below is the **Overview of TimiGP framework**
 ![Overview of TimiGP framework](/assets/images/Fig2.png)
-# Citation
+
+ The package is flexible to explore the cell interactions in other disease.
+ ![Supp11](/assets/images/Supp11.png)
+## Citation
 This package is intended for research use only. 
 
 If you use TimiGP in your publication, please cite the paper: 
@@ -122,6 +127,7 @@ cox_res <- Galon2013c_COX_MP_SKCM06
 NET <- TimiGeneNetwork(resdata = cox_res,dataset = "Galon2013_Cancer",export =TRUE, path = "./")
 ```
 ### 3 Cell Interaction
+`TimiCellPair` will generate an marker pair annotations of cell pairs. For example, given any two different cell types, Cell A has markers a1 and a2 and cell B has markers b1 and b2. Cell pair A_B includes marker pairs: a1_b1, a1_b2, a2_b1, a2_b2 while Cell pair B_A includes marker pairs: b1_a1, b1_a2, b2_a1, b2_a2.
 #### 3.1   Cell Pair Annotation
 ```R
 rm(list=ls())
@@ -131,13 +137,15 @@ geneset <- CellType_Galon2013_cancer
 cell_pair <- TimiCellPair(geneset = geneset,core = 20)
 ```
 #### 3.2   Prepare Enrichment Background
+`TimiBG` will generate a background gene pairs for enrichment analysis. The background should include both direction of each pair. For example, given a gene pair A_B, it will generate the background gene pairs A_B and B_A.
 ```R
 # 8. generate background: TimiBG ----
 background <- TimiBG(marker.pair = row.names(cox_res))
 ```
 #### 3.3   Enrichment Analysis
+`TimiEnrich` will perform the analysis according to the query gene pairs. 
 ```R
-# 9. Select marker pairs A_B=1 significantly associated with good prognosis ----
+# 9. Query: Select marker pairs A_B=1 significantly associated with good prognosis ----
 data(Galon2013c_COX_MP_SKCM06)
 cox_res <- Galon2013c_COX_MP_SKCM06
 GP <- rownames(cox_res)[which(cox_res$QV<0.05)]
@@ -148,6 +156,7 @@ res <- TimiEnrich(gene = GP, background = background,
 # Galon2013c_enrich <- res
 # save(Galon2013c_enrich,file = "data/Galon2013c_enrich.rda")
 ```
+`TimiDotplot` can visualize the enrichment analysis results.
 ```R
 # 11. Visualization: Dot plot of selected cell pair enrichment: TimiDotplot-----
 rm(list=ls())
@@ -156,6 +165,9 @@ res <- Galon2013c_enrich
 p <- TimiDotplot(resdata = res,select = c(1:10))
 p
 ```
+![Supp3A](/assets/images/Supp3A.tiff)
+
+`TimiCellChord` can visualize the cell interaction in Chord Diagram.
 ```R
 # 12. Visualization: Chord Diagram of significant cell pair enrichment: TimiCellChord----
 rm(list=ls())
@@ -163,10 +175,21 @@ data("Galon2013c_enrich")
 res <- Galon2013c_enrich
 # Cell Chord Diagram
 TimiCellChord(resdata = res,dataset = "Galon2013_Cancer")
+```
+![Supp3B](/assets/images/Supp3B.tiff)
+If you interested in enriched marker pairs in specific cell pair such as Cytotoxic cells_Cancer cells, please use `TimiGeneChord`.
+```R
 # Chord Diagram of marker pairs in seltect cell pair
 TimiGeneChord(resdata = res,select = 3)
 ```
+![Supp3C](/assets/images/Supp3C.tiff)
 #### 3.4  Cell Interaction Network
+By setting "export = TRUE", `TimiCellNetwork` generates three files that can be used to build network in Cytoscape: 
+ - network files: simple interaction file (network.sif); 
+ - node attributes (node.txt); 
+ - edge attributes (edge.txt). 
+The function also returns a list of above files that can be modified in R.
+
 ```R
 # 13. Generate Directed Cell Network:TimiCellNetwork  ----
 # You can use Cytoscape to visualize the network
@@ -176,6 +199,17 @@ res <- Galon2013c_enrich
 NET <- TimiCellNetwork(resdata = res,dataset = "Galon2013_Cancer",export =TRUE, path = "./")
 ```
 #### 3.5  Favorability Score
+Based on the degree information of the cell interaction network, `TimiFS` calculates the favorability score of each cell type. In the network, 
+
+ - the out-degree of cell A means how many times high A-to-other cell ratio is associated with favorable prognosis; 
+
+ - the in-degree of cell A means how many times low A-to-other cell ratio is associated with favorable prognosis. 
+
+The favorability score includes favorable score and unfavorable score. 
+ - Favorable score: out-degree of the cell/sum of out-degree of all cell*100. 
+ - Unfavorable score: in-degree of the cell/sum of in-degree of all cell*100.
+
+
 ```R
 # 13. Calculate favorability score: TimiFS ----
 # Visualization: TimiFSBar 
@@ -185,7 +219,11 @@ res <- Galon2013c_enrich
 # Calculate
 score <- TimiFS(res)
 head(score)
+```
+This result can be visulized by `TimiFSBar`.
+```R
 # Visualization
 p <- TimiFSBar(score,select = c(1:5,(nrow(score)-2):nrow(score)))
 p
 ```
+![Supp3E](/assets/images/Supp3E.tiff)
