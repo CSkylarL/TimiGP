@@ -165,7 +165,7 @@ res <- Galon2013c_enrich
 p <- TimiDotplot(resdata = res,select = c(1:10))
 p
 ```
-![Supp3A](/assets/images/Supp3A.tiff)
+![Supp3A](/assets/images/Supp3A.png)
 
 `TimiCellChord` can visualize the cell interaction in Chord Diagram.
 ```R
@@ -176,13 +176,13 @@ res <- Galon2013c_enrich
 # Cell Chord Diagram
 TimiCellChord(resdata = res,dataset = "Galon2013_Cancer")
 ```
-![Supp3B](/assets/images/Supp3B.tiff)
+![Supp3B](/assets/images/Supp3B.png)
 If you interested in enriched marker pairs in specific cell pair such as Cytotoxic cells_Cancer cells, please use `TimiGeneChord`.
 ```R
 # Chord Diagram of marker pairs in seltect cell pair
 TimiGeneChord(resdata = res,select = 3)
 ```
-![Supp3C](/assets/images/Supp3C.tiff)
+![Supp3C](/assets/images/Supp3C.png)
 #### 3.4  Cell Interaction Network
 By setting "export = TRUE", `TimiCellNetwork` generates three files that can be used to build network in Cytoscape: 
  - network files: simple interaction file (network.sif); 
@@ -226,4 +226,4 @@ This result can be visulized by `TimiFSBar`.
 p <- TimiFSBar(score,select = c(1:5,(nrow(score)-2):nrow(score)))
 p
 ```
-![Supp3E](/assets/images/Supp3E.tiff)
+![Supp3E](/assets/images/Supp3E.png)
