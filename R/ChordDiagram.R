@@ -103,7 +103,7 @@ TimiCellChord<-  function(resdata = NULL,
       }
       
       if (dataset == "Galon2013"){
-        if(length(grep(selected,pattern = "cancer cells",ignore.case=TRUE)) == 1) {
+        if(length(grep(selected,pattern = "Cancer cells",ignore.case=TRUE)) == 1) {
           stop('You should set dataset = "Galon2013_Cancer"')
         }
         
@@ -166,7 +166,7 @@ TimiCellChord<-  function(resdata = NULL,
                   "Macrophages", 
                   "Neutrophils","Mast cells","Eosinophils",
                   "Normal mucosa", "Blood vessels" ,"Lymph vessels",
-                  "SW480 cancer cells")
+                  "Cancer cells")
         group <- c(rep("B Cell", 1),
                    rep("T Cell", 11),
                    rep("Cytotoxic Cell", 1),

@@ -51,5 +51,7 @@ sum(duplicated(myset2$Gene)) #0
 geneset <- myset2
 geneset <- geneset[c(2,3,1)]
 
+se <- which(geneset$CellType == "SW480 cancer cells")
+geneset$CellType[se] <- "Cancer cells"
 CellType_Galon2013_cancer <- geneset
 # save(CellType_Galon2013_cancer, file = myoutf1)

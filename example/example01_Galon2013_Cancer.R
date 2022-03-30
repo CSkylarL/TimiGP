@@ -117,3 +117,5 @@ head(score)
 # Visualization
 p <- TimiFSBar(score)
 p
+p1 <- TimiFSBar(score,select = c(1:5,(nrow(score)-2):nrow(score)))
+p1
