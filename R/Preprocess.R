@@ -30,12 +30,13 @@ TimiCheckEvent <-  function(info = NULL){
   y=Surv(as.numeric(info[,2]), as.numeric( info[,1]))
   # Remove time <=0
   se3 <-  which(y[, "time"] <= 0) 
-  se <- unique(c(se1,se2,se3))
+  se4 <- which(is.na(y))
+  se <- unique(c(se1,se2,se3,se4))
   if (length(se) != 0){
     info <- info[-se,]
   }
   
-  message(length(se), " individuals were filtered out")
+  message(length(se), " individuals were filtered out due to NAs or time <= 0")
   return(info)
 }
 
