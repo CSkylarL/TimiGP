@@ -49,7 +49,17 @@ TimiCOX <-  function(mps = NULL,
   
   
   if (all((colnames(mps) == rownames(info)) != TRUE) ) {
-    stop('Samples are different between Gene pair score and clinical info')
+    comSam <- intersect(row.names(info), colnames(mps))
+    if (length(comSam) > 0) {
+      mps <- mps[,comSam]
+      info <- info[comSam,]
+    } else {
+      stop('Samples are different between Gene pair score and clinical info')
+    }
+    if (all((colnames(mps) == rownames(info)) != TRUE) ) {
+      stop('Samples are different between Gene pair score and clinical info')
+    }
+    
   }
   # perform cox
   pval <- hr  <- rep(0, nrow(mps))
