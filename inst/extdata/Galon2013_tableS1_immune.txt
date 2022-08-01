@@ -383,7 +383,7 @@ NK CD56bright cells	PLA2G6	215938_s_at
 NK CD56bright cells	PLA2G6	204691_x_at
 NK CD56bright cells	NIBP	221672_s_at
 NK CD56bright cells	FOXJ1	205906_at
-NK CD56bright cells	6-Mar	215908_at
+NK CD56bright cells	MARCH6	215908_at
 NK CD56bright cells	DUSP4	204015_s_at
 NK CD56bright cells	PLA2G6	210647_x_at
 NK CD56bright cells	MADD	38398_at
@@ -679,4 +679,3 @@ Blood vessels	CDH5	204677_at
 Lymph vessels	PDPN	204879_at
 Lymph vessels	VEGFC	209946_at
 Lymph vessels	FIGF	206742_at
-
