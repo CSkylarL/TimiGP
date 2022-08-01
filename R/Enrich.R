@@ -91,10 +91,10 @@ TimiEnrich <- function(gene = NULL,
   registerDoParallel(cores=core)
 
   ## prepare parameter for hypergeometric test
-  ##                   In Query Set | Not in Query Set | Row Sum
-  ## In Gene Set     |     k        |     n-k          |    n
-  ## Not in Gene Set |    M-k       |    N+k-n-m       |
-  ## column Sum      |     M        |       N-M        |    N
+  ##               Annotated Cell Interaction X->Y | Not Annotated | Row Sum
+  ## Prognostic Pair |     k                       |     n-k          |    n
+  ## Not Prognostic  |    M-k                      |    N+k-n-m       |
+  ## column Sum      |     M                      |       N-M        |    N
   gene <- as.character(unique(gene))
   bg <- as.character(unique(background))
   ann <- unique(geneset[, 1])
