@@ -9,18 +9,19 @@
 ##' and the 2nd column is days-to-event.
 ##' @param p.adj p.adjust.methods. 
 ##' One of "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"	
-##' @return 1. Result of cox regression
+##' @return A list of two results: 
+##' 1. Result of cox regression(cox_res)
 ##' (HR: Hazard.Ratio,PV: P-Value,QV: Adjust P-value). 
-##' 2. modified marker pair score
+##' 2. modified marker pair score(mps)
 ##' @import survival
 ##' @export 
 ##' @examples
 ##' \dontrun{
 ##'   data("SKCM06info")
 ##'   data("SKCM06rna")
-##'   data("Immune_Marker_n1326")
+##'   data("Immune_Marker_n1293")
 ##'   info <- TimiCheckEvent(SKCM06info)
-##'   rna <- TimiPrePropress(gene = Immune_Marker_n1326,rna = SKCM06rna,cohort = rownames(info))
+##'   rna <- TimiPrePropress(gene = Immune_Marker_n1293,rna = SKCM06rna,cohort = rownames(info))
 ##'   mps <- TimiGenePair(rna)
 ##'   dim(mps)
 ##'   # TimiCOX 
@@ -97,7 +98,7 @@ TimiCOX <-  function(mps = NULL,
   mps[se,] <- !mps[se,]
   
   cox_res <-cox_res[order(cox_res[,2]),]
-  res <- list(mps,cox_res)
+  res <- list("mps" = mps,"cox_res" = cox_res)
   
   return(res)
   

@@ -29,8 +29,8 @@ the expression of F greater than that of U is associated with a good prognosis.
 }
 \examples{
 \dontrun{
-  data("Galon2013c_enrich")
-  res <- Galon2013c_enrich
+  data("Bindea2013c_enrich")
+  res <- Bindea2013c_enrich
   TimiGeneChord(resdata = res)
   TimiGeneChord(resdata = res,select = 2)
  

@@ -18,8 +18,8 @@ the background gene pairs A_B and B_A
 }
 \examples{
 \dontrun{
-  data(Galon2013c_COX_MP_SKCM06)
-  cox_res <- Galon2013c_COX_MP_SKCM06
+  data(Bindea2013c_COX_MP_SKCM06)
+  cox_res <- Bindea2013c_COX_MP_SKCM06
   background <- TimiBG(marker.pair = row.names(cox_res))
 }
 }

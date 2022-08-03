@@ -21,8 +21,8 @@ to evaluate its favorable(orange,positive) or unfavorable(Blue,negative) role in
 }
 \examples{
 \dontrun{
-  data("Galon2013c_enrich")
-  res <- Galon2013c_enrich
+  data("Bindea2013c_enrich")
+  res <- Bindea2013c_enrich
   score <- TimiFS(res)
   head(score)
   p <- TimiFSBar(score)

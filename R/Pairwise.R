@@ -13,12 +13,12 @@
 ##' \dontrun{
 ##'   data("SKCM06info")
 ##'   data("SKCM06rna")
-##'   data("Immune_Marker_n1326")
+##'   data("Immune_Marker_n1293")
 ##'   dim(SKCM06info)
 ##'   info <- TimiCheckEvent(SKCM06info)
 ##'   dim(info)
 ##'   dim(SKCM06rna)
-##'   rna <- TimiPrePropress(gene = Immune_Marker_n1326,rna = SKCM06rna,cohort = rownames(info))
+##'   rna <- TimiPrePropress(gene = Immune_Marker_n1293,rna = SKCM06rna,cohort = rownames(info))
 ##'   # TimiGenePair
 ##'   mps <- TimiGenePair(rna)
 ##'   dim(mps)

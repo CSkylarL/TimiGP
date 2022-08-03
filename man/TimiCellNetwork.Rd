@@ -21,8 +21,8 @@ TimiCellNetwork(
 Default selection is all statistically significantly enriched cell pairs(adjusted p value < 0.05).}
 
 \item{dataset}{a value in one of 
-c("Galon2013","Galon2013_Cancer","Charoentong2017", 
-"Alex2020_Levi2019","Zhang2021S2","TIP","Other"). 
+c("Bindea2013","Bindea2013_Cancer","Charoentong2017", 
+"Hughes2020_Tirosh2016","Zheng2021","Xu2018","Other"). 
 The first four options include default group and color settings. 
 If you use other dataset or want to change group and colors, 
 please choose "Other".}
@@ -52,9 +52,9 @@ The function also returns a list of above files that can be modified in R.
 }
 \examples{
 \dontrun{
-  data("Galon2013c_enrich")
-  res <- Galon2013c_enrich
-  NET <- TimiCellNetwork(resdata = res,dataset = "Galon2013_Cancer")
+  data("Bindea2013c_enrich")
+  res <- Bindea2013c_enrich
+  NET <- TimiCellNetwork(resdata = res,dataset = "Bindea2013_Cancer")
 }
 }
 \author{

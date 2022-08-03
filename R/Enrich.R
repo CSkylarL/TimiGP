@@ -8,8 +8,8 @@
 ##' @export 
 ##' @examples
 ##' \dontrun{
-##'   data(Galon2013c_COX_MP_SKCM06)
-##'   cox_res <- Galon2013c_COX_MP_SKCM06
+##'   data(Bindea2013c_COX_MP_SKCM06)
+##'   cox_res <- Bindea2013c_COX_MP_SKCM06
 ##'   background <- TimiBG(marker.pair = row.names(cox_res))
 ##' }
 ##' @author Chenyang Skylar Li
@@ -52,12 +52,12 @@ TimiBG <- function(marker.pair = NULL){
 ##' @examples
 ##' \dontrun{
 ##'   # Generate Cell Pair Annotation: TimiCellPair
-##'   data(CellType_Galon2013_cancer)
-##'   geneset <- CellType_Galon2013_cancer
+##'   data(CellType_Bindea2013_cancer)
+##'   geneset <- CellType_Bindea2013_cancer
 ##'   cell_pair <- TimiCellPair(geneset = geneset,core = 20)
 ##'   # Select marker pairs A_B=1 associated with good prognosis
-##'   data(Galon2013c_COX_MP_SKCM06)
-##'   cox_res <- Galon2013c_COX_MP_SKCM06
+##'   data(Bindea2013c_COX_MP_SKCM06)
+##'   cox_res <- Bindea2013c_COX_MP_SKCM06
 ##'   GP <- rownames(cox_res)[which(cox_res$QV<0.05)]
 ##'   # generate background: TimiBG
 ##'   background <- TimiBG(marker.pair = row.names(cox_res))

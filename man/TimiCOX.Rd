@@ -20,9 +20,10 @@ and the 2nd column is days-to-event.}
 One of "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"}
 }
 \value{
-1. Result of cox regression
+A list of two results: 
+1. Result of cox regression(cox_res)
 (HR: Hazard.Ratio,PV: P-Value,QV: Adjust P-value). 
-2. modified marker pair score
+2. modified marker pair score(mps)
 }
 \description{
 Perform univariate cox regression that fits each marker pair as a variable.
@@ -33,9 +34,9 @@ it will be changed to B_A and reverse its value in the matrix of pair
 \dontrun{
   data("SKCM06info")
   data("SKCM06rna")
-  data("Immune_Marker_n1326")
+  data("Immune_Marker_n1293")
   info <- TimiCheckEvent(SKCM06info)
-  rna <- TimiPrePropress(gene = Immune_Marker_n1326,rna = SKCM06rna,cohort = rownames(info))
+  rna <- TimiPrePropress(gene = Immune_Marker_n1293,rna = SKCM06rna,cohort = rownames(info))
   mps <- TimiGenePair(rna)
   dim(mps)
   # TimiCOX 

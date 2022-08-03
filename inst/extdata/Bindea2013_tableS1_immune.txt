@@ -1,0 +1,681 @@
+B cells	MS4A1	217418_x_at
+B cells	TCL1A	209995_s_at
+B cells	MS4A1	210356_x_at
+B cells	TCL1A	39318_at
+B cells	HLA-DOB	205671_s_at
+B cells	PNOC	205901_at
+B cells	KIAA0125	206478_at
+B cells	CD19	206398_s_at
+B cells	CR2	205544_s_at
+B cells	IGHG1	213674_x_at
+B cells	FCRL2	221239_s_at
+B cells	BLK	206255_at
+B cells	IGHG1	222285_at
+B cells	COCH	205229_s_at
+B cells	OSBPL10	219073_s_at
+B cells	IGHA1	215118_s_at
+B cells	TNFRSF17	206641_at
+B cells	ABCB4	207819_s_at
+B cells	BLNK	207655_s_at
+B cells	GLDC	204836_at
+B cells	MEF2C	209200_at
+B cells	MEF2C	209199_s_at
+B cells	IGHM	209374_s_at
+B cells	FAM30A	220377_at
+B cells	SPIB	205861_at
+B cells	BCL11A	219497_s_at
+B cells	GNG7	206896_s_at
+B cells	IGKC	215217_at
+B cells	CD72	215925_s_at
+B cells	MICAL3	212715_s_at
+B cells	BCL11A	210347_s_at
+B cells	BACH2	221234_s_at
+B cells	IGL	217138_x_at
+B cells	CCR9	207445_s_at
+B cells	QRSL1	218948_at
+B cells	DTNB	215565_at
+B cells	HLA-DQA1	212671_s_at
+B cells	SCN3A	210432_s_at
+B cells	QRSL1	218949_s_at
+B cells	SLC15A2	205316_at
+T cells	PRKCQ	210038_at
+T cells	CD3D	213539_at
+T cells	CD3G	206804_at
+T cells	CD28	206545_at
+T cells	LCK	204891_s_at
+T cells	TRAT1	217147_s_at
+T cells	PRKCQ	210039_s_at
+T cells	BCL11B	219528_s_at
+T cells	CD2	205831_at
+T cells	LCK	204890_s_at
+T cells	TRBC1	213193_x_at
+T cells	TRBC1	210915_x_at
+T cells	TRA	209670_at
+T cells	ITM2A	202747_s_at
+T cells	SH2D1A	210116_at
+T cells	CD6	213958_at
+T cells	CD96	206761_at
+T cells	NCALD	211685_s_at
+T cells	GIMAP5	218805_at
+T cells	TRA	209671_x_at
+T cells	CD3E	205456_at
+T cells	SKAP1	205790_at
+T cells	TRA	213830_at
+T cells	TRA	216191_s_at
+T helper cells	ICOS	210439_at
+T helper cells	LRBA	214109_at
+T helper cells	ITM2A	202746_at
+T helper cells	FAM111A	218248_at
+T helper cells	PHF10	219126_at
+T helper cells	NUP107	218768_at
+T helper cells	SEC24C	202361_at
+T helper cells	NAP1L4	201414_s_at
+T helper cells	BATF	205965_at
+T helper cells	ASF1A	203428_s_at
+T helper cells	FRYL	212546_s_at
+T helper cells	FUSIP1	213594_x_at
+T helper cells	TRA	215524_x_at
+T helper cells	TRA	217412_at
+T helper cells	RPA1	201528_at
+T helper cells	UBE2L3	200683_s_at
+T helper cells	ANP32B	201306_s_at
+T helper cells	DDX50	221699_s_at
+T helper cells	C13orf34	219544_at
+T helper cells	PPP2R5C	213305_s_at
+T helper cells	SLC25A12	203340_s_at
+T helper cells	ATF2	205446_s_at
+T helper cells	CD28	211856_x_at
+T helper cells	GOLGA8A	208798_x_at
+Tcm	CDC14A	210441_at
+Tcm	ATM	208442_s_at
+Tcm	USP9Y	206624_at
+Tcm	PCNX	215175_at
+Tcm	ATM	210858_x_at
+Tcm	FOXP1	215221_at
+Tcm	KLF12	206965_at
+Tcm	ST3GAL1	215874_at
+Tcm	INPP4B	215864_at
+Tcm	CASP8	207686_s_at
+Tcm	MLL	216624_s_at
+Tcm	PCM1	209997_x_at
+Tcm	RP11-74E24.2	205787_x_at
+Tcm	PHC3	215521_at
+Tcm	NFATC3	210556_at
+Tcm	LOC202134	215133_s_at
+Tcm	TIMM8A	210800_at
+Tcm	ATF7IP	216197_at
+Tcm	REPS1	215201_at
+Tcm	PSPC1	215083_at
+Tcm	RPP38	215743_at
+Tcm	HNRPH1	213472_at
+Tcm	STX16	221638_s_at
+Tcm	CYLD	214272_at
+Tcm	SNRPN	216850_at
+Tcm	TRAF3IP3	215275_at
+Tcm	NEFL	221805_at
+Tcm	POLR2J2	217610_at
+Tcm	AQP3	203747_at
+Tcm	CG030	215105_at
+Tcm	PDXDC2	215920_s_at
+Tcm	CLUAP1	204576_s_at
+Tcm	DOCK9	215041_s_at
+Tcm	CYorf15B	214131_at
+Tcm	CREBZF	213584_s_at
+Tcm	CEP68	207971_s_at
+Tcm	TXK	206828_at
+Tcm	SLC7A6	203578_s_at
+Tcm	FYB	205285_s_at
+Tcm	MAP3K1	214786_at
+Tem	TRA	217397_at
+Tem	PRKY	206279_at
+Tem	VIL2	217230_at
+Tem	GDPD5	32502_at
+Tem	CCR2	206978_at
+Tem	MEFV	208262_x_at
+Tem	C7orf54	210109_at
+Tem	FLI1	210786_s_at
+Tem	TBC1D5	201815_s_at
+Tem	DDX17	208719_s_at
+Tem	AKT3	212609_s_at
+Tem	EWSR1	211825_s_at
+Tem	TBCD	201759_at
+Tem	CCR2	207794_at
+Tem	NFATC4	205897_at
+Tem	LTK	207106_s_at
+Th1 cells	IFNG	210354_at
+Th1 cells	LTA	206975_at
+Th1 cells	APBB2	213419_at
+Th1 cells	DOK5	214844_s_at
+Th1 cells	IL12RB2	206999_at
+Th1 cells	APBB2	40148_at
+Th1 cells	APOD	201525_at
+Th1 cells	ZBTB32	220118_at
+Th1 cells	CD38	205692_s_at
+Th1 cells	CSF2	210229_s_at
+Th1 cells	CTLA4	221331_x_at
+Th1 cells	CD70	206508_at
+Th1 cells	DPP4	211478_s_at
+Th1 cells	EGFL6	219454_at
+Th1 cells	BST2	201641_at
+Th1 cells	DUSP5	209457_at
+Th1 cells	LRP8	205282_at
+Th1 cells	IL22	221165_s_at
+Th1 cells	DGKI	206806_at
+Th1 cells	CCL4	204103_at
+Th1 cells	DPP4	203716_s_at
+Th1 cells	GGT1	211417_x_at
+Th1 cells	LRRN3	209840_s_at
+Th1 cells	SYNGR3	205691_at
+Th1 cells	ATP9A	212062_at
+Th1 cells	BTG3	205548_s_at
+Th1 cells	CMAH	210571_s_at
+Th1 cells	HBEGF	38037_at
+Th1 cells	SGCB	205120_s_at
+Th2 cells	PMCH	206942_s_at
+Th2 cells	AHI1	220841_s_at
+Th2 cells	PTGIS	208131_s_at
+Th2 cells	AHI1	220842_at
+Th2 cells	CXCR6	211469_s_at
+Th2 cells	EVI5	209717_at
+Th2 cells	AHI1	221569_at
+Th2 cells	IL26	221111_at
+Th2 cells	MB	204179_at
+Th2 cells	NEIL3	219502_at
+Th2 cells	GSTA4	202967_at
+Th2 cells	PHEX	210617_at
+Th2 cells	SMAD2	203076_s_at
+Th2 cells	CENPF	209172_s_at
+Th2 cells	ANK1	208353_x_at
+Th2 cells	ADCY1	213245_at
+Th2 cells	AI582773	214373_at
+Th2 cells	LAIR2	207509_s_at
+Th2 cells	SNRPD1	202691_at
+Th2 cells	CXCR6	206974_at
+Th2 cells	MICAL2	212472_at
+Th2 cells	DHFR	202534_x_at
+Th2 cells	SMAD2	203077_s_at
+Th2 cells	WDHD1	204728_s_at
+Th2 cells	BIRC5	210334_x_at
+Th2 cells	DHFR	48808_at
+Th2 cells	SLC39A14	212110_at
+Th2 cells	HELLS	220085_at
+Th2 cells	LIMA1	217892_s_at
+Th2 cells	CDC25C	205167_s_at
+Th2 cells	CDC7	204510_at
+Th2 cells	GATA3	209602_s_at
+TFH	CHI3L2	213060_s_at
+TFH	CXCL13	205242_at
+TFH	MYO7A	33197_at
+TFH	CHGB	204260_at
+TFH	MYO7A	208189_s_at
+TFH	ICA1	210547_x_at
+TFH	HEY1	218839_at
+TFH	CDK5R1	204995_at
+TFH	ST8SIA1	210073_at
+TFH	PDCD1	207634_at
+TFH	BLR1	216734_s_at
+TFH	KIAA1324	221874_at
+TFH	PVALB	205336_at
+TFH	ICA1	207949_s_at
+TFH	TSHR	210055_at
+TFH	C18orf1	209574_s_at
+TFH	HEY1	44783_s_at
+TFH	TOX	204529_s_at
+TFH	BLR1	206126_at
+TFH	SLC7A10	220868_s_at
+TFH	SMAD1	210993_s_at
+TFH	POMT1	218476_at
+TFH	PASK	216945_x_at
+TFH	MKL2	218259_at
+TFH	PTPN13	204201_s_at
+TFH	PASK	213534_s_at
+TFH	KCNK5	219615_s_at
+TFH	C18orf1	207996_s_at
+TFH	ZNF764	57516_at
+TFH	MAF	206363_at
+TFH	MYO6	210480_s_at
+TFH	SIRPG	220485_s_at
+TFH	THADA	54632_at
+TFH	THADA	220212_s_at
+TFH	MAGEH1	218573_at
+TFH	B3GAT1	219521_at
+TFH	MAF	209348_s_at
+TFH	SH3TC1	219256_s_at
+TFH	HIST1H4K	214463_x_at
+TFH	STK39	202786_at
+Th17 cells	IL17A	208402_at
+Th17 cells	IL17A	216876_s_at
+Th17 cells	IL17RA	205707_at
+Th17 cells	RORC	206419_at
+TReg	FOXP3	221333_at
+TReg	FOXP3	221334_s_at
+CD8 T cells	CD8B	207979_s_at
+CD8 T cells	CD8A	205758_at
+CD8 T cells	CD8B	215332_s_at
+CD8 T cells	PF4	206390_x_at
+CD8 T cells	PRR5	47069_at
+CD8 T cells	SF1	210172_at
+CD8 T cells	LIME1	219541_at
+CD8 T cells	DNAJB1	200664_s_at
+CD8 T cells	ARHGAP8	219168_s_at
+CD8 T cells	GZMM	207460_at
+CD8 T cells	SLC16A7	207057_at
+CD8 T cells	SFRS7	213649_at
+CD8 T cells	APBA2	209871_s_at
+CD8 T cells	C4orf15	210054_at
+CD8 T cells	LEPROTL1	202595_s_at
+CD8 T cells	ZFP36L2	201367_s_at
+CD8 T cells	GADD45A	203725_at
+CD8 T cells	ZFP36L2	201369_s_at
+CD8 T cells	MYST3	216361_s_at
+CD8 T cells	ZEB1	208078_s_at
+CD8 T cells	ZNF609	212620_at
+CD8 T cells	C12orf47	64432_at
+CD8 T cells	THUMPD1	206555_s_at
+CD8 T cells	VAMP2	201557_at
+CD8 T cells	ZNF91	206059_at
+CD8 T cells	ZNF22	218006_s_at
+CD8 T cells	TMC6	214958_s_at
+CD8 T cells	DNAJB1	200666_s_at
+CD8 T cells	FLT3LG	210607_at
+CD8 T cells	CDKN2AIP	218929_at
+CD8 T cells	TSC22D3	207001_x_at
+CD8 T cells	TBCC	202495_at
+CD8 T cells	RBM3	208319_s_at
+CD8 T cells	ABT1	218405_at
+CD8 T cells	C19orf6	212574_x_at
+CD8 T cells	CAMLG	203538_at
+CD8 T cells	PPP1R2	202165_at
+CD8 T cells	AES	217729_s_at
+CD8 T cells	KLF9	203543_s_at
+CD8 T cells	PRF1	214617_at
+Tgd	TRD	217143_s_at
+Tgd	TARP	211144_x_at
+Tgd	C1orf61	205103_at
+Tgd	TRGV9	209813_x_at
+Tgd	CD160	207840_at
+Tgd	TARP	216920_s_at
+Tgd	FEZ1	203562_at
+Cytotoxic cells	KLRD1	210606_x_at
+Cytotoxic cells	KLRF1	220646_s_at
+Cytotoxic cells	GNLY	37145_at
+Cytotoxic cells	GNLY	205495_s_at
+Cytotoxic cells	CTSW	214450_at
+Cytotoxic cells	KLRB1	214470_at
+Cytotoxic cells	KLRD1	207795_s_at
+Cytotoxic cells	KLRK1	205821_at
+Cytotoxic cells	NKG7	213915_at
+Cytotoxic cells	GZMH	210321_at
+Cytotoxic cells	KLRD1	207796_x_at
+Cytotoxic cells	SIGIRR	218921_at
+Cytotoxic cells	ZBTB16	205883_at
+Cytotoxic cells	RUNX3	204198_s_at
+Cytotoxic cells	APOL3	221087_s_at
+Cytotoxic cells	RORA	210426_x_at
+Cytotoxic cells	APBA2	209870_s_at
+Cytotoxic cells	SIGIRR	52940_at
+Cytotoxic cells	WHDC1L1	213908_at
+Cytotoxic cells	DUSP2	204794_at
+Cytotoxic cells	GZMA	205488_at
+NK cells	LOC643313	211050_x_at
+NK cells	GAGE2	207739_s_at
+NK cells	ZNF747	206180_x_at
+NK cells	XCL1	206366_x_at
+NK cells	XCL2	214567_s_at
+NK cells	AF107846	217058_at
+NK cells	SLC30A5	220181_x_at
+NK cells	NM_014114	220691_at
+NK cells	MCM3AP	215582_x_at
+NK cells	TBXA2R	207555_s_at
+NK cells	CDC5L	209057_x_at
+NK cells	LOC730096	215182_x_at
+NK cells	FUT5	211225_at
+NK cells	FGF18	206986_at
+NK cells	MRC2	209280_at
+NK cells	RP5-886K2.1	208014_x_at
+NK cells	SPN	216981_x_at
+NK cells	PSMD4	210459_at
+NK cells	PRX	220024_s_at
+NK cells	FZR1	209415_at
+NK cells	ZNF205	206416_at
+NK cells	AL080130	212972_x_at
+NK cells	ZNF528	215019_x_at
+NK cells	MAPRE3	203842_s_at
+NK cells	BCL2	207004_at
+NK cells	NM_017616	221068_at
+NK cells	ARL6IP2	217580_x_at
+NK cells	SPN	206057_x_at
+NK cells	FZR1	211865_s_at
+NK cells	PDLIM4	214174_s_at
+NK cells	NM_014274	206827_s_at
+NK cells	LDB3	216888_at
+NK cells	ADARB1	209979_at
+NK cells	SMEK1	215607_x_at
+NK cells	TCTN2	206438_x_at
+NK cells	TINAGL1	219058_x_at
+NK cells	IGFBP5	203426_s_at
+NK cells	ALDH1B1	209646_x_at
+NK cells	NCR1	217095_x_at
+NK cells	NCR1	217088_s_at
+NK cells	NCR1	207860_at
+NK CD56dim cells	KIR3DL2	207314_x_at
+NK CD56dim cells	KIR3DL2	216907_x_at
+NK CD56dim cells	SPON2	218638_s_at
+NK CD56dim cells	KIR2DL3	208179_x_at
+NK CD56dim cells	GZMB	210164_at
+NK CD56dim cells	KIR3DS1	211389_x_at
+NK CD56dim cells	KIR3DL1	211687_x_at
+NK CD56dim cells	FLJ20699	216434_at
+NK CD56dim cells	TMEPAI	217875_s_at
+NK CD56dim cells	KIR3DL2	211688_x_at
+NK CD56dim cells	IL21R	221658_s_at
+NK CD56dim cells	KIR3DL2	207313_x_at
+NK CD56dim cells	KIR3DL3	216676_x_at
+NK CD56dim cells	KIR2DS5	208203_x_at
+NK CD56dim cells	KIR2DS2	211532_x_at
+NK CD56dim cells	GTF3C1	202320_at
+NK CD56dim cells	KIR2DS1	216552_x_at
+NK CD56dim cells	EDG8	221417_x_at
+NK CD56bright cells	DUSP4	204014_at
+NK CD56bright cells	RRAD	204803_s_at
+NK CD56bright cells	XCL1	206365_at
+NK CD56bright cells	PLA2G6	215938_s_at
+NK CD56bright cells	PLA2G6	204691_x_at
+NK CD56bright cells	NIBP	221672_s_at
+NK CD56bright cells	FOXJ1	205906_at
+NK CD56bright cells	MARCH6	215908_at
+NK CD56bright cells	DUSP4	204015_s_at
+NK CD56bright cells	PLA2G6	210647_x_at
+NK CD56bright cells	MADD	38398_at
+NK CD56bright cells	BG255923	215409_at
+NK CD56bright cells	MPPED1	206436_at
+NK CD56bright cells	MUC3B	214676_x_at
+DC	CD209	207277_at
+DC	CCL17	207900_at
+DC	HSD11B1	205404_at
+DC	CCL13	206407_s_at
+DC	CCL22	207861_at
+DC	PPFIBP2	212841_s_at
+DC	NPR1	32625_at
+iDC	CD1B	206749_at
+iDC	VASH1	203940_s_at
+iDC	F13A1	203305_at
+iDC	CD1E	215784_at
+iDC	MMP12	204580_at
+iDC	FABP4	203980_at
+iDC	CLEC10A	206682_at
+iDC	SYT17	205613_at
+iDC	MS4A6A	219666_at
+iDC	CTNS	204925_at
+iDC	GUCA1A	206062_at
+iDC	CARD9	220162_s_at
+iDC	CD1E	208592_s_at
+iDC	ABCG2	209735_at
+iDC	CD1A	210325_at
+iDC	PPARG	208510_s_at
+iDC	RAP1GAP	203911_at
+iDC	SLC7A8	216604_s_at
+iDC	GSTT1	203815_at
+iDC	NM_021941	218019_s_at
+iDC	FZD2	210220_at
+iDC	CSF1R	203104_at
+iDC	HS3ST2	219697_at
+iDC	CH25H	206932_at
+iDC	LMAN2L	221274_s_at
+iDC	SLC26A6	221572_s_at
+iDC	BLVRB	202201_at
+iDC	NUDT9	218375_at
+iDC	PREP	204117_at
+iDC	TM7SF4	221266_s_at
+iDC	TACSTD2	202286_s_at
+iDC	CD1C	205987_at
+aDC	CCL1	207533_at
+aDC	EBI3	219424_at
+aDC	INDO	210029_at
+aDC	LAMP3	205569_at
+aDC	OAS3	218400_at
+pDC	IL3RA	206148_at
+Eosinophils	IL5RA	211517_s_at
+Eosinophils	KCNH2	205262_at
+Eosinophils	TKTL1	216370_s_at
+Eosinophils	IL5RA	210744_s_at
+Eosinophils	EMR1	207111_at
+Eosinophils	KCNH2	210036_s_at
+Eosinophils	CCR3	208304_at
+Eosinophils	ACACB	49452_at
+Eosinophils	THBS1	201108_s_at
+Eosinophils	GALC	211810_s_at
+Eosinophils	TKTL1	214183_s_at
+Eosinophils	RNU2	210230_at
+Eosinophils	CLC	206207_at
+Eosinophils	THBS1	201109_s_at
+Eosinophils	HIST1H1C	209398_at
+Eosinophils	CYSLTR2	220813_at
+Eosinophils	HRH4	221170_at
+Eosinophils	RNASE2	206111_at
+Eosinophils	CAT	211922_s_at
+Eosinophils	LRP5L	214873_at
+Eosinophils	SYNJ1	207594_s_at
+Eosinophils	SYNJ1	212990_at
+Eosinophils	THBS4	204776_at
+Eosinophils	GPR44	206361_at
+Eosinophils	KBTBD11	204301_at
+Eosinophils	HES1	203394_s_at
+Eosinophils	ABHD2	205566_at
+Eosinophils	TIPARP	212665_at
+Eosinophils	SMPD3	219695_at
+Eosinophils	MYO15B	59375_at
+Eosinophils	TGIF1	203313_s_at
+Eosinophils	RRP12	216360_x_at
+Eosinophils	ACACB	43427_at
+Eosinophils	IGSF2	207167_at
+Eosinophils	HES1	203395_s_at
+Eosinophils	RCOR3	218344_s_at
+Eosinophils	EPN2	203463_s_at
+Eosinophils	C9orf156	222195_s_at
+Eosinophils	SIAH1	202981_x_at
+Eosinophils	ACACB	221928_at
+Macrophages	MARCO	205819_at
+Macrophages	CXCL5	214974_x_at
+Macrophages	SCG5	203889_at
+Macrophages	SULT1C2	205342_s_at
+Macrophages	SULT1C2	211470_s_at
+Macrophages	MSR1	214770_at
+Macrophages	CTSK	202450_s_at
+Macrophages	PTGDS	212187_x_at
+Macrophages	COLEC12	221019_s_at
+Macrophages	GPC4	204984_at
+Macrophages	MSR1	208423_s_at
+Macrophages	PCOLCE2	219295_s_at
+Macrophages	CHIT1	208168_s_at
+Macrophages	PTGDS	211748_x_at
+Macrophages	KAL1	205206_at
+Macrophages	CLEC5A	219890_at
+Macrophages	GPC4	204983_s_at
+Macrophages	ME1	204058_at
+Macrophages	DNASE2B	220380_at
+Macrophages	CCL7	208075_s_at
+Macrophages	FN1	214701_s_at
+Macrophages	CD163	203645_s_at
+Macrophages	GM2A	215891_s_at
+Macrophages	SCARB2	201647_s_at
+Macrophages	BCAT1	214452_at
+Macrophages	BCAT1	214390_s_at
+Macrophages	RAI14	202052_s_at
+Macrophages	MSR1	211887_x_at
+Macrophages	COL8A2	52651_at
+Macrophages	CD163	215049_x_at
+Macrophages	APOE	203381_s_at
+Macrophages	CHI3L1	209396_s_at
+Macrophages	ATG7	218673_s_at
+Macrophages	CD84	211190_x_at
+Macrophages	FDX1	203646_at
+Macrophages	MS4A4A	219607_s_at
+Macrophages	SGMS1	212989_at
+Macrophages	EMP1	201324_at
+Macrophages	CYBB	203922_s_at
+Macrophages	CD68	203507_at
+Mast cells	PRG2	211743_s_at
+Mast cells	CTSG	205653_at
+Mast cells	TPSAB1	215382_x_at
+Mast cells	SLC18A2	205857_at
+Mast cells	TPSAB1	205683_x_at
+Mast cells	MS4A2	207497_s_at
+Mast cells	CPA3	205624_at
+Mast cells	TPSB2	207134_x_at
+Mast cells	TPSAB1	216474_x_at
+Mast cells	NM_003293	207741_x_at
+Mast cells	TPSAB1	210084_x_at
+Mast cells	MS4A2	207496_at
+Mast cells	TPSAB1	217023_x_at
+Mast cells	GATA2	209710_at
+Mast cells	HDC	207067_s_at
+Mast cells	LOH11CR2A	210102_at
+Mast cells	SIGLEC6	210796_x_at
+Mast cells	ELA2	206871_at
+Mast cells	LOH11CR2A	205011_at
+Mast cells	CMA1	214533_at
+Mast cells	SIGLEC6	206520_x_at
+Mast cells	PGDS	206726_at
+Mast cells	MLPH	218211_s_at
+Mast cells	ADCYAP1	206281_at
+Mast cells	SIGLEC6	206519_x_at
+Mast cells	SLC24A3	57588_at
+Mast cells	CALB2	205428_s_at
+Mast cells	SLC24A3	219090_at
+Mast cells	KIT	205051_s_at
+Mast cells	TAL1	206283_s_at
+Mast cells	ABCC4	203196_at
+Mast cells	PPM1H	212686_at
+Mast cells	MAOB	204041_at
+Mast cells	HPGD	211549_s_at
+Mast cells	SCG2	204035_at
+Mast cells	PTGS1	205127_at
+Mast cells	CEACAM8	206676_at
+Mast cells	MPO	203949_at
+Mast cells	NR0B1	206645_s_at
+Mast cells	LOC339524	215039_at
+Neutrophils	CSF3R	203591_s_at
+Neutrophils	CYP4F3	206515_at
+Neutrophils	VNN3	220528_at
+Neutrophils	FPRL1	210773_s_at
+Neutrophils	KCNJ15	216782_at
+Neutrophils	MME	203434_s_at
+Neutrophils	IL8RA	207094_at
+Neutrophils	IL8RB	207008_at
+Neutrophils	MME	203435_s_at
+Neutrophils	FCGR3B	204007_at
+Neutrophils	DYSF	218660_at
+Neutrophils	KCNJ15	211806_s_at
+Neutrophils	FCAR	211816_x_at
+Neutrophils	FCAR	211307_s_at
+Neutrophils	CEACAM3	210789_x_at
+Neutrophils	FPRL1	210772_at
+Neutrophils	HIST1H2BC	214455_at
+Neutrophils	HPSE	219403_s_at
+Neutrophils	FLJ11151	218610_s_at
+Neutrophils	CREB5	205931_s_at
+Neutrophils	S100A12	205863_at
+Neutrophils	FCGR3B	204006_s_at
+Neutrophils	TNFRSF10C	211163_s_at
+Neutrophils	SLC22A4	205896_at
+Neutrophils	KIAA0329	204307_at
+Neutrophils	SLC25A37	218136_s_at
+Neutrophils	BST1	205715_at
+Neutrophils	FCAR	207674_at
+Neutrophils	CEACAM3	208052_x_at
+Neutrophils	CRISPLD2	221541_at
+Neutrophils	TNFRSF10C	206222_at
+Neutrophils	G0S2	213524_s_at
+Neutrophils	SIGLEC5	220000_at
+Neutrophils	CD93	202878_s_at
+Neutrophils	MGAM	206522_at
+Neutrophils	ALPL	215783_s_at
+Neutrophils	FPR1	205119_s_at
+Neutrophils	CD93	202877_s_at
+Neutrophils	PDE4B	222326_at
+Neutrophils	LILRB2	210146_x_at
+SW480 cancer cells	KRT5	201820_at
+SW480 cancer cells	RBP1	203423_at
+SW480 cancer cells	TRIM29	202504_at
+SW480 cancer cells	DEFA5	207529_at
+SW480 cancer cells	BMP4	211518_s_at
+SW480 cancer cells	EEF1A2	204540_at
+SW480 cancer cells	VSNL1	203797_at
+SW480 cancer cells	ASPSCR1	218908_at
+SW480 cancer cells	IGF2	202409_at
+SW480 cancer cells	MFAP2	203417_at
+SW480 cancer cells	FGF3	214571_at
+SW480 cancer cells	S100A2	204268_at
+SW480 cancer cells	INHBB	205258_at
+SW480 cancer cells	JAG2	209784_s_at
+SW480 cancer cells	LOC89944	213713_s_at
+SW480 cancer cells	BAMBI	203304_at
+SW480 cancer cells	JAG2	32137_at
+SW480 cancer cells	BMP7	209591_s_at
+SW480 cancer cells	RPP25	219143_s_at
+SW480 cancer cells	RHOD	209885_at
+SW480 cancer cells	DHRS2	214079_at
+SW480 cancer cells	ITGB4	204989_s_at
+SW480 cancer cells	NTSR1	207360_s_at
+SW480 cancer cells	STRA6	221701_s_at
+SW480 cancer cells	SLC1A5	208916_at
+SW480 cancer cells	VSNL1	203798_s_at
+SW480 cancer cells	FKBP4	200894_s_at
+SW480 cancer cells	S100A3	206027_at
+SW480 cancer cells	TEAD4	41037_at
+SW480 cancer cells	KLK6	204733_at
+SW480 cancer cells	CCND1	208711_s_at
+SW480 cancer cells	SLC27A5	219733_s_at
+SW480 cancer cells	HOXA9	214651_s_at
+SW480 cancer cells	F12	205774_at
+SW480 cancer cells	LRFN4	219491_at
+SW480 cancer cells	NM_024609	218678_at
+SW480 cancer cells	SLC6A8	210854_x_at
+SW480 cancer cells	PCTK1	207239_s_at
+SW480 cancer cells	SLC6A8	213843_x_at
+SW480 cancer cells	KRT13	207935_s_at
+Normal mucosa	TSPAN8	203824_at
+Normal mucosa	LGALS4	204272_at
+Normal mucosa	DCN	201893_x_at
+Normal mucosa	COL3A1	215076_s_at
+Normal mucosa	COL3A1	201852_x_at
+Normal mucosa	CEACAM5	201884_at
+Normal mucosa	TAGLN	205547_s_at
+Normal mucosa	KRT20	213953_at
+Normal mucosa	DCN	211896_s_at
+Normal mucosa	MYH11	201497_x_at
+Normal mucosa	FXYD3	202489_s_at
+Normal mucosa	ACTG2	202274_at
+Normal mucosa	MYLK	202555_s_at
+Normal mucosa	TPM1	210987_x_at
+Normal mucosa	CDH17	209847_at
+Normal mucosa	NFIB	209289_at
+Normal mucosa	MGP	202291_s_at
+Normal mucosa	SPARCL1	200795_at
+Normal mucosa	RGS5	209071_s_at
+Normal mucosa	MYH11	207961_x_at
+Normal mucosa	PPAP2B	212226_s_at
+Normal mucosa	COL3A1	211161_s_at
+Normal mucosa	IGFBP7	201162_at
+Normal mucosa	PPAP2B	209355_s_at
+Normal mucosa	CALD1	201616_s_at
+Normal mucosa	C1R	212067_s_at
+Normal mucosa	CALD1	212077_at
+Normal mucosa	AGR2	209173_at
+Normal mucosa	GNA11	564_at
+Normal mucosa	HEPH	203903_s_at
+Normal mucosa	GNA11	213944_x_at
+Normal mucosa	GNG12	212294_at
+Normal mucosa	ADH1B	209612_s_at
+Normal mucosa	TPM1	206116_s_at
+Normal mucosa	CRIM1	202551_s_at
+Normal mucosa	FBLN1	202994_s_at
+Normal mucosa	IGFBP5	211959_at
+Normal mucosa	LAMA4	202202_s_at
+Normal mucosa	CAV1	212097_at
+Normal mucosa	WASL	205809_s_at
+Blood vessels	CDH5	204677_at
+Lymph vessels	PDPN	204879_at
+Lymph vessels	VEGFC	209946_at
+Lymph vessels	FIGF	206742_at

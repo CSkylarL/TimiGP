@@ -2,7 +2,7 @@
 % Please edit documentation in R/Favorability.R
 \name{TimiFS}
 \alias{TimiFS}
-\title{Calulate Favorability Score of cell types}
+\title{Calculate Favorability Score of cell types}
 \usage{
 TimiFS(resdata = NULL, cutoff = 0.05)
 }
@@ -33,8 +33,8 @@ Unfavorable score: in-degree of the cell/sum of in-degree of all cell*100.
 }
 \examples{
 \dontrun{
-  data("Galon2013c_enrich")
-  res <- Galon2013c_enrich
+  data("Bindea2013c_enrich")
+  res <- Bindea2013c_enrich
   score <- TimiFS(res)
   head(score)
 }

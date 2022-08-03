@@ -1,10 +1,10 @@
-#' Cell Type in melanoma microenvironment generated from Alex2020 and Levi2019 with cancer cells
+#' Cell Type in melanoma microenvironment generated from Hughes2020 and Tirosh2016 with cancer cells
 #'
-#' A dataset containing the cell type and markers annotated by Alex2020 and Levi2019
+#' A dataset containing the cell type and markers annotated by Hughes2020 and Tirosh2016
 #' 
 #' @docType data
 #'
-#' @usage data(CellType_Alex2020_Levi2019_TME)
+#' @usage data(CellType_Hughes2020_Tirosh2016_melanoma_TME)
 #' 
 #' @keywords datasets
 #' 
@@ -18,8 +18,8 @@
 #' @references Hughes, T. K., Wadsworth II, M. H., Gierahn, T. M., Do, T., Weiss, D., Andrade, P. R., ... & Shalek, A. K. (2020). Second-strand synthesis-based massively parallel scRNA-seq reveals cellular states and molecular features of human inflammatory skin pathologies. Immunity, 53(4), 878-894.
 #' @references Tirosh, I., Izar, B., Prakadan, S. M., Wadsworth, M. H., Treacy, D., Trombetta, J. J., ... & Garraway, L. A. (2016). Dissecting the multicellular ecosystem of metastatic melanoma by single-cell RNA-seq. Science, 352(6282), 189-196.
 #'
-#' @source Modification can be found in inst/extdata/build_CellType_Alex2020_Levi2019_TME.R
-"CellType_Alex2020_Levi2019_TME"
+#' @source Modification can be found in inst/extdata/build_CellType_Hughes2020_Tirosh2016_melanoma_TME.R
+"CellType_Hughes2020_Tirosh2016_melanoma_TME"
 
 
 
@@ -27,13 +27,13 @@
 
 
 
-#' Cell Type generated from Galon2013 with cancer cells
+#' Cell Type generated from Bindea2013 with cancer cells
 #'
-#' A dataset containing the cell type and markers annotated by Galon2013
+#' A dataset containing the cell type and markers annotated by Bindea2013
 #' 
 #' @docType data
 #'
-#' @usage data(CellType_Galon2013_cancer)
+#' @usage data(CellType_Bindea2013_cancer)
 #' 
 #' @keywords datasets
 #' 
@@ -48,8 +48,8 @@
 #' Obenauf, A. C., ... & Galon, J. (2013). Spatiotemporal dynamics of intratumoral 
 #' immune cells reveal the immune landscape in human cancer. Immunity, 39(4), 782-795.
 #'
-#' @source Modification can be found in inst/extdata/build_CellType_Galon2013_cancer.R
-"CellType_Galon2013_cancer"
+#' @source Modification can be found in inst/extdata/build_CellType_Bindea2013_cancer.R
+"CellType_Bindea2013_cancer"
 
 
 
@@ -58,13 +58,13 @@
 
 
 
-#' Immune Cell Type generated from Charoentong2017, Galon2013, TIP
+#' Immune Cell Type generated from Charoentong2017, Bindea2013, Xu2018
 #'
-#' A dataset containing the cell type and markers annotated by Charoentong2017, Galon2013, TIP
+#' A dataset containing the cell type and markers annotated by Charoentong2017, Bindea2013, Xu2018
 #' 
 #' @docType data
 #'
-#' @usage data(CellType_Charoentong2017_Galon2013_TIP_Immune)
+#' @usage data(CellType_Charoentong2017_Bindea2013_Xu2018_Immune)
 #' 
 #' @keywords datasets
 #' 
@@ -77,10 +77,10 @@
 #' 
 #' @references Charoentong, P., Finotello, F., Angelova, M., Mayer, C., Efremova, M., Rieder, D., ... & Trajanoski, Z. (2017). Pan-cancer immunogenomic analyses reveal genotype-immunophenotype relationships and predictors of response to checkpoint blockade. Cell reports, 18(1), 248-262.
 #' @references Bindea, G., Mlecnik, B., Tosolini, M., Kirilovsky, A., Waldner, M., Obenauf, A. C., ... & Galon, J. (2013). Spatiotemporal dynamics of intratumoral immune cells reveal the immune landscape in human cancer. Immunity, 39(4), 782-795.
-#' @references Xu, L., Deng, C., Pang, B., Zhang, X., Liu, W., Liao, G., ... & Li, X. (2018). TIP: a web server for resolving tumor immunophenotype profiling. Cancer research, 78(23), 6575-6580.
+#' @references Xu, L., Deng, C., Pang, B., Zhang, X., Liu, W., Liao, G., ... & Li, X. (2018). Xu2018: a web server for resolving tumor immunophenotype profiling. Cancer research, 78(23), 6575-6580.
 #'
-#' @source Modification can be found in inst/extdata/build_CellType_Charoentong2017_Galon2013_TIP_Immune.R
-"CellType_Charoentong2017_Galon2013_TIP_Immune"
+#' @source Modification can be found in inst/extdata/build_CellType_Charoentong2017_Bindea2013_Xu2018_Immune.R
+"CellType_Charoentong2017_Bindea2013_Xu2018_Immune"
 
 
 
@@ -90,13 +90,13 @@
 
 
 
-#' T Cell Subtypes generated from Zhang2021S2
+#' T Cell Subtypes generated from Zheng2021
 #'
-#' A dataset containing the cell type and markers annotated by Zhang2021S2
+#' A dataset containing the cell type and markers annotated by Zheng2021
 #' 
 #' @docType data
 #'
-#' @usage data(CellType_Zhang2021S2_Tcell)
+#' @usage data(CellType_Zheng2021_Tcell)
 #' 
 #' @keywords datasets
 #' 
@@ -109,33 +109,33 @@
 #' 
 #' @references Zheng, L., Qin, S., Si, W., Wang, A., Xing, B., Gao, R., ... & Zhang, Z. (2021). Pan-cancer single-cell landscape of tumor-infiltrating T cells. Science, 374(6574), abe6474. 
 #'
-#' @source Modification can be found in inst/extdata/build_CellType_Zhang2021S2_Tcell.R
-"CellType_Zhang2021S2_Tcell"
+#' @source Modification can be found in inst/extdata/build_CellType_Zheng2021_Tcell.R
+"CellType_Zheng2021_Tcell"
 
 
 
 
 
 
-#' Immune markers generated from Charoentong2017, Galon2013, TIP and classic markers
+#' Immune markers generated from Charoentong2017, Bindea2013, Xu2018 and classic markers
 #'
-#' A dataset containing the immune markers annotated by Charoentong2017, Galon2013, TIP 
+#' A dataset containing the immune markers annotated by Charoentong2017, Bindea2013, Xu2018 
 #' and additional classic immune inhibitors, stimulators and checkpoints.
 #' 
 #' @docType data
 #'
-#' @usage data(Immune_Marker_n1326)
+#' @usage data(Immune_Marker_n1293)
 #' 
 #' @keywords datasets
 #' 
-#' @format A vector of 1326 immune markers
+#' @format A vector of 1293 immune markers
 #' 
 #' @references Charoentong, P., Finotello, F., Angelova, M., Mayer, C., Efremova, M., Rieder, D., ... & Trajanoski, Z. (2017). Pan-cancer immunogenomic analyses reveal genotype-immunophenotype relationships and predictors of response to checkpoint blockade. Cell reports, 18(1), 248-262.
 #' @references Bindea, G., Mlecnik, B., Tosolini, M., Kirilovsky, A., Waldner, M., Obenauf, A. C., ... & Galon, J. (2013). Spatiotemporal dynamics of intratumoral immune cells reveal the immune landscape in human cancer. Immunity, 39(4), 782-795.
-#' @references Xu, L., Deng, C., Pang, B., Zhang, X., Liu, W., Liao, G., ... & Li, X. (2018). TIP: a web server for resolving tumor immunophenotype profiling. Cancer research, 78(23), 6575-6580.
+#' @references Xu, L., Deng, C., Pang, B., Zhang, X., Liu, W., Liao, G., ... & Li, X. (2018). Xu2018: a web server for resolving tumor immunophenotype profiling. Cancer research, 78(23), 6575-6580.
 #'
-#' @source Modification can be found in inst/extdata/build_Immune_Marker_n1326.R
-"Immune_Marker_n1326"
+#' @source Modification can be found in inst/extdata/build_Immune_Marker_n1293.R
+"Immune_Marker_n1293"
 
 
 
@@ -203,14 +203,14 @@
 
 
 
-#' COX regression Results from function TimiCOX with cell type meaker annotated by Galon2013_cancer
+#' COX regression Results from function TimiCOX with cell type meaker annotated by Bindea2013_cancer
 #'
 #' An intermediate result generated from function TimiCOX
 #' that reveals the association between each marker pairs and favorable prognosis.
 #' 
 #' @docType data
 #'
-#' @usage data(Galon2013c_COX_MP_SKCM06)
+#' @usage data(Bindea2013c_COX_MP_SKCM06)
 #' 
 #' @keywords intermediate result
 #' 
@@ -224,7 +224,7 @@
 #' 
 #' 
 #' @source intermediate result generated from function TimiCOX
-"Galon2013c_COX_MP_SKCM06"
+"Bindea2013c_COX_MP_SKCM06"
 
 
 
@@ -234,7 +234,7 @@
 
 
 
-#' COX regression Results from function TimiCOX with cell type meaker annotated by Charoentong2017_Galon2013_TIP_Immune
+#' COX regression Results from function TimiCOX with cell type meaker annotated by Charoentong2017_Bindea2013_Xu2018_Immune
 #'
 #' An intermediate result generated from function TimiCOX
 #' that reveals the association between each marker pairs and favorable prognosis.
@@ -272,14 +272,14 @@
 
 
 
-#' COX regression Results from function TimiCOX with cell type meaker annotated by Alex2020_Levi2019_TME
+#' COX regression Results from function TimiCOX with cell type meaker annotated by Hughes2020_Tirosh2016_melanoma_TME
 #'
 #' An intermediate result generated from function TimiCOX
 #' that reveals the association between each marker pairs and favorable prognosis.
 #' 
 #' @docType data
 #'
-#' @usage data(TME_COX_MP_SKCM06)
+#' @usage data(melanoma_TME_COX_MP_SKCM06)
 #' 
 #' @keywords intermediate result
 #' 
@@ -293,7 +293,7 @@
 #' 
 #' 
 #' @source intermediate result generated from function TimiCOX
-"TME_COX_MP_SKCM06"
+"melanoma_TME_COX_MP_SKCM06"
 
 
 
@@ -309,7 +309,7 @@
 
 
 
-#' COX regression Results from function TimiCOX with cell type meaker annotated by Zhang2021S2_Tcell
+#' COX regression Results from function TimiCOX with cell type meaker annotated by Zheng2021_Tcell
 #'
 #' An intermediate result generated from function TimiCOX
 #' that reveals the association between each marker pairs and favorable prognosis.
@@ -366,13 +366,13 @@
 
 
 #' Cell Interaction Enrichment from function TimiEnrich 
-#' with cell type meaker annotated by Galon2013_cancer
+#' with cell type meaker annotated by Bindea2013_cancer
 #'
 #' An example result of cell interaction enrichment generated from function TimiEnrich
 #' 
 #' @docType data
 #'
-#' @usage data(Galon2013c_enrich)
+#' @usage data(Bindea2013c_enrich)
 #' 
 #' @keywords example result
 #' 
@@ -394,5 +394,5 @@
 #' }
 #' 
 #' 
-#' @source example result generated from function TimiEnrich(example/example01_Galon2013_Cancer.R)
-"Galon2013c_enrich"
+#' @source example result generated from function TimiEnrich(example/example01_Bindea2013_Cancer.R)
+"Bindea2013c_enrich"

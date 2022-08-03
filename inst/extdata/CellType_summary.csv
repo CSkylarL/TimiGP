@@ -1,0 +1,128 @@
+Dataset,No.Markers,Full.Name,Method.Name,Paper.Name
+Charoentong2017,26,Activated B cell,aB,Activated B cell
+Charoentong2017,25,Activated CD4 T cell,aCD4 T,Activated CD4 T cell
+Charoentong2017,26,Activated CD8 T cell,aCD8 T,Activated CD8 T cell
+Charoentong2017,35,Activated dendritic cell,aDC,Activated dendritic cell
+Charoentong2017,40,CD56bright natural killer cell,CD56bright NK,CD56bright natural killer cell
+Charoentong2017,16,CD56dim natural killer cell,CD56dim NK,CD56dim natural killer cell
+Charoentong2017,28,Central memory CD4 T cell,CD4 Tcm,Central memory CD4 T cell
+Charoentong2017,21,Central memory CD8 T cell,CD8 Tcm,Central memory CD8 T cell
+Charoentong2017,27,Effector memeory CD4 T cell,CD4 Tem,Effector memeory CD4 T cell
+Charoentong2017,25,Effector memeory CD8 T cell,CD8 Tem,Effector memeory CD8 T cell
+Charoentong2017,17,Eosinophil,Eosinophil,Eosinophil
+Charoentong2017,31,Gamma delta T cell,Tgd,Gamma delta T cell
+Charoentong2017,19,Immature  B cell,iB,Immature  B cell
+Charoentong2017,23,Immature dendritic cell,iDC,Immature dendritic cell
+Charoentong2017,33,Macrophage,Macrophage,Macrophage
+Charoentong2017,17,Mast cell,Mast,Mast cell
+Charoentong2017,20,Myeloid-derived suppressor cell,MDSC,MDSC
+Charoentong2017,14,Memory B cell,Memory B,Memory B cell
+Charoentong2017,21,Monocyte,Monocyte,Monocyte
+Charoentong2017,35,Natural killer cell,NK,Natural killer cell
+Charoentong2017,44,Natural killer T cell,NKT,Natural killer T cell
+Charoentong2017,18,Neutrophil,Neutrophil,Neutrophil
+Charoentong2017,32,Plasmacytoid dendritic cell,pDC,Plasmacytoid dendritic cell
+Charoentong2017,20,Regulatory T cell,Treg,Regulatory T cell
+Charoentong2017,36,Follicular helper T cell,Tfh,T follicular helper cell
+Charoentong2017,77,Type 1 helper T cell,Th1,Type 1 T helper cell
+Charoentong2017,27,Type 17 helper T cell,Th17,Type 17 T helper cell
+Charoentong2017,29,Type 2 helper T cell,Th2,Type 2 T helper cell
+Bindea2013,5,Activated dendritic cell,aDC,aDC
+Bindea2013,34,B cell,B,B cells
+Bindea2013,37,CD8 T cell,CD8 T,CD8 T cells
+Bindea2013,17,Cytotoxic cell,Cytotoxic,Cytotoxic cells
+Bindea2013,7,Dendritic cell,DC,DC
+Bindea2013,32,Eosinophil,Eosinophil,Eosinophils
+Bindea2013,31,Immature dendritic cell,iDC,iDC
+Bindea2013,33,Macrophages,Macrophage,Macrophages
+Bindea2013,31,Mast cell,Mast,Mast cells
+Bindea2013,31,Neutrophils,Neutrophil,Neutrophils
+Bindea2013,11,CD56bright Natural killer cell,CD56bright NK,NK CD56bright cells
+Bindea2013,15,CD56dim Natural killer cell,CD56dim NK,NK CD56dim cells
+Bindea2013,37,Natural killer cell,NK,NK cells
+Bindea2013,18,T cell,T,T cells
+Bindea2013,23,Helper T cell,Th,T helper cells
+Bindea2013,39,Central memory T cell,Tcm,Tcm
+Bindea2013,15,Effector memory T cell,Tem,Tem
+Bindea2013,32,Follicular helper T cell,Tfh,TFH
+Bindea2013,6,Gamma delta T cell,Tgd,Tgd
+Bindea2013,27,Type 1 helper T cell,Th1,Th1 cells
+Bindea2013,27,Type 2 helper T cell,Th2,Th2 cells
+Bindea2013,37,Tumor Cell,Tumor,SW480 cancer cells
+Xu2018,2,B cell,B,B cell
+Xu2018,2,Basophil,Basophil,Basophil
+Xu2018,3,CD4 T cell,CD4 T,CD4 T cell
+Xu2018,8,CD8 T cell,CD8 T,CD8 T cell
+Xu2018,5,Dendritic cell,DC,Dendritic cell
+Xu2018,3,Eosinophil,Eosinophil,Eosinophil
+Xu2018,5,Macrophage,Macrophage,Macrophage
+Xu2018,2,Myeloid-derived suppressor cell,MDSC,MDSC
+Xu2018,3,Monocyte,Monocyte,Monocyte
+Xu2018,6,Neutrophil,Neutrophil,Neutrophil
+Xu2018,8,Natural killer cell,NK,NK cell
+Xu2018,19,T cell,T,T cell
+Xu2018,4,Type 1 helper T cell,Th1,TH1 cell
+Xu2018,4,Type 17 helper T cell,Th17,TH17 cell
+Xu2018,3,Type 2 helper T cell,Th2,Th2 cell
+Xu2018,2,Type 22 helper T cell,Th22,TH22 cell
+Xu2018,6,Regulatory T cell,Treg,Treg cell
+Hughes2020,30,Fibroblat,Fibroblast,Fibro
+Hughes2020,22,Hair follicle,Hair follicle,HairFollicle
+Hughes2020,22,Keratinocyte,Keratinocyte,KC
+Hughes2020,19,Langerhans cell,Langerhans,Langerhans
+Hughes2020,25,Lymphatic endothelial cell,LEC,Lymphatic
+Hughes2020,26,Melanocyte,Melanocyte,Melanocyte
+Hughes2020,27,Schwann cell,Schwann,Schwann
+Hughes2020,25,Sebocyte,Sebocyte,Sebocyte
+Hughes2020,21,Skin B cell,Skin B,B
+Hughes2020,27,Skin Mast cell,Skin Mast,Mast
+Hughes2020,18,Skin Myeloid cell,Skin Myeloid,Myeloid
+Hughes2020,20,Skin Plasma cell,Skin Plasma,Plasma
+Hughes2020,29,Skin T cell,Skin T,T
+Hughes2020,30,Vascular smooth muscle cell,VSMC,VSMC
+Hughes2020,26,Venular endothelial cell,Endo,Endo
+Tirosh2016,88,Cancer-associated fibroblast,CAF,CAFs
+Tirosh2016,47,Melanoma,Melanoma,melanoma
+Tirosh2016,31,Tumor infiltrating B cell,TI B,B cells
+Tirosh2016,92,Tumor infiltrating Macrophages,TI Macrophage,Macrophages
+Tirosh2016,38,Tumor infiltrating T cell,TI T,T cells
+Zheng2021,17,CD4.c01(naïve T cell),CD4+Tn,CD4.c01(Tn)
+Zheng2021,24,CD4.c02(CXCR5+ pre-follicular helper T cell ),CD4+CXCR5+ pre-Tfh,CD4.c02(CXCR5+ pre-Tfh)
+Zheng2021,21,CD4.c03(ADSL+ naïve T cell),CD4+ADSL+ Tn,CD4.c03(ADSL+ Tn)
+Zheng2021,8,CD4.c04(IL7R- naïve T cell),CD4+IL7R- Tn,CD4.c04(IL7R- Tn)
+Zheng2021,23,CD4.c05(TNF+ T cell),CD4+TNF+ T,CD4.c05(TNF+ T)
+Zheng2021,19,CD4.c06(AREG+ memory T cell),CD4+AREG+ Tm,CD4.c06(AREG+ Tm)
+Zheng2021,17,CD4.c07(TIMP1+ memory T cell),CD4+TIMP1+ Tm,CD4.c07(TIMP1+ Tm)
+Zheng2021,26,CD4.c08(CREM+ memory T cell),CD4+CREM+ Tm,CD4.c08(CREM+ Tm)
+Zheng2021,30,CD4.c09(CCL5+ memory T cell),CD4+CCL5+ Tm,CD4.c09(CCL5+ Tm)
+Zheng2021,28,CD4.c10(CAPG+ memory T cell),CD4+CAPG+ Tm,CD4.c10(CAPG+ Tm)
+Zheng2021,30,CD4.c11(CAPG+CREM- memory T cell),CD4+CAPG+CREM- Tm,CD4.c11(CAPG+CREM- Tm)
+Zheng2021,30,CD4.c12(GZMK+ effector memory T cell),CD4+GZMK+ Tem,CD4.c12(GZMK+ Tem)
+Zheng2021,30,CD4.c13(terminally differentiated effector memory or effector T cell),CD4+Temra,CD4.c13(Temra)
+Zheng2021,26,CD4.c14(CCR6+ Type 17 helper T cell),CD4+CCR6+ Th17,CD4.c14(CCR6+ Th17)
+Zheng2021,30,CD4.c15(IL26+ Type 17 helper T cell),CD4+IL26+ Th17,CD4.c15(IL26+ Th17)
+Zheng2021,25,CD4.c16(IL21+ follicular helper T cell),CD4+IL21+ Tfh,CD4.c16(IL21+ Tfh)
+Zheng2021,30,CD4.c17(IFNG+ follicular helper/ Typer 1 helper dual-functional T cell,CD4+IFNG+ Tfh/Th1,CD4.c17(IFNG+ Tfh/Th1)
+Zheng2021,14,CD4.c18(TNFRSF9- regulatory T cell),CD4+TNFRSF9- Treg,CD4.c18(TNFRSF9- Treg)
+Zheng2021,23,CD4.c19(S1PR1+ regulatory T cell),CD4+S1PR1+ Treg,CD4.c19(S1PR1+ Treg)
+Zheng2021,30,CD4.c20(TNFRSF9+ regulatory T cell),CD4+TNFRSF9+ Treg,CD4.c20(TNFRSF9+ Treg)
+Zheng2021,30,CD4.c21(ISG+ regulatory T cell),CD4+ISG+ Treg,CD4.c21(ISG+ Treg)
+Zheng2021,17,CD4.c22(ISG+ helper T cell),CD4+ISG+ Th,CD4.c22(ISG+ Th)
+Zheng2021,21,CD4.c23(NME1+CCR4- T cell),CD4+NME1+CCR4- T,CD4.c23(NME1+CCR4- T)
+Zheng2021,25,CD4.c24(NME1+CCR4+ T cell),CD4+NME1+CCR4+ T,CD4.c24(NME1+CCR4+ T)
+Zheng2021,26,CD8.c01(naïve T cell),CD8+Tn,CD8.c01(Tn)
+Zheng2021,14,CD8.c02(IL7R+ memory T cell),CD8+IL7R+ Tm,CD8.c02(IL7R+ Tm)
+Zheng2021,16,CD8.c04(ZNF683+CXCR6- memory T cell),CD8+ZNF683+CXCR6- Tm,CD8.c04(ZNF683+CXCR6- Tm)
+Zheng2021,17,CD8.c05(GZMK+ early effector memory T cell),CD8+GZMK+ early Tem,CD8.c05(GZMK+ early Tem)
+Zheng2021,21,CD8.c06(GZMK+ effector memory T cell),CD8+GZMK+ Tem,CD8.c06(GZMK+ Tem)
+Zheng2021,23,CD8.c07(terminally differentiated effector memory or effector T cell),CD8+Temra,CD8.c07(Temra)
+Zheng2021,24,CD8.c08(KIR+EOMES+ Natural killer-like T cell),CD8+KIR+EOMES+ NK-like,CD8.c08(KIR+EOMES+ NK-like)
+Zheng2021,22,CD8.c09(KIR+TXK+ Natural killer-like T cell),CD8+KIR+TXK+ NK-like,CD8.c09(KIR+TXK+ NK-like)
+Zheng2021,24,CD8.c10(ZNF683+CXCR6+ tissue-resident memory T cell),CD8+ZNF683+CXCR6+ Trm,CD8.c10(ZNF683+CXCR6+ Trm)
+Zheng2021,28,CD8.c11(GZMK+ exhausted T cell),CD8+GZMK+ Tex,CD8.c11(GZMK+ Tex)
+Zheng2021,30,CD8.c12(terminal exhausted T cell),CD8+terminal Tex,CD8.c12(terminal Tex)
+Zheng2021,16,CD8.c13(OXPHOS- exhausted T cell),CD8+OXPHOS- Tex,CD8.c13(OXPHOS- Tex)
+Zheng2021,23,CD8.c14(TCF7+ exhausted T cell),CD8+TCF7+ Tex,CD8.c14(TCF7+ Tex)
+Zheng2021,18,CD8.c15(ISG+ CD8+ T cell),CD8+ISG+ CD8+ T,CD8.c15(ISG+ CD8+ T)
+Zheng2021,29,CD8.c16(Type 17 T cell),CD8+Tc17,CD8.c16(Tc17)
+Zheng2021,21,CD8.c17(NME1+ T cell),CD8+NME1+ T,CD8.c17(NME1+ T)

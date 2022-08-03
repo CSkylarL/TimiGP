@@ -14,8 +14,8 @@
 ##' @export 
 ##' @examples
 ##' \dontrun{
-##'   data("Galon2013c_enrich")
-##'   res <- Galon2013c_enrich
+##'   data("Bindea2013c_enrich")
+##'   res <- Bindea2013c_enrich
 ##'   p1<-TimiDotplot(res)
 ##'   p1
 ##'   p2<-TimiDotplot(res,select = c(1:10))

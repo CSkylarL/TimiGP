@@ -3,7 +3,7 @@
 \docType{data}
 \name{Tcell_COX_MP_SKCM06}
 \alias{Tcell_COX_MP_SKCM06}
-\title{COX regression Results from function TimiCOX with cell type meaker annotated by Zhang2021S2_Tcell}
+\title{COX regression Results from function TimiCOX with cell type meaker annotated by Zheng2021_Tcell}
 \format{
 A data frame with 153735 rows and 3 variables:
 \describe{

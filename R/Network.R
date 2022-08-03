@@ -10,8 +10,8 @@
 ##' @param select a numeric vector of selected cell pairs according to "Index" column in resdata. 
 ##' Default selection is all statistically significantly enriched cell pairs(adjusted p value < 0.05).
 ##' @param dataset a value in one of 
-##' c("Galon2013","Galon2013_Cancer","Charoentong2017", 
-##' "Alex2020_Levi2019","Zhang2021S2","TIP","Other"). 
+##' c("Bindea2013","Bindea2013_Cancer","Charoentong2017", 
+##' "Hughes2020_Tirosh2016","Zheng2021","Xu2018","Other"). 
 ##' The first four options include default group and color settings. 
 ##' If you use other dataset or want to change group and colors, 
 ##' please choose "Other".
@@ -29,9 +29,9 @@
 ##' @export 
 ##' @examples
 ##' \dontrun{
-##'   data("Galon2013c_enrich")
-##'   res <- Galon2013c_enrich
-##'   NET <- TimiCellNetwork(resdata = res,dataset = "Galon2013_Cancer")
+##'   data("Bindea2013c_enrich")
+##'   res <- Bindea2013c_enrich
+##'   NET <- TimiCellNetwork(resdata = res,dataset = "Bindea2013_Cancer")
 ##' }
 ##' @author Chenyang Skylar Li
 
@@ -48,9 +48,9 @@ TimiCellNetwork<-  function(resdata = NULL,
   }
   
   if (is.null(dataset)){
-    stop('The parameter "dataset" is required. Please choose one of c("Galon2013","Galon2013_Cancer","Charoentong2017", "Alex2020_Levi2019","Zhang2021S2","TIP","Other")')
-  } else if(sum(dataset %in% c("Galon2013","Galon2013_Cancer","Charoentong2017","Alex2020_Levi2019","Zhang2021S2","TIP","Other")) == 0){
-    stop('Please choose one of c("Galon2013","Galon2013_Cancer","Charoentong2017", "Alex2020_Levi2019","Zhang2021S2","TIP","Other")')
+    stop('The parameter "dataset" is required. Please choose one of c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Hughes2020_Tirosh2016","Zheng2021","Xu2018","Other")')
+  } else if(sum(dataset %in% c("Bindea2013","Bindea2013_Cancer","Charoentong2017","Hughes2020_Tirosh2016","Zheng2021","Xu2018","Other")) == 0){
+    stop('Please choose one of c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Hughes2020_Tirosh2016","Zheng2021","Xu2018","Other")')
     
   }
 
@@ -125,37 +125,36 @@ TimiCellNetwork<-  function(resdata = NULL,
       
     }
     
-    if (dataset == "Galon2013"){
+    if (dataset == "Bindea2013"){
       if(length(grep(selected,pattern = "Cancer cells")) == 1) {
-        stop('You should set dataset = "Galon2013_Cancer"')
+        stop('You should set dataset = "Bindea2013_Cancer"')
       } else {
-        cell <- c("B cells", 
-                  "T cells", "CD8 T cells" ,"T helper cells", "Th1 cells", "Th2 cells" , 
-                  "TFH", "Th17 cells" ,"TReg" ,"Tem", "Tcm","Tgd",
-                  "Cytotoxic cells", 
-                  "NK cells" , "NK CD56dim cells","NK CD56bright cells",
-                  "DC" , "iDC", "aDC" ,"pDC",
-                  "Macrophages", 
-                  "Neutrophils","Mast cells","Eosinophils",
-                  "Normal mucosa", "Blood vessels" ,"Lymph vessels")
+        cell <- c("B", 
+                  "T", "CD8 T" ,"Th", "Th1", "Th2" , 
+                  "Tfh","Tem", "Tcm","Tgd",
+                  "Cytotoxic", 
+                  "NK" , "CD56dim NK","CD56bright NK",
+                  "DC" , "iDC", "aDC" ,
+                  "Macrophage", 
+                  "Neutrophil","Mast","Eosinophil")
         group <- c(rep("B Cell", 1),
-                   rep("T Cell", 11),
+                   rep("T Cell", 9),
                    rep("Cytotoxic Cell", 1),
                    rep("NK Cell", 3),
-                   rep("DC", 4),
-                   rep("MPS", 1),
-                   rep("Granulocytes", 3),
-                   rep("Others", 3))
+                   rep("DC", 3),
+                   rep("Mononuclear phagocyte system", 1),
+                   rep("Granulocytes", 3))
+        
         
         geneset <- Ann_Immune
-        geneset <- geneset[which(geneset[,3] == "Galon2013"),]
+        geneset <- geneset[which(geneset[,3] == "Bindea2013"),]
         att <- data.frame(row.names =cell,group=group)
         node <- table(geneset$CellType) %>% 
           data.frame(row.names = 1) %>% merge(att,by=0)
         names(node) <- c("Key", "No.Markers", "Group")
         
         if(sum(selected %in% cell) == 0) {
-          stop('No Cell Type were found in Galon2013. Please choose "Other" and defined your groups')
+          stop('No Cell Type were found in Bindea2013. Please choose "Other" and defined your groups')
         }
         
       }
@@ -163,29 +162,27 @@ TimiCellNetwork<-  function(resdata = NULL,
     }
     
     
-    if (dataset == "Galon2013_Cancer"){
+    if (dataset == "Bindea2013_Cancer"){
       
-      cell <- c("B cells", 
-                "T cells", "CD8 T cells" ,"T helper cells", "Th1 cells", "Th2 cells" , 
-                "TFH", "Th17 cells" ,"TReg" ,"Tem", "Tcm","Tgd",
-                "Cytotoxic cells", 
-                "NK cells" , "NK CD56dim cells","NK CD56bright cells",
-                "DC" , "iDC", "aDC" ,"pDC",
-                "Macrophages", 
-                "Neutrophils","Mast cells","Eosinophils",
-                "Normal mucosa", "Blood vessels" ,"Lymph vessels",
-                "Cancer cells")
+      cell <- c("B", 
+                "T", "CD8 T" ,"Th", "Th1", "Th2" , 
+                "Tfh","Tem", "Tcm","Tgd",
+                "Cytotoxic", 
+                "NK" , "CD56dim NK","CD56bright NK",
+                "DC" , "iDC", "aDC" ,
+                "Macrophage", 
+                "Neutrophil","Mast","Eosinophil",
+                "Tumor")
       group <- c(rep("B Cell", 1),
-                 rep("T Cell", 11),
+                 rep("T Cell", 9),
                  rep("Cytotoxic Cell", 1),
                  rep("NK Cell", 3),
-                 rep("DC", 4),
-                 rep("MPS", 1),
-                 rep("Granulocytes", 3),
-                 rep("Others", 3),
-                 rep("Cancer Cell", 1))
+                 rep("DC", 3),
+                 rep("Mononuclear phagocyte system", 1),
+                 rep("Granulocytes", 3), 
+                 rep("Tumor", 1))
       
-      geneset <- Ann_Galon2013_Cancer
+      geneset <- Ann_Bindea2013_Cancer
       att <- data.frame(row.names =cell,group=group)
       node <- table(geneset$CellType) %>% 
         data.frame(row.names = 1) %>% 
@@ -195,29 +192,29 @@ TimiCellNetwork<-  function(resdata = NULL,
       
       
       if(sum(selected %in% cell) == 0) {
-        stop('No Cell Type were found in Galon2013_Cancer. Please choose "Other" and defined your groups')
+        stop('No Cell Type were found in Bindea2013_Cancer. Please choose "Other" and defined your groups')
       }
     }
     
     if (dataset == "Charoentong2017"){
-      cell <- c("Immature  B cell", "Activated B cell" , "Memory B cell",
-                "Type 1 T helper cell" ,"Type 2 T helper cell", "Type 17 T helper cell" ,
-                "T follicular helper cell", "Regulatory T cell" ,
-                "Activated CD4 T cell","Activated CD8 T cell",
-                "Effector memeory CD4 T cell" , "Effector memeory CD8 T cell",
-                "Central memory CD4 T cell","Central memory CD8 T cell" ,
-                "Gamma delta T cell", "Natural killer T cell" ,
-                "Natural killer cell","CD56bright natural killer cell","CD56dim natural killer cell" ,
-                "Immature dendritic cell" ,"Activated dendritic cell" ,  "Plasmacytoid dendritic cell",
+      cell <- c("iB", "aB" , "Memory B",
+                "Th1" ,"Th2", "Th17" ,
+                "Tfh", "Treg" ,
+                "aCD4 T","aCD8 T",
+                "CD4 Tem" , "CD8 Tem",
+                "CD4 Tcm" , "CD8 Tcm",
+                "Tgd", "NKT" ,
+                "NK","CD56bright NK","CD56dim NK" ,
+                "iDC" ,"aDC" ,  "pDC",
                 "Macrophage", "Monocyte",
-                "Neutrophil","Mast cell", "Eosinophil" ,
+                "Neutrophil","Mast", "Eosinophil" ,
                 "MDSC")
       
       group <- c(rep("B Cell", 3),
                  rep("T Cell", 13),
                  rep("NK Cell", 3),
                  rep("DC", 3),
-                 rep("MPS", 2),
+                 rep("Mononuclear phagocyte system", 2),
                  rep("Granulocytes", 3),
                  rep("MDSC", 1))
       
@@ -234,12 +231,12 @@ TimiCellNetwork<-  function(resdata = NULL,
     }
     
     
-    if (dataset == "TIP"){
-      cell <- c("B cell",
-                "T cell" , "CD4 T cell", "CD8 T cell",
-                "TH1 cell" ,"TH17 cell" , "Th2 cell" ,"TH22 cell" ,"Treg cell", 
-                "NK cell",
-                "Dendritic cell",
+    if (dataset == "Xu2018"){
+      cell <- c("B",
+                "T" , "CD4 T", "CD8 T",
+                "Th1" ,"Th17" , "Th2" ,"Th22" ,"Treg", 
+                "NK",
+                "DC",
                 "Macrophage" , "Monocyte",
                 "Neutrophil", "Basophil", "Eosinophil" , 
                 "MDSC")
@@ -248,65 +245,66 @@ TimiCellNetwork<-  function(resdata = NULL,
                  rep("T Cell", 8),
                  rep("NK Cell",1),
                  rep("DC", 1),
-                 rep("MPS", 2),
+                 rep("Mononuclear phagocyte system", 2),
                  rep("Granulocytes", 3),
                  rep("MDSC", 1))
       
       geneset <- Ann_Immune
-      geneset <- geneset[which(geneset[,3] == "TIP"),]
+      geneset <- geneset[which(geneset[,3] == "Xu2018"),]
       att <- data.frame(row.names =cell,group=group)
       node <- table(geneset$CellType) %>% 
         data.frame(row.names = 1) %>% merge(att,by=0)
       names(node) <- c("Key", "No.Markers", "Group")
       
       if(sum(selected %in% cell) == 0) {
-        stop('No Cell Type were found in TIP. Please choose "Other" and defined your groups')
+        stop('No Cell Type were found in Xu2018. Please choose "Other" and defined your groups')
       }
       
     }
     
-    if (dataset == "Alex2020_Levi2019"){
-      cell <- c("TIL B cells"  ,"TIL T cells", "TIL Macrophages"  ,
-                "Skin B cells"  ,"Skin Plasma cells"  ,"Skin T cells" ,
-                "Skin Myeloid cells"  ,"Langerhans cells" ,"Skin Mast cells" ,
-                "Venular endothelial cells","Lymphatic endothelial cells"  ,
-                "Fibroblasts"," Hair follicles"  ,"Keratinocytes",
-                "Schwann cells" ,"Sebocytes"  ,
-                "Vascular smooth muscle cells" , "Melanocytes",
-                "Melanoma"  ,"Cancer-associated fibroblasts")
+    if (dataset == "Hughes2020_Tirosh2016"){
+      cell <- c("TI B"  ,"TI T", "TI Macrophage"  ,
+                "Skin B"  ,"Skin Plasma"  ,"Skin T" ,
+                "Skin Myeloid"  ,"Langerhans" ,"Skin Mast" ,
+                "Endo","LEC"  ,
+                "Fibroblast","Hair follicle"  ,"Keratinocyte",
+                "Schwann" ,"Sebocyte"  ,
+                "VSMC" , "Melanocyte",
+                "Melanoma"  ,"CAF")
       
       group <- c(rep("TIL", 3),
                  rep("Skin Immune", 6),
                  rep("Skin Tissue",9),
                  rep("Cancer", 2))
       
-      geneset <- Ann_TME
+      geneset <- Ann_melanoma_TME
       att <- data.frame(row.names =cell,group=group)
       node <- table(geneset$CellType) %>% 
         data.frame(row.names = 1) %>% merge(att,by=0)
       names(node) <- c("Key", "No.Markers", "Group")
       
       if(sum(selected %in% cell) == 0) {
-        stop('No Cell Type were found in Alex2020_Levi2019. Please choose "Other" and defined your groups')
+        stop('No Cell Type were found in Hughes2020_Tirosh2016. Please choose "Other" and defined your groups')
       }
       
     }
     
-    if (dataset == "Zhang2021S2"){
-      cell <- c("CD8.c01(Tn)"  , "CD8.c02(IL7R+ Tm)",  "CD8.c04(ZNF683+CXCR6- Tm)"  ,
-                "CD8.c05(GZMK+ early Tem)" , "CD8.c06(GZMK+ Tem)"  ,  "CD8.c07(Temra)" ,
-                "CD8.c08(KIR+EOMES+ NK-like)" , "CD8.c09(KIR+TXK+ NK-like)" ,  "CD8.c10(ZNF683+CXCR6+ Trm)" ,
-                "CD8.c11(GZMK+ Tex)" , "CD8.c12(terminal Tex)"  ,  "CD8.c13(OXPHOS- Tex)" ,
-                "CD8.c14(TCF7+ Tex)" , "CD8.c15(ISG+ CD8+ T)",  "CD8.c16(Tc17)"  ,
-                "CD8.c17(NME1+ T)", "CD4.c01(Tn)",  "CD4.c02(CXCR5+ pre-Tfh)" ,
-                "CD4.c03(ADSL+ Tn)"  , "CD4.c04(IL7R- Tn)",  "CD4.c05(TNF+ T)",
-                "CD4.c06(AREG+ Tm)"  , "CD4.c07(TIMP1+ Tm)"  ,  "CD4.c08(CREM+ Tm)" ,
-                "CD4.c09(CCL5+ Tm)"  , "CD4.c10(CAPG+ Tm)",  "CD4.c11(CAPG+CREM- Tm)"  ,
-                "CD4.c12(GZMK+ Tem)" , "CD4.c13(Temra)",  "CD4.c14(CCR6+ Th17)"  ,
-                "CD4.c15(IL26+ Th17)", "CD4.c16(IL21+ Tfh)"  ,  "CD4.c17(IFNG+ Tfh/Th1)"  ,
-                "CD4.c18(TNFRSF9- Treg)", "CD4.c19(S1PR1+ Treg)",  "CD4.c20(TNFRSF9+ Treg)"  ,
-                "CD4.c21(ISG+ Treg)" , "CD4.c22(ISG+ Th)" ,  "CD4.c23(NME1+CCR4- T)",
-                "CD4.c24(NME1+CCR4+ T)" )
+    if (dataset == "Zheng2021"){
+      cell <- c("CD4+Tn",              "CD4+CXCR5+ pre-Tfh" ,
+                "CD4+ADSL+ Tn"  ,      "CD4+IL7R- Tn",      "CD4+TNF+ T",
+                "CD4+AREG+ Tm"  ,      "CD4+TIMP1+ Tm"  ,   "CD4+CREM+ Tm" ,
+                "CD4+CCL5+ Tm"  ,      "CD4+CAPG+ Tm",      "CD4+CAPG+CREM- Tm"  ,
+                "CD4+GZMK+ Tem" ,      "CD4+Temra",         "CD4+CCR6+ Th17"  ,
+                "CD4+IL26+ Th17",      "CD4+IL21+ Tfh"  ,   "CD4+IFNG+ Tfh/Th1"  ,
+                "CD4+TNFRSF9- Treg",   "CD4+S1PR1+ Treg",   "CD4+TNFRSF9+ Treg"  ,
+                "CD4+ISG+ Treg" ,      "CD4+ISG+ Th" ,      "CD4+NME1+CCR4- T",
+                "CD4+NME1+CCR4+ T" ,
+                "CD8+Tn"  ,            "CD8+IL7R+ Tm",      "CD8+ZNF683+CXCR6- Tm"  ,
+                "CD8+GZMK+ early Tem", "CD8+GZMK+ Tem"  ,   "CD8+Temra" ,
+                "CD8+KIR+EOMES+ NK-like" , "CD8+KIR+TXK+ NK-like" ,  "CD8+ZNF683+CXCR6+ Trm" ,
+                "CD8+GZMK+ Tex" , "CD8+terminal Tex"  ,     "CD8+OXPHOS- Tex" ,
+                "CD8+TCF7+ Tex" , "CD8+ISG+ CD8+ T",        "CD8+Tc17"  ,
+                "CD8+NME1+ T")
       
       group <- c(rep("CD4 T Cell", 24),
                  rep("CD8 T Cell", 16))
@@ -318,7 +316,7 @@ TimiCellNetwork<-  function(resdata = NULL,
       names(node) <- c("Key", "No.Markers", "Group")
       
       if(sum(selected %in% cell) == 0) {
-        stop('No Cell Type were found in Zhang2021S2. Please choose "Other" and defined your groups')
+        stop('No Cell Type were found in Zheng2021. Please choose "Other" and defined your groups')
       }
       
     }
@@ -334,11 +332,11 @@ TimiCellNetwork<-  function(resdata = NULL,
       path <- getwd()
     }
     
-    write.table(node,file = paste0(path,"/node.txt"),quote = F,
+    write.table(node,file = paste0(path,"/cell_node.txt"),quote = F,
                 row.names = F,col.names = T,sep = "\t")
-    write.table(net,file = paste0(path,"/network.sif"),quote = F,
+    write.table(net,file = paste0(path,"/cell_network.sif"),quote = F,
                 row.names = F,col.names = F,sep = "\t")
-    write.table(edge,file = paste0(path,"/edge.txt"),quote = F,
+    write.table(edge,file = paste0(path,"/cell_edge.txt"),quote = F,
                 row.names = F,col.names = T,sep = "\t")
   } else {
     warning('No network file has been export. If you need these file for Cytoscape, please set "export=TRUE"')
@@ -364,7 +362,7 @@ TimiCellNetwork<-  function(resdata = NULL,
 ##' @param select a character vector of selected gene pairs according to rownames in resdata. 
 ##' Default selection is all statistically significantly enriched cell pairs(adjusted p value < 0.05).
 ##' @param dataset a value in one of 
-##' c("Galon2013_Cancer","Immune3", "Alex2020_Levi2019","Zhang2021S2","Other")
+##' c("Bindea2013_Cancer","Immune3", "Hughes2020_Tirosh2016","Zheng2021","Other")
 ##' The first four options include default group and color settings. 
 ##' If you use other dataset or want to change group and colors, 
 ##' please choose "Other".
@@ -380,9 +378,9 @@ TimiCellNetwork<-  function(resdata = NULL,
 ##' @export 
 ##' @examples
 ##' \dontrun{
-##'   data(Galon2013c_COX_MP_SKCM06)
-##'   cox_res <- Galon2013c_COX_MP_SKCM06
-##'   NET <- TimiGeneNetwork(resdata = cox_res,dataset = "Galon2013_Cancer")
+##'   data(Bindea2013c_COX_MP_SKCM06)
+##'   cox_res <- Bindea2013c_COX_MP_SKCM06
+##'   NET <- TimiGeneNetwork(resdata = cox_res,dataset = "Bindea2013_Cancer")
 ##' }
 ##' @author Chenyang Skylar Li
 
@@ -398,9 +396,9 @@ TimiGeneNetwork<-  function(resdata = NULL,
   }
   
   if (is.null(dataset)){
-    stop('The parameter "dataset" is required. Please choose one of c("Galon2013_Cancer","Immune3", "Alex2020_Levi2019","Zhang2021S2","Other")')
-  } else if(sum(dataset %in% c("Galon2013_Cancer","Immune3", "Alex2020_Levi2019","Zhang2021S2","Other")) == 0){
-    stop('Please choose one of c("Galon2013_Cancer","Immune3", "Alex2020_Levi2019","Zhang2021S2","Other")')
+    stop('The parameter "dataset" is required. Please choose one of c("Bindea2013_Cancer","Immune3", "Hughes2020_Tirosh2016","Zheng2021","Other")')
+  } else if(sum(dataset %in% c("Bindea2013_Cancer","Immune3", "Hughes2020_Tirosh2016","Zheng2021","Other")) == 0){
+    stop('Please choose one of c("Bindea2013_Cancer","Immune3", "Hughes2020_Tirosh2016","Zheng2021","Other")')
     
   }
   
@@ -471,11 +469,11 @@ TimiGeneNetwork<-  function(resdata = NULL,
     
     
     
-    if (dataset == "Galon2013_Cancer"){
+    if (dataset == "Bindea2013_Cancer"){
       
-      geneset <- Ann_Galon2013_Cancer
+      geneset <- Ann_Bindea2013_Cancer
       if(sum(selected %in% geneset[,2] ) == 0) {
-        stop('No Gene were found in Galon2013_Cancer. Please choose "Other" and use your geneset')
+        stop('No Gene were found in Bindea2013_Cancer. Please choose "Other" and use your geneset')
       } else {
         se <- which(geneset[,2] %in% selected)
         node <- geneset[se,]
@@ -488,7 +486,7 @@ TimiGeneNetwork<-  function(resdata = NULL,
       
       geneset <- Ann_Immune
       if(sum(selected %in% geneset[,2] ) == 0) {
-        stop('No Gene were found in Immune3(Charoentong2017_Galon2013_TIP_Immune). Please choose "Other" and use your geneset')
+        stop('No Gene were found in Immune3(Charoentong2017_Bindea2013_Xu2018_Immune). Please choose "Other" and use your geneset')
       } else {
         se <- which(geneset[,2] %in% selected)
         node <- geneset[se,]
@@ -498,11 +496,11 @@ TimiGeneNetwork<-  function(resdata = NULL,
       
     }
     
-    if (dataset == "Alex2020_Levi2019"){
+    if (dataset == "Hughes2020_Tirosh2016"){
       
-      geneset <- Ann_TME
+      geneset <- Ann_melanoma_TME
       if(sum(selected %in% geneset[,2] ) == 0) {
-        stop('No Gene were found in Alex2020_Levi2019. Please choose "Other" and use your geneset')
+        stop('No Gene were found in Hughes2020_Tirosh2016. Please choose "Other" and use your geneset')
       } else {
         se <- which(geneset[,2] %in% selected)
         node <- geneset[se,]
@@ -510,11 +508,11 @@ TimiGeneNetwork<-  function(resdata = NULL,
       
     }
     
-    if (dataset == "Zhang2021S2"){
+    if (dataset == "Zheng2021"){
       
       geneset <- Ann_Tcell
       if(sum(selected %in% geneset[,2] ) == 0) {
-        stop('No Gene were found in Alex2020_Levi2019. Please choose "Other" and use your geneset')
+        stop('No Gene were found in Hughes2020_Tirosh2016. Please choose "Other" and use your geneset')
       } else {
         se <- which(geneset[,2] %in% selected)
         node <- geneset[se,]
@@ -531,11 +529,11 @@ TimiGeneNetwork<-  function(resdata = NULL,
       path <- getwd()
     }
     
-    write.table(node,file = paste0(path,"/node.txt"),quote = F,
+    write.table(node,file = paste0(path,"/gene_node.txt"),quote = F,
                 row.names = F,col.names = T,sep = "\t")
-    write.table(net,file = paste0(path,"/network.sif"),quote = F,
+    write.table(net,file = paste0(path,"/gene_network.sif"),quote = F,
                 row.names = F,col.names = F,sep = "\t")
-    write.table(edge,file = paste0(path,"/edge.txt"),quote = F,
+    write.table(edge,file = paste0(path,"/gene_edge.txt"),quote = F,
                 row.names = F,col.names = T,sep = "\t")
   } else {
     warning('No network file has been export. If you need these file for Cytoscape, please set "export=TRUE"')

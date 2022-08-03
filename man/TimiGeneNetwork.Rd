@@ -20,7 +20,7 @@ TimiGeneNetwork(
 Default selection is all statistically significantly enriched cell pairs(adjusted p value < 0.05).}
 
 \item{dataset}{a value in one of 
-c("Galon2013_Cancer","Immune3", "Alex2020_Levi2019","Zhang2021S2","Other")
+c("Bindea2013_Cancer","Immune3", "Hughes2020_Tirosh2016","Zheng2021","Other")
 The first four options include default group and color settings. 
 If you use other dataset or want to change group and colors, 
 please choose "Other".}
@@ -47,9 +47,9 @@ The function also returns a list of above files that can be modified in R.
 }
 \examples{
 \dontrun{
-  data(Galon2013c_COX_MP_SKCM06)
-  cox_res <- Galon2013c_COX_MP_SKCM06
-  NET <- TimiGeneNetwork(resdata = cox_res,dataset = "Galon2013_Cancer")
+  data(Bindea2013c_COX_MP_SKCM06)
+  cox_res <- Bindea2013c_COX_MP_SKCM06
+  NET <- TimiGeneNetwork(resdata = cox_res,dataset = "Bindea2013_Cancer")
 }
 }
 \author{

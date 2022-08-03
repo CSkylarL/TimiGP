@@ -1,4 +1,4 @@
-##' Calulate Favorability Score of cell types
+##' Calculate Favorability Score of cell types
 ##' 
 ##' It calculates the favorability score of each cell type 
 ##' based on TimiGP cell interaction network.
@@ -23,8 +23,8 @@
 ##' @export 
 ##' @examples
 ##' \dontrun{
-##'   data("Galon2013c_enrich")
-##'   res <- Galon2013c_enrich
+##'   data("Bindea2013c_enrich")
+##'   res <- Bindea2013c_enrich
 ##'   score <- TimiFS(res)
 ##'   head(score)
 ##' }
@@ -91,8 +91,8 @@ TimiFS<-  function(resdata = NULL,
 ##' @export 
 ##' @examples
 ##' \dontrun{
-##'   data("Galon2013c_enrich")
-##'   res <- Galon2013c_enrich
+##'   data("Bindea2013c_enrich")
+##'   res <- Bindea2013c_enrich
 ##'   score <- TimiFS(res)
 ##'   head(score)
 ##'   p <- TimiFSBar(score)
