@@ -56,6 +56,8 @@ TimiCheckEvent <-  function(info = NULL){
 ##' @param cohort a vector of selected individuals.
 ##' @param log logical value: 
 ##' if TRUE, log transformation will be performed; The default is TRUE.
+##' @param GMNorm logical value: 
+##' if TRUE, gene wise median normalization will be performed; The default is TRUE.
 ##' @return Preprocessed transctiptomic profile 
 ##' @export 
 ##' @examples
@@ -74,7 +76,8 @@ TimiCheckEvent <-  function(info = NULL){
 TimiPrePropress <- function(marker,
                             rna = NULL,
                             cohort,
-                            log=TRUE){
+                            log=TRUE,
+                            GMNorm=TRUE){
   
   # examine required parameters
   
@@ -126,10 +129,11 @@ TimiPrePropress <- function(marker,
   }
   
   # gene wise median normalization ----
-  xx <- apply(rna, 1, median)
-  rna <- rna-xx
+  if(GMNorm == TRUE){
+    xx <- apply(rna, 1, median)
+    rna <- rna-xx
+  }
   idx <- order(row.names(rna))
   rna <- rna[idx,]
-  
   return(rna)
 }
