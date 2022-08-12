@@ -51,8 +51,8 @@ TimiDotplot<-  function(resdata = NULL,
       panel.grid.minor=element_blank(),
       panel.grid.major=element_blank()
     ) +
-    labs(x="Cell Pair",y="Enrichment Ratio",
-         title="Cell Pair Enrichment",
+    labs(x="Cell Interaction",y="Enrichment Ratio",
+         title="Cell Interaction Enrichment",
          base_size = 12, base_family = "serif",face="bold") +
     theme(legend.background = element_rect(linetype = 1, size = 0.5, colour = 1),
           legend.position="right",

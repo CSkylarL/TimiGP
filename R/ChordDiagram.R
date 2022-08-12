@@ -402,7 +402,7 @@ TimiCellChord<-  function(resdata = NULL,
     sector.name = get.cell.meta.data("sector.index")
     circos.text(mean(xlim), ylim[1], sector.name, facing = "clockwise", 
                 niceFacing = TRUE, adj = c(-0.01, 0.5), 
-                cex = 0.8)
+                cex = 1.5)
   }, bg.border = NA)
   circos.clear()
 }

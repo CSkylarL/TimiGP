@@ -52,7 +52,7 @@ rm(list=ls())
 data(Immune3_COX_MP_SKCM06)
 cox_res <- Immune3_COX_MP_SKCM06
 t <- names(cox_res)
-# TODO You can use Cytoscape to visualize the network
+# You can use Cytoscape to visualize the network
 NET <- list()
 for (i in 1:3){
   NET <- TimiGeneNetwork(resdata = cox_res[[t[i]]],dataset = "Immune3",export =T,path = paste0("./notebook/manuscript/",t[i],"_Immune/"))
