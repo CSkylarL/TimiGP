@@ -121,13 +121,13 @@ TimiEnrich <- function(gene = NULL,
     ## are annotated to the gene set.
     k_gene <- gene[which(gene %in% M_gene)]
     k <- length(k_gene)
-    data.frame("Cell.Pair" = ann[i],
-               "No.Total.Marker.Pair" = M, 
-               "No.Shared.Marker.Pair" = k, 
+    data.frame("Cell.Interaction" = ann[i],
+               "No.Total.IMGP" = M, 
+               "No.Shared.IMGP" = k, 
                "Enrichment.Ratio" = round(k*N/M/n,3), 
                "P.Value" = phyper(k-1, M, N-M, n, lower.tail=FALSE), 
-               "Shared.Marker.Pair" =  paste(k_gene,collapse="/"),
-               "Total.Marker.Pair" = paste(M_gene,collapse="/"))             
+               "Shared.IMGP" =  paste(k_gene,collapse="/"),
+               "Total.IMGP" = paste(M_gene,collapse="/"))             
   }
   ## P adjust
   res$Adjust.P.Value <- p.adjust(res$P.Value, method=p.adj)
@@ -135,7 +135,7 @@ TimiEnrich <- function(gene = NULL,
   res <- res[order(res$Adjust.P.Value), ]
   res$Index <- 1:nrow(res)
   if (pair == TRUE){
-    xx <- unlist(strsplit(res$Cell.Pair,split = "_"))
+    xx <- unlist(strsplit(res$Cell.Interaction,split = "_"))
     res$Favorable.Cell.Type <- xx[seq(1,length(xx),2)]
     res$Unfavorable.Cell.Type <- xx[seq(2,length(xx),2)]
     res <- res[, c(10,9,1,11:12,2:5,8,6:7)]

@@ -14,7 +14,7 @@ Default selection is the top 1 cell pair.}
 
 \item{color}{a vector of self-defined marker colors, 
 whose names are the enriched markers
-(not pair,you need to split the genes in Shared.Marker.Pair column) 
+(not pair,you need to split the genes in Shared.IMGP column) 
 in selected cell pair.}
 }
 \value{

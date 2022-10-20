@@ -66,26 +66,12 @@ Xu2018,4,Type 17 helper T cell,Th17,TH17 cell
 Xu2018,3,Type 2 helper T cell,Th2,Th2 cell
 Xu2018,2,Type 22 helper T cell,Th22,TH22 cell
 Xu2018,6,Regulatory T cell,Treg,Treg cell
-Hughes2020,30,Fibroblat,Fibroblast,Fibro
-Hughes2020,22,Hair follicle,Hair follicle,HairFollicle
-Hughes2020,22,Keratinocyte,Keratinocyte,KC
-Hughes2020,19,Langerhans cell,Langerhans,Langerhans
-Hughes2020,25,Lymphatic endothelial cell,LEC,Lymphatic
-Hughes2020,26,Melanocyte,Melanocyte,Melanocyte
-Hughes2020,27,Schwann cell,Schwann,Schwann
-Hughes2020,25,Sebocyte,Sebocyte,Sebocyte
-Hughes2020,21,Skin B cell,Skin B,B
-Hughes2020,27,Skin Mast cell,Skin Mast,Mast
-Hughes2020,18,Skin Myeloid cell,Skin Myeloid,Myeloid
-Hughes2020,20,Skin Plasma cell,Skin Plasma,Plasma
-Hughes2020,29,Skin T cell,Skin T,T
-Hughes2020,30,Vascular smooth muscle cell,VSMC,VSMC
-Hughes2020,26,Venular endothelial cell,Endo,Endo
 Tirosh2016,88,Cancer-associated fibroblast,CAF,CAFs
 Tirosh2016,47,Melanoma,Melanoma,melanoma
-Tirosh2016,31,Tumor infiltrating B cell,TI B,B cells
-Tirosh2016,92,Tumor infiltrating Macrophages,TI Macrophage,Macrophages
-Tirosh2016,38,Tumor infiltrating T cell,TI T,T cells
+Tirosh2016,31,B cell,B,B cells
+Tirosh2016,92,Macrophages,Macrophage,Macrophages
+Tirosh2016,38,T cell,T,T cells
+Tirosh2016,95,Endothelial cells,Endo,Endothelial cells
 Zheng2021,17,CD4.c01(naïve T cell),CD4+Tn,CD4.c01(Tn)
 Zheng2021,24,CD4.c02(CXCR5+ pre-follicular helper T cell ),CD4+CXCR5+ pre-Tfh,CD4.c02(CXCR5+ pre-Tfh)
 Zheng2021,21,CD4.c03(ADSL+ naïve T cell),CD4+ADSL+ Tn,CD4.c03(ADSL+ Tn)
@@ -126,3 +112,101 @@ Zheng2021,23,CD8.c14(TCF7+ exhausted T cell),CD8+TCF7+ Tex,CD8.c14(TCF7+ Tex)
 Zheng2021,18,CD8.c15(ISG+ CD8+ T cell),CD8+ISG+ CD8+ T,CD8.c15(ISG+ CD8+ T)
 Zheng2021,29,CD8.c16(Type 17 T cell),CD8+Tc17,CD8.c16(Tc17)
 Zheng2021,21,CD8.c17(NME1+ T cell),CD8+NME1+ T,CD8.c17(NME1+ T)
+Newman2015,62,Memory B cells,Bm,B.cells.memory
+Newman2015,60,Naïve B cells,Bn,B.cells.naive
+Newman2015,53,Activated dendritic cells,aDC,Dendritic.cells.activated
+Newman2015,40,Resting dendritic cells,rDC,Dendritic.cells.resting
+Newman2015,51,Eosinophils,Eosinophil,Eosinophils
+Newman2015,33,Macrophages.M0,M0,Macrophages.M0
+Newman2015,48,Macrophages.M1,M1,Macrophages.M1
+Newman2015,37,Macrophages.M2,M2,Macrophages.M2
+Newman2015,38,Activated mast cells,aMast,Mast.cells.activated
+Newman2015,38,Resting mast cells,rMast,Mast.cells.resting
+Newman2015,52,Monocytes,Monocyte,Monocytes
+Newman2015,60,Neutrophils,Neutrophil,Neutrophils
+Newman2015,59,Activated NK cells,aNK,NK.cells.activated
+Newman2015,57,Resting NK cells,rNK,NK.cells.resting
+Newman2015,49,Plasma cells,Plasma,Plasma.cells
+Newman2015,40,Activated Memory CD4 T cells,aCD4 Tm,T.cells.CD4.memory.activated
+Newman2015,64,Resting Memory CD4 T cells,rCD4 Tm,T.cells.CD4.memory.resting
+Newman2015,52,Naive CD4 T cells,CD4 Tn,T.cells.CD4.naive
+Newman2015,68,CD8 T cells,CD8 T,T.cells.CD8
+Newman2015,57,Follicular helper T cell,Tfh,T.cells.follicular.helper
+Newman2015,58,Gamma delta T cell,Tgd,T.cells.gamma.delta
+Newman2015,64,Regulatory T cells,Treg,T.cells.regulatory..Tregs.
+Aran2017,181,Activated dendritic cells,aDC,aDC
+Aran2017,21,Adipocytes,Adipocyte,Adipocytes
+Aran2017,219,Astrocytes,Astrocyte,Astrocytes
+Aran2017,135,B-cells,B,B-cells
+Aran2017,260,Basophils,Basophil,Basophils
+Aran2017,232,CD4+ memory T-cells,CD4 Tm,CD4+ memory T-cells
+Aran2017,153,CD4+ naive T-cells,CD4 Tn,CD4+ naive T-cells
+Aran2017,158,CD4+ T-cells,CD4 T,CD4+ T-cells
+Aran2017,164,CD4+ central memory T-cells,CD4 Tcm,CD4+ Tcm
+Aran2017,181,CD4+ effector memory T-cells,CD4 Tem,CD4+ Tem
+Aran2017,65,CD8+ naive T-cells,CD8 Tn,CD8+ naive T-cells
+Aran2017,116,CD8+ T-cells,CD8 T,CD8+ T-cells
+Aran2017,94,CD8+ central memory T-cells,CD8 Tcm,CD8+ Tcm
+Aran2017,308,CD8+ effector memory T-cells,CD8 Tem,CD8+ Tem
+Aran2017,38,Conventional dendritic cells,cDC,cDC
+Aran2017,225,Chondrocytes,Chondrocyte,Chondrocytes
+Aran2017,42,Class-switched memory B-cells,csBm,Class-switched memory B-cells
+Aran2017,31,Common lymphoid progenitors,CLP,CLP
+Aran2017,257,Common myeloid progenitors,CMP,CMP
+Aran2017,94,Dendritic cells,DC,DC
+Aran2017,174,Endothelial cells,Endo,Endothelial cells
+Aran2017,89,Eosinophils,Eosinophil,Eosinophils
+Aran2017,131,Epithelial cells,Epithelial,Epithelial cells
+Aran2017,123,Erythrocytes,Erythrocyte,Erythrocytes
+Aran2017,254,Fibroblasts,Fibroblast,Fibroblasts
+Aran2017,222,Granulocyte-macrophage progenitors,GMP,GMP
+Aran2017,322,Hepatocytes,Hepatocyte,Hepatocytes
+Aran2017,40,Hematopoietic stem cells,HSC,HSC
+Aran2017,14,Immature dendritic cells,iDC,iDC
+Aran2017,121,Keratinocytes,Keratinocyte,Keratinocytes
+Aran2017,45,Lymphatic endothelial cells,LEC,ly Endothelial cells
+Aran2017,259,Macrophages,Macrophage,Macrophages
+Aran2017,188,Macrophages M1,M1,Macrophages M1
+Aran2017,159,Macrophages M2,M2,Macrophages M2
+Aran2017,125,Mast cells,Mast,Mast cells
+Aran2017,17,Megakaryocytes,Megakaryocyte,Megakaryocytes
+Aran2017,212,Melanocytes,Melanocyte,Melanocytes
+Aran2017,162,Memory B-cells,Bm,Memory B-cells
+Aran2017,105,Megakaryocyte–erythroid progenitors,MEP,MEP
+Aran2017,244,Mesangial cells,Mesangial,Mesangial cells
+Aran2017,303,Monocytes,Monocyte,Monocytes
+Aran2017,182,Multipotent rogenitors,MPP,MPP
+Aran2017,105,Mesenchymal stem cells,MSC,MSC
+Aran2017,359,Microvascular endothelial cells,MEC,mv Endothelial cells
+Aran2017,215,Myocytes,Myocyte,Myocytes
+Aran2017,98,naive B-cells,Bn,naive B-cells
+Aran2017,365,Neurons,Neuron,Neurons
+Aran2017,80,Neutrophils,Neutrophil,Neutrophils
+Aran2017,101,NK cells,NK,NK cells
+Aran2017,18,Natural killer T-cells,NKT,NKT
+Aran2017,122,Osteoblasts,Osteoblast,Osteoblast
+Aran2017,38,Plasmacytoid dendritic cells,pDC,pDC
+Aran2017,157,Pericytes,Pericyte,Pericytes
+Aran2017,270,Plasma cells,Plasma,Plasma cells
+Aran2017,174,Platelets,Platelet,Platelets
+Aran2017,175,Preadipocytes,Preadipocyte,Preadipocytes
+Aran2017,239,pro B-cells,pro B-cell,pro B-cells
+Aran2017,35,Sebocytes,Sebocyte,Sebocytes
+Aran2017,100,Skeletal muscle cells,Skeletal muscle,Skeletal muscle
+Aran2017,308,Smooth muscle cells,Smooth muscle,Smooth muscle
+Aran2017,217,Gamma delta T-cells,Tgd,Tgd cells
+Aran2017,36,Type 1 T-helper cells,Th1,Th1 cells
+Aran2017,22,Type 2 T-helper cells,Th2,Th2 cells
+Aran2017,39,Regulatory T-cells,Treg,Tregs
+Luca2021,79,B cells,B,B cells
+Luca2021,115,CD4 T cells,CD4 T,CD4 T cells
+Luca2021,46,CD8 T cells,CD8 T,CD8 T cells
+Luca2021,126,Dendritic cells,DC,Dendritic cells
+Luca2021,64,Endothelial cells,Endo,Endothelial cells
+Luca2021,104,Epithelial cells,Epithelial,Epithelial cells
+Luca2021,117,Fibroblasts,Fibroblast,Fibroblasts
+Luca2021,103,Mast cells,Mast,Mast cells
+Luca2021,152,Monocytes/Macrophages,Mono/Macro,Monocytes/Macrophages
+Luca2021,49,Neutrophils,Neutrophil,Neutrophils
+Luca2021,85,NK cells,NK,NK cells
+Luca2021,91,Plasma cells,Plasma,Plasma cells

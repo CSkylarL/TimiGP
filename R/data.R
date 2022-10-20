@@ -4,7 +4,7 @@
 #' 
 #' @docType data
 #'
-#' @usage data(CellType_Hughes2020_Tirosh2016_melanoma_TME)
+#' @usage data(CellType_Tirosh2016_melanoma_TME)
 #' 
 #' @keywords datasets
 #' 
@@ -15,11 +15,10 @@
 #'   \item{Dataset}{The source of the annotation}
 #' }
 #' 
-#' @references Hughes, T. K., Wadsworth II, M. H., Gierahn, T. M., Do, T., Weiss, D., Andrade, P. R., ... & Shalek, A. K. (2020). Second-strand synthesis-based massively parallel scRNA-seq reveals cellular states and molecular features of human inflammatory skin pathologies. Immunity, 53(4), 878-894.
 #' @references Tirosh, I., Izar, B., Prakadan, S. M., Wadsworth, M. H., Treacy, D., Trombetta, J. J., ... & Garraway, L. A. (2016). Dissecting the multicellular ecosystem of metastatic melanoma by single-cell RNA-seq. Science, 352(6282), 189-196.
 #'
-#' @source Modification can be found in inst/extdata/build_CellType_Hughes2020_Tirosh2016_melanoma_TME.R
-"CellType_Hughes2020_Tirosh2016_melanoma_TME"
+#' @source Modification can be found in inst/extdata/build_CellType_Tirosh2016_melanoma_TME.R
+"CellType_Tirosh2016_melanoma_TME"
 
 
 
@@ -272,7 +271,7 @@
 
 
 
-#' COX regression Results from function TimiCOX with cell type meaker annotated by Hughes2020_Tirosh2016_melanoma_TME
+#' COX regression Results from function TimiCOX with cell type meaker annotated by Tirosh2016_melanoma_TME
 #'
 #' An intermediate result generated from function TimiCOX
 #' that reveals the association between each marker pairs and favorable prognosis.

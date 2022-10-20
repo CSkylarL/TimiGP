@@ -49,7 +49,7 @@ TimiCOX <-  function(mps = NULL,
   }
   
   
-  if (all((colnames(mps) == rownames(info)) != TRUE) ) {
+  if (all(colnames(mps) == rownames(info))  == FALSE){
     comSam <- intersect(row.names(info), colnames(mps))
     if (length(comSam) > 0) {
       mps <- mps[,comSam]
@@ -57,7 +57,7 @@ TimiCOX <-  function(mps = NULL,
     } else {
       stop('Samples are different between Gene pair score and clinical info')
     }
-    if (all((colnames(mps) == rownames(info)) != TRUE) ) {
+    if (all(colnames(mps) == rownames(info))  == FALSE)  {
       stop('Samples are different between Gene pair score and clinical info')
     }
     

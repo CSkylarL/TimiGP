@@ -20,7 +20,9 @@ TimiGeneNetwork(
 Default selection is all statistically significantly enriched cell pairs(adjusted p value < 0.05).}
 
 \item{dataset}{a value in one of 
-c("Bindea2013_Cancer","Immune3", "Hughes2020_Tirosh2016","Zheng2021","Other")
+c("Bindea2013_Cancer","Immune3", 
+"Newman2015", "Aran2017", "Luca2021",
+"Tirosh2016","Zheng2021","Other")
 The first four options include default group and color settings. 
 If you use other dataset or want to change group and colors, 
 please choose "Other".}

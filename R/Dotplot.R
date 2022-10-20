@@ -32,13 +32,13 @@ TimiDotplot<-  function(resdata = NULL,
     stop('The parameter "resdata" is required.')
   }
   # plot
-  resdata$Cell.Pair <- factor(resdata$Cell.Pair, levels=resdata$Cell.Pair)
+  resdata$Cell.Interaction <- factor(resdata$Cell.Interaction, levels=resdata$Cell.Interaction)
   se <- which(resdata$Index %in% select)
   max <- max(ceiling(resdata$Enrichment.Ratio[se]))+1
   p<- ggplot(resdata[se,] ) +
       geom_point(
-        mapping = aes(x=Cell.Pair, y=Enrichment.Ratio, color=Adjust.P.Value, 
-                    size=No.Shared.Marker.Pair)) +
+        mapping = aes(x=Cell.Interaction, y=Enrichment.Ratio, color=Adjust.P.Value, 
+                    size=No.Shared.IMGP)) +
     scale_color_continuous(low="#9970ab", high="#5aae61", 
                            limits = c(0, 0.05),
                            name = "Adjust P-Value",

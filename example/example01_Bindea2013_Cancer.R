@@ -22,6 +22,7 @@ dim(info)
 dim(SKCM06rna)
 
 rna <- TimiPrePropress(marker = marker,rna = SKCM06rna,cohort = rownames(info))
+
 #4. Generate marker pair score: TimiGenePair  ----
 mps <- TimiGenePair(rna)
 dim(mps)

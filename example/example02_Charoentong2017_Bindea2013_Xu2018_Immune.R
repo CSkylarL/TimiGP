@@ -30,6 +30,8 @@ for (i in 1:3) {
   se <- which(geneset$Dataset == names(t)[i])
   marker <- unique(geneset$Gene[se])
   rna <- TimiPrePropress(marker = marker,rna = SKCM06rna,cohort = rownames(info))
+  
+ 
   #4. Generate marker pair score: TimiGenePair  ----
   mps_tmp <- TimiGenePair(rna)
   dim(mps)
