@@ -19,8 +19,11 @@ If you use TimiGP in your publication, please cite the paper:
 # Install devtools from CRAN.
 install.packages("devtools")
 
-# Install compassR from YosefLab.
+# Install TimiGP from GitHub.
 devtools::install_github("CSkylarL/TimiGP")
+
+# Load the package
+library(TimiGP)
 ```
 ## Usage
 Here is a summary of the functions in the package:
