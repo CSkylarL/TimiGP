@@ -9,7 +9,8 @@ The immune cell co-infiltration sometimes causes `**Prognostic Bias**`, which ma
 ### Rationale
 
 As the representative schema shown above, the absolute infiltration of immune effectors and suppressors are positively correlated and therefore have the same impact on prognosis. One solution is to consider the pairwise relation betwen celss. For example, relative abundance enables us to capture subtle differences between them and reveal the prognostic values of those cells in line with their biological functions(left). 
-Based on this analysis and the charastics of immune system, we propose a novel concept, `**Functinoal Interaction**`, to investigate Tumor Immune Microenvironment(TIME) by Gene Pairs. The tumor immune microenvironment(TIME) is a balance between anti-tumor and pro-tumor immune cells. If the function of anti-tumor cell types is more vital than the pro-tumor cells (e.g., higher abundance, higher marker expression), the TIME is associated with favorable patients’ prognosis; otherwise, it is associated with unfavorable patients’ prognosis.
+
+Based on this analysis and the charastics of immune system, we propose a novel concept, `**Functinoal Interaction**`, to investigate Tumor Immune Microenvironment(TIME) by Gene Pairs(right). The tumor immune microenvironment(TIME) is a balance between anti-tumor and pro-tumor immune cells. If the function of anti-tumor cell types is more vital than the pro-tumor cells (e.g., higher abundance, higher marker expression), the TIME is associated with favorable patients’ prognosis; otherwise, it is associated with unfavorable patients’ prognosis.
 
 ![Fig1E](/assets/images/Fig1E_S11.png)
 
