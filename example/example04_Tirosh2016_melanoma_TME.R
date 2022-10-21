@@ -1,5 +1,5 @@
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-# This is an example how to use TimiGP with Zheng2021 Tcell annotation
+# This is an example how to use TimiGP with Tirosh2016 melanoma_TME annotation
 # Date: 03/07/2022
 # Chenyang Skylar Li
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -12,8 +12,8 @@ data("SKCM06info")
 head(SKCM06info)
 data("SKCM06rna")
 #2. Load cell type and marker annotation ---------------------------------------
-data("CellType_Zheng2021_Tcell")
-geneset <- CellType_Zheng2021_Tcell
+data("CellType_Tirosh2016_melanoma_TME")
+geneset <- CellType_Tirosh2016_melanoma_TME
 marker <- unique(geneset$Gene)
 #3. Preprocess: TimiCheckEvent & TimiPrePropress
 dim(SKCM06info)
@@ -22,13 +22,9 @@ dim(info)
 dim(SKCM06rna)
 
 rna <- TimiPrePropress(marker = marker,rna = SKCM06rna,cohort = rownames(info))
-<<<<<<< HEAD
 
 
-#4. Generate marker pair score: TimiGenePair  ----
-=======
 #4. Generate marker pair score: TimiGenePair  ----------------------------------
->>>>>>> ExtraMarker
 mps <- TimiGenePair(rna)
 dim(mps)
 #5. Perform univariate Cox regression: TimiCOX ---------------------------------
@@ -37,22 +33,20 @@ res <- TimiCOX(mps = mps,info = info,p.adj = "BH")
 mps <- res$mps
 cox_res <- res$cox_res
 
-Tcell_COX_MP_SKCM06 <- cox_res
-Tcell_MPS_SKCM06 <- mps
+melanoma_TME_COX_MP_SKCM06 <- cox_res
+melanoma_TME_MPS_SKCM06 <- mps
 
 # This step takes about 20-30 min, the result has been saved in data as examples
-#save(Tcell_COX_MP_SKCM06, file = "data/Tcell_COX_MP_SKCM06.rda")
-
-
+#save(melanoma_TME_COX_MP_SKCM06, file = "data/melanoma_TME_COX_MP_SKCM06.rda")
 
 #B Gene Pair and gene network ##################################################
 rm(list=ls())
-# 6. Generate Directed Gene Network:TimiGeneNetwork  ----
-data(Tcell_COX_MP_SKCM06)
-cox_res <- Tcell_COX_MP_SKCM06
+# 6. Generate Directed Gene Network:TimiGeneNetwork  ---------------------------
+data(melanoma_TME_COX_MP_SKCM06)
+cox_res <- melanoma_TME_COX_MP_SKCM06
 
 # You can use Cytoscape to visualize the network
-NET <- TimiGeneNetwork(resdata = cox_res,dataset = "Zheng2021", 
+NET <- TimiGeneNetwork(resdata = cox_res,dataset = "Tirosh2016",
                        export = F)
 #                      export =TRUE, path = "./")
 head(NET$network,n = 3)
@@ -64,13 +58,14 @@ head(NET$edge,n = 3)
 rm(list=ls())
 # 7. Generate Cell Interaction Annotation: TimiCellPair ------------------------
 
-data("CellType_Zheng2021_Tcell")
-geneset <- CellType_Zheng2021_Tcell
+data("CellType_Tirosh2016_melanoma_TME")
+geneset <- CellType_Tirosh2016_melanoma_TME
+
 cell_pair <- TimiCellPair(geneset = geneset,core = 20)
 
 # 8. Select marker pairs A_B=1 associated with good prognosis ------------------
-data(Tcell_COX_MP_SKCM06)
-cox_res <- Tcell_COX_MP_SKCM06
+data(melanoma_TME_COX_MP_SKCM06)
+cox_res <- melanoma_TME_COX_MP_SKCM06
 GP <- rownames(cox_res)[which(cox_res$QV<0.05)]
 
 # 9. generate background: TimiBG ----
@@ -82,7 +77,7 @@ res <- TimiEnrich(gene = GP, background = background,
 
 # 11. Generate Directed Cell Network:TimiCellNetwork  ----
 # You can use Cytoscape to visualize the network
-NET <- TimiCellNetwork(resdata = res,dataset = "Zheng2021",
+NET <- TimiCellNetwork(resdata = res,dataset = "Tirosh2016",
                        export = F)
 #                      export =TRUE, path = "./")
 
@@ -94,12 +89,12 @@ p
 # 13. Visualization: Chord Diagram of functional interaction: TimiCellChord-----
 
 # Cell Chord Diagram
-TimiCellChord(resdata = res,dataset = "Zheng2021")
+TimiCellChord(resdata = res,dataset = "Tirosh2016")
 # Chord Diagram of marker pairs in seltect cell interaction
 TimiGeneChord(resdata = res,select = 1)
 
 # 13. Calculate favorability score: TimiFS -------------------------------------
-# Visualization: TimiFSBar
+# Visualization: TimiFSBar 
 # Calculate
 score <- TimiFS(res)
 head(score)

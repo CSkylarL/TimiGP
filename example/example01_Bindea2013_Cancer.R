@@ -22,12 +22,7 @@ dim(info)
 dim(SKCM06rna)
 
 rna <- TimiPrePropress(marker = marker,rna = SKCM06rna,cohort = rownames(info))
-<<<<<<< HEAD
-
-#4. Generate marker pair score: TimiGenePair  ----
-=======
 #4. Generate marker pair score: TimiGenePair  ----------------------------------
->>>>>>> ExtraMarker
 mps <- TimiGenePair(rna)
 dim(mps)
 #5. Perform univariate Cox regression: TimiCOX ---------------------------------

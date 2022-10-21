@@ -30,16 +30,9 @@ for (i in 1:3) {
   cat("\n",names(t)[i])
   se <- which(geneset$Dataset == names(t)[i])
   marker <- unique(geneset$Gene[se])
-<<<<<<< HEAD
-  rna <- TimiPrePropress(marker = marker,rna = SKCM06rna,cohort = rownames(info))
-  
- 
-  #4. Generate marker pair score: TimiGenePair  ----
-=======
   rna <- TimiPrePropress(marker = marker,rna = SKCM06rna,
                          cohort = rownames(info))
   #4. Generate marker pair score: TimiGenePair  --------------------------------
->>>>>>> ExtraMarker
   mps_tmp <- TimiGenePair(rna)
   dim(mps)
   #5. Perform univariate Cox regression: TimiCOX -------------------------------
