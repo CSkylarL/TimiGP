@@ -9,15 +9,15 @@ TimiDotplot(resdata = NULL, select = 1:5)
 \arguments{
 \item{resdata}{TimiGP enrichment result generated from TimiEnrich}
 
-\item{select}{a numeric vector of selected cell pairs according to "Index" column in resdata. 
+\item{select}{a numeric vector of selected cell interactions according to "Index" column in resdata. 
 Default selection is top 5 enrichment}
 }
 \value{
 Enrichment dotpot
 }
 \description{
-A dotplot shows the results of selected cell pair enrichment.
-The x-axis shows selected cell Pairs. The y-axis shows Enrichment Ratio.
+A dotplot shows the results of selected cell interaction enrichment.
+The x-axis shows selected cell interactions. The y-axis shows Enrichment Ratio.
 The color of dots represents adjusted P-value. 
 The size of dots represents the number of marker pairs 
 shared by query pairs and annotation pairs.

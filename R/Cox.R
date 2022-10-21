@@ -26,8 +26,8 @@
 ##'   dim(mps)
 ##'   # TimiCOX 
 ##'   res <- TimiCOX(mps = mps,info = info,p.adj = "BH")
-##'   mps <- res[[1]]
-##'   cox_res <- res[[2]]
+##'   mps <- res[["mps"]] 
+##'   cox_res <- res[["cox_res"]]
 ##' }
 ##' @author Chenyang Skylar Li
 
@@ -35,7 +35,7 @@ TimiCOX <-  function(mps = NULL,
                      info = NULL,
                      p.adj = c("holm", "hochberg", "hommel", "bonferroni", 
                                "BH", "BY","fdr", "none")){
-  # examine required parameters
+  # examine required parameters-------------------------------------------------
   if (is.null(mps)){
     stop('The parameter "mps" is required. ')
   }
@@ -49,7 +49,7 @@ TimiCOX <-  function(mps = NULL,
   }
   
   
-  if (all((colnames(mps) == rownames(info)) != TRUE) ) {
+  if (all(colnames(mps) == rownames(info))  == FALSE){
     comSam <- intersect(row.names(info), colnames(mps))
     if (length(comSam) > 0) {
       mps <- mps[,comSam]
@@ -57,12 +57,12 @@ TimiCOX <-  function(mps = NULL,
     } else {
       stop('Samples are different between Gene pair score and clinical info')
     }
-    if (all((colnames(mps) == rownames(info)) != TRUE) ) {
+    if (all(colnames(mps) == rownames(info))  == FALSE)  {
       stop('Samples are different between Gene pair score and clinical info')
     }
     
   }
-  # perform cox
+  # perform cox ----------------------------------------------------------------
   pval <- hr  <- rep(0, nrow(mps))
     for(k in 1:nrow(mps)){
       cat("\rCOX:", k,"/",nrow(mps))
@@ -80,7 +80,7 @@ TimiCOX <-  function(mps = NULL,
   
   cox_res <- data.frame(HR=hr, PV=pval, QV=QV)
   row.names(cox_res) <- row.names(mps)
-  # change pair direction of cox result
+  # change pair direction of cox result-----------------------------------------
   se <- which(cox_res$HR>1)
   message("The direction of ",length(se)," marker pairs were reversed")
   
@@ -93,7 +93,7 @@ TimiCOX <-  function(mps = NULL,
   cox_res$HR[se] <- 1/cox_res$HR[se]
   rownames(cox_res)[se] <- xx
   
-  # change pair direction and reverse value of marker pair score
+  # change pair direction and reverse value of marker pair score----------------
   rownames(mps)[se] <- xx
   mps[se,] <- !mps[se,]
   

@@ -17,10 +17,12 @@ TimiGeneNetwork(
 \item{resdata}{TimiGP cox result generated from TimiCOX}
 
 \item{select}{a character vector of selected gene pairs according to rownames in resdata. 
-Default selection is all statistically significantly enriched cell pairs(adjusted p value < 0.05).}
+Default selection is all functional interactions(adjusted p value < 0.05).}
 
 \item{dataset}{a value in one of 
-c("Bindea2013_Cancer","Immune3", "Hughes2020_Tirosh2016","Zheng2021","Other")
+c("Bindea2013_Cancer","Immune3", 
+"Newman2015", "Aran2017", "Luca2021",
+"Tirosh2016","Zheng2021","Other")
 The first four options include default group and color settings. 
 If you use other dataset or want to change group and colors, 
 please choose "Other".}
@@ -40,16 +42,16 @@ A list of network required files(network,node,edge)
 }
 \description{
 It generates three files that can be used to build network in Cytoscape:
-1. network files: simple interaction file (network.sif);
-2. node attributes (node.txt);
-3. edge attributes (edge.txt).
+1. network files: simple interaction file (gene_network.sif);
+2. node attributes (gene_node.txt);
+3. edge attributes (gene_edge.txt).
 The function also returns a list of above files that can be modified in R.
 }
 \examples{
 \dontrun{
   data(Bindea2013c_COX_MP_SKCM06)
   cox_res <- Bindea2013c_COX_MP_SKCM06
-  NET <- TimiGeneNetwork(resdata = cox_res,dataset = "Bindea2013_Cancer")
+  NET <- TimiGeneNetwork(resdata = cox_res,dataset = "Bindea2013_Cancer",export=T,path="./")
 }
 }
 \author{

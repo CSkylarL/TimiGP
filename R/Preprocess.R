@@ -19,16 +19,16 @@
 
 TimiCheckEvent <-  function(info = NULL){
   
-  # examine required parameters
+  # examine required parameters ------------------------------------------------
   if (is.null(info)){
     stop('The parameter "info" is required. ')
   }
-  # NAs in 
-  # Remove NAs
+
+  # Remove NAs -----------------------------------------------------------------
   se1 <- which(is.na(info[1]))
   se2 <- which(is.na(info[2]))
   y=Surv(as.numeric(info[,2]), as.numeric( info[,1]))
-  # Remove time <=0
+  # Remove time <=0-------------------------------------------------------------
   se3 <-  which(y[, "time"] <= 0) 
   se4 <- which(is.na(y))
   se <- unique(c(se1,se2,se3,se4))
@@ -64,12 +64,12 @@ TimiCheckEvent <-  function(info = NULL){
 ##' \dontrun{
 ##'   data("SKCM06info")
 ##'   data("SKCM06rna")
-##'   data("Immune_Marker_n1326")
+##'   data("Immune_Marker_n1293")
 ##'   dim(SKCM06info)
 ##'   info <- TimiCheckEvent(SKCM06info)
 ##'   dim(info)
 ##'   dim(SKCM06rna)
-##'   rna <- TimiPrePropress(gene = Immune_Marker_n1326,rna = SKCM06rna,cohort = rownames(info))
+##'   rna <- TimiPrePropress(gene = Immune_Marker_n1326,rna = SKCM06rna,cohort = rownames(info), log = T,GMNorm = T)
 ##'   dim(rna)
 ##' }
 ##' @author Chenyang Skylar Li
@@ -79,14 +79,14 @@ TimiPrePropress <- function(marker,
                             log=TRUE,
                             GMNorm=TRUE){
   
-  # examine required parameters
+  # examine required parameters-------------------------------------------------
   
   if (is.null(rna)){
     stop('The parameter "rna" is required. ')
   }
   
   
-  # Extract cohort
+  # Extract cohort--------------------------------------------------------------
   if (is.null(cohort)){
     warning('No selected cohort. Use the cohort in transcriptiomic profile')
   } else {
@@ -101,7 +101,7 @@ TimiPrePropress <- function(marker,
   }
  
   
-  # Extract marker
+  # Extract marker--------------------------------------------------------------
   if (is.null(cohort)){
     warning('No markers. Use the gene in transcriptiomic profile')
   } else {
@@ -114,7 +114,7 @@ TimiPrePropress <- function(marker,
   }
   
   
-  # remove genes with low expressions
+  # remove genes with low expressions-------------------------------------------
   xx <- apply(rna>0, 1, sum)
   se3 <- which(xx>=ncol(rna)*0.5) 
   if (length(se3) == 0){
@@ -123,12 +123,12 @@ TimiPrePropress <- function(marker,
   rna <- rna[se3,]
   message(nrow(rna)-length(se3)," markers with low expressions were filtered out")
   
-  # log transformatio
+  # log transformatio-----------------------------------------------------------
   if(log == TRUE){
     rna <- log10(rna+1)
   }
   
-  # gene wise median normalization ----
+  # gene wise median normalization ---------------------------------------------
   if(GMNorm == TRUE){
     xx <- apply(rna, 1, median)
     rna <- rna-xx

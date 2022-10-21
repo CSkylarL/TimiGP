@@ -30,15 +30,15 @@ The default value is 1.}
 If using the function for general cell type enrichment analysis, please choose FALSE.}
 }
 \value{
-A dataframe of enrichment results showing the cell pair associated with favorable prognosis
+A dataframe of enrichment results including fucntional interactions
 }
 \description{
-It identify cell pair associated with favorable prognosis 
+It statistically determines the functional interactions
 by performing over-representation(enrichment analysis)
 }
 \examples{
 \dontrun{
-  # Generate Cell Pair Annotation: TimiCellPair
+  # Generate cell interaction Annotation: TimiCellPair
   data(CellType_Bindea2013_cancer)
   geneset <- CellType_Bindea2013_cancer
   cell_pair <- TimiCellPair(geneset = geneset,core = 20)
@@ -50,7 +50,7 @@ by performing over-representation(enrichment analysis)
   background <- TimiBG(marker.pair = row.names(cox_res))
   # Enrichment Analysis: TimiEnrich
   res <- TimiEnrich(gene = GP, background = background, 
-                    geneset = cell_pair, p.adj = "BH",core=20)
+                    geneset = cell_pair, p.adj = "BH",core=2)
   
 }
 }

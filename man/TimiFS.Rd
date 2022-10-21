@@ -22,11 +22,6 @@ If Difference is negative, the cell type is classified as F(avorable) cell.
 \description{
 It calculates the favorability score of each cell type 
 based on TimiGP cell interaction network.
-In the network, 
-the out-degree of cell A means how many times high  A-to-other cell ratio 
-is associated with favorable prognosis.
-The in-degree of cell A means how many times low A-to-other cell ratio 
-is  associated with favorable prognosis.
 The favorability score  includes favorable score and unfavorable score.
 Favorable score: out-degree of the cell/sum of out-degree of all cell*100.
 Unfavorable score: in-degree of the cell/sum of in-degree of all cell*100.
@@ -35,7 +30,7 @@ Unfavorable score: in-degree of the cell/sum of in-degree of all cell*100.
 \dontrun{
   data("Bindea2013c_enrich")
   res <- Bindea2013c_enrich
-  score <- TimiFS(res)
+  score <- TimiFS(res, cutoff = 0.05)
   head(score)
 }
 }

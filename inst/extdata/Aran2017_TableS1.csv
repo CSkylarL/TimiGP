@@ -1,0 +1,65 @@
+Full name,Cell types,Group,Subgroup
+Monocytes,Monocytes,Non-lymphocytes,Myeloid
+CD8+ T-cells,CD8+ T-cells,Lymphocytes,Lymphoid
+NK cells,NK cells,Lymphocytes,Lymphoid
+Macrophages,Macrophages,Non-lymphocytes,Myeloid
+Endothelial cells,Endothelial cells,Non-Hematopoietic,Stroma
+Dendritic cells,DC,Non-lymphocytes,Myeloid
+Neutrophils,Neutrophils,Non-lymphocytes,Myeloid
+Erythrocytes,Erythrocytes,HSC,HSC
+CD4+ naive T-cells,CD4+ naive T-cells,Lymphocytes,Lymphoid
+Multipotent rogenitors,MPP,HSC,HSC
+Smooth muscle cells,Smooth muscle,Non-Hematopoietic,Stroma
+Fibroblasts,Fibroblasts,Non-Hematopoietic,Stroma
+Epithelial cells,Epithelial cells,Non-Hematopoietic,Epithelial
+Keratinocytes,Keratinocytes,Non-Hematopoietic,Epithelial
+Chondrocytes,Chondrocytes,Non-Hematopoietic,Stroma
+Adipocytes,Adipocytes,Non-Hematopoietic,Stroma
+B-cells,B-cells,Lymphocytes,Lymphoid
+CD4+ T-cells,CD4+ T-cells,Lymphocytes,Lymphoid
+CD8+ effector memory T-cells,CD8+ Tem,Lymphocytes,Lymphoid
+Common myeloid progenitors,CMP,HSC,HSC
+Granulocyte-macrophage progenitors,GMP,HSC,HSC
+Megakaryocyte–erythroid progenitors,MEP,HSC,HSC
+Regulatory T-cells,Tregs,Lymphocytes,Lymphoid
+Hematopoietic stem cells,HSC,HSC,HSC
+Plasma cells,Plasma cells,Lymphocytes,Lymphoid
+CD4+ central memory T-cells,CD4+ Tcm,Lymphocytes,Lymphoid
+Microvascular endothelial cells,mv Endothelial cells,Non-Hematopoietic,Stroma
+CD4+ effector memory T-cells,CD4+ Tem,Lymphocytes,Lymphoid
+Memory B-cells,Memory B-cells,Lymphocytes,Lymphoid
+CD8+ central memory T-cells,CD8+ Tcm,Lymphocytes,Lymphoid
+naive B-cells,naive B-cells,Lymphocytes,Lymphoid
+Eosinophils,Eosinophils,Non-lymphocytes,Myeloid
+Macrophages M1,Macrophages M1,Non-lymphocytes,Myeloid
+Myocytes,Myocytes,Non-Hematopoietic,Stroma
+Lymphatic endothelial cells,ly Endothelial cells,Non-Hematopoietic,Stroma
+Mesenchymal stem cells,MSC,Non-Hematopoietic,Stroma
+Macrophages M2,Macrophages M2,Non-lymphocytes,Myeloid
+Osteoblasts,Osteoblast,Non-Hematopoietic,Stroma
+Activated dendritic cells,aDC,Non-lymphocytes,Myeloid
+Preadipocytes,Preadipocytes,Non-Hematopoietic,Stroma
+Melanocytes,Melanocytes,Non-Hematopoietic,Epithelial
+Skeletal muscle cells,Skeletal muscle,Non-Hematopoietic,Stroma
+CD4+ memory T-cells,CD4+ memory T-cells,Lymphocytes,Lymphoid
+Megakaryocytes,Megakaryocytes,HSC,HSC
+pro B-cells,pro B-cells,Lymphocytes,Lymphoid
+Basophils,Basophils,Non-lymphocytes,Myeloid
+Conventional dendritic cells,cDC,Non-lymphocytes,Myeloid
+Astrocytes,Astrocytes,Non-Hematopoietic,Epithelial
+Plasmacytoid dendritic cells,pDC,Non-lymphocytes,Myeloid
+Pericytes,Pericytes,Non-Hematopoietic,Stroma
+Neurons,Neurons,Non-Hematopoietic,Epithelial
+Class-switched memory B-cells,Class-switched memory B-cells,Lymphocytes,Lymphoid
+Hepatocytes,Hepatocytes,Non-Hematopoietic,Epithelial
+Mesangial cells,Mesangial cells,Non-Hematopoietic,Stroma
+Immature dendritic cells,iDC,Non-lymphocytes,Myeloid
+Mast cells,Mast cells,Non-lymphocytes,Myeloid
+Type 2 T-helper cells,Th2 cells,Lymphocytes,Lymphoid
+Common lymphoid progenitors,CLP,HSC,HSC
+Platelets,Platelets,Non-lymphocytes,HSC
+Type 1 T-helper cells,Th1 cells,Lymphocytes,Lymphoid
+CD8+ naive T-cells,CD8+ naive T-cells,Lymphocytes,Lymphoid
+Natural killer T-cells,NKT,Lymphocytes,Lymphoid
+Sebocytes,Sebocytes,Non-Hematopoietic,Epithelial
+Gamma delta T-cells,Tgd cells,Lymphocytes,Lymphoid

@@ -1,17 +1,19 @@
 ##' Generate cell network files for Cytoscape
 ##' 
 ##' It generates three files that can be used to build network in Cytoscape:
-##' 1. network files: simple interaction file (network.sif);
-##' 2. node attributes (node.txt);
-##' 3. edge attributes (edge.txt).
+##' 1. network files: simple interaction file (cell_network.sif);
+##' 2. node attributes (cell_node.txt);
+##' 3. edge attributes (cell_edge.txt).
 ##' The function also returns a list of above files that can be modified in R.
 ##'
 ##' @param resdata TimiGP enrichment result generated from TimiEnrich
-##' @param select a numeric vector of selected cell pairs according to "Index" column in resdata. 
-##' Default selection is all statistically significantly enriched cell pairs(adjusted p value < 0.05).
+##' @param select a numeric vector of selected cell interactions according to "Index" column in resdata. 
+##' Default selection is all functional interactions(adjusted p value < 0.05).
 ##' @param dataset a value in one of 
-##' c("Bindea2013","Bindea2013_Cancer","Charoentong2017", 
-##' "Hughes2020_Tirosh2016","Zheng2021","Xu2018","Other"). 
+##' c("Bindea2013","Bindea2013_Cancer",
+##' "Charoentong2017", "Xu2018",
+##' "Newman2015", "Aran2017", "Luca2021", 
+##' "Tirosh2016","Zheng2021","Other")
 ##' The first four options include default group and color settings. 
 ##' If you use other dataset or want to change group and colors, 
 ##' please choose "Other".
@@ -31,7 +33,7 @@
 ##' \dontrun{
 ##'   data("Bindea2013c_enrich")
 ##'   res <- Bindea2013c_enrich
-##'   NET <- TimiCellNetwork(resdata = res,dataset = "Bindea2013_Cancer")
+##'   NET <- TimiCellNetwork(resdata = res,dataset = "Bindea2013_Cancer",export=T,path="./")
 ##' }
 ##' @author Chenyang Skylar Li
 
@@ -42,44 +44,44 @@ TimiCellNetwork<-  function(resdata = NULL,
                             geneset = NULL,
                             export = TRUE,
                             path = NULL){
-  # Examine required parameters
+  # Examine required parameters ################################################
   if (is.null(resdata)){
     stop('The parameter "resdata" is required.')
   }
   
   if (is.null(dataset)){
-    stop('The parameter "dataset" is required. Please choose one of c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Hughes2020_Tirosh2016","Zheng2021","Xu2018","Other")')
-  } else if(sum(dataset %in% c("Bindea2013","Bindea2013_Cancer","Charoentong2017","Hughes2020_Tirosh2016","Zheng2021","Xu2018","Other")) == 0){
-    stop('Please choose one of c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Hughes2020_Tirosh2016","Zheng2021","Xu2018","Other")')
+    stop('The parameter "dataset" is required. Please choose one of c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Xu2018","Newman2015", "Aran2017", "Luca2021", "Tirosh2016","Zheng2021","Other")')
+  } else if(sum(dataset %in% c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Xu2018","Newman2015", "Aran2017", "Luca2021", "Tirosh2016","Zheng2021","Other")) == 0){
+    stop('Please choose one of c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Xu2018","Newman2015", "Aran2017", "Luca2021", "Tirosh2016","Zheng2021","Other")')
     
   }
 
   
-  # selection
+  # selection ##################################################################
   if (is.null(select)) {
     se.r <- which(resdata$Adjust.P.Value < 0.05)
     
     if (length(se.r) < 5){
-      stop('There are less than 5 significant cell pairs.')
+      stop('There are less than 5 functional interactions.')
     } else {
-      message('Using all significant cell pairs(Adjested P.Value < 0.05)')
+      message('Using all functional interactions(Adjested P.Value < 0.05)')
       resdata <- resdata[se.r, ]
     }
     
   } else {
-    message('Using selected cell pairs')
+    message('Using selected cell interactions')
     se.r <- which(resdata$Index %in%  select)
     resdata <- resdata[se.r, ]
   }
   
-  # Generate network file
+  # Generate network file ######################################################
   net <- resdata[c("Favorable.Cell.Type" , "Unfavorable.Cell.Type")]
   colnames(net) <- c("Source","Target")
   net$Interaction <- "TimiGP"
   net <- net[c("Source","Interaction", "Target")]
   
   
-  # Generate edge file
+  # Generate edge file #########################################################
   edge <- resdata
   edge$Key <- paste0(edge$Favorable.Cell.Type, " (TimiGP) ", edge$Unfavorable.Cell.Type)
   edge <- edge[c(ncol(edge),1:(ncol(edge)-1))]
@@ -124,9 +126,10 @@ TimiCellNetwork<-  function(resdata = NULL,
       warning('Using default geneset. If you have self-defined geneset, please set dataset = "Other"')
       
     }
-    
+   
+    # "Bindea2013" =============================================================
     if (dataset == "Bindea2013"){
-      if(length(grep(selected,pattern = "Cancer cells")) == 1) {
+      if(length(grep(selected,pattern = "Tumor")) == 1) {
         stop('You should set dataset = "Bindea2013_Cancer"')
       } else {
         cell <- c("B", 
@@ -161,7 +164,7 @@ TimiCellNetwork<-  function(resdata = NULL,
       
     }
     
-    
+    # "Bindea2013_Cancer" ======================================================
     if (dataset == "Bindea2013_Cancer"){
       
       cell <- c("B", 
@@ -195,7 +198,7 @@ TimiCellNetwork<-  function(resdata = NULL,
         stop('No Cell Type were found in Bindea2013_Cancer. Please choose "Other" and defined your groups')
       }
     }
-    
+    # "Charoentong2017" ========================================================
     if (dataset == "Charoentong2017"){
       cell <- c("iB", "aB" , "Memory B",
                 "Th1" ,"Th2", "Th17" ,
@@ -230,7 +233,7 @@ TimiCellNetwork<-  function(resdata = NULL,
       }
     }
     
-    
+    # "Xu2018" =================================================================
     if (dataset == "Xu2018"){
       cell <- c("B",
                 "T" , "CD4 T", "CD8 T",
@@ -261,21 +264,140 @@ TimiCellNetwork<-  function(resdata = NULL,
       }
       
     }
+    # "Newman2015" ======================================================
     
-    if (dataset == "Hughes2020_Tirosh2016"){
-      cell <- c("TI B"  ,"TI T", "TI Macrophage"  ,
-                "Skin B"  ,"Skin Plasma"  ,"Skin T" ,
-                "Skin Myeloid"  ,"Langerhans" ,"Skin Mast" ,
-                "Endo","LEC"  ,
-                "Fibroblast","Hair follicle"  ,"Keratinocyte",
-                "Schwann" ,"Sebocyte"  ,
-                "VSMC" , "Melanocyte",
-                "Melanoma"  ,"CAF")
+    if (dataset ==  "Newman2015"){
+      
+      cell <- c("Bn", "Bm", "Plasma" ,
+                "CD8 T" ,"CD4 Tn","Tfh",  "Treg","Tgd" , "rCD4 Tm", "aCD4 Tm" , 
+                "rNK", "aNK",
+                "rDC", "aDC",
+                "M0",   "M1",   "M2" , "Monocyte",
+                "Neutrophil", "rMast" ,"aMast", "Eosinophil" )
+      group <- c(rep("B Cell", 3),
+                 rep("T Cell", 7),
+                 rep("NK Cell", 2),
+                 rep("DC", 2),
+                 rep("Mononuclear phagocyte system", 4),
+                 rep("Granulocytes", 4))
+      
+      geneset <- Ann_dec_list$Newman2015
+      att <- data.frame(row.names =cell,group=group)
+      node <- table(geneset$CellType) %>% 
+        data.frame(row.names = 1) %>% 
+        merge(att,by=0)
+      names(node) <- c("Key", "No.Markers", "Group")
+      
+      if(sum(selected %in% cell) == 0) {
+        stop('No Cell Type were found in Newman2015. Please choose "Other" and defined your groups')
+      }
+    }
+      # "Aran2017" ======================================================
+      
+      if (dataset ==  "Aran2017"){
+        
+        cell <- c("pro B-cell", "B", "Bn" , "Plasma" , "Bm","csBm" ,
+                  "CD4 T" , "CD8 T","CD4 Tn", "CD8 Tn",  "Th1", "Th2", "Treg", 
+                  "CD4 Tm", "CD4 Tem" ,"CD8 Tem",  "CD4 Tcm" , "CD8 Tcm", "Tgd", "NKT" ,
+                  "NK",
+                  "DC", "iDC", "cDC" ,  "aDC", "pDC" ,
+                  "Macrophage" ,  "M1",  "M2", "Monocyte" ,
+                  "Neutrophil" ,"Mast", "Eosinophil", "Basophil" ,
+                  "Endo", "LEC","MEC", "Fibroblast", "Pericyte" ,
+                  "Epithelial", "MSC" ,"Adipocyte", "Preadipocyte",
+                  "HSC", "CLP", "CMP", "GMP",  "MEP",  "MPP"  ,  
+                  "Megakaryocyte","Erythrocyte", "Platelet",
+                  "Neuron", "Astrocyte", "Chondrocyte", "Osteoblast", "Keratinocyte" ,
+                  "Hepatocyte",  "Melanocyte","Sebocyte", "Mesangial",  "Myocyte",
+                  "Skeletal muscle", "Smooth muscle"  
+        )
+        group <- c(rep("B Cell", 6),
+                   rep("T Cell", 14),
+                   rep("NK Cell", 1),
+                   rep("DC", 5),
+                   rep("Mononuclear phagocyte system", 4),
+                   rep("Granulocytes", 4),
+                   rep("Epithelial & Stromal Cells", 9), 
+                   rep("Stem Cells", 9), 
+                   rep("Tissue Specific Cells", 12))
+        
+        geneset <- Ann_dec_list$Aran2017
+        att <- data.frame(row.names =cell,group=group)
+        node <- table(geneset$CellType) %>% 
+          data.frame(row.names = 1) %>% 
+          merge(att,by=0)
+        names(node) <- c("Key", "No.Markers", "Group")
+        
+        
+        
+        if(sum(selected %in% cell) == 0) {
+          stop('No Cell Type were found in Aran2017. Please choose "Other" and defined your groups')
+        }
+      }
+      # "Luca2021" ======================================================
+      
+      if (dataset ==  "Luca2021"){
+        
+        cell <- c( "B.S01 ", "B.S02 ", "B.S03 ", "B.S04 ", "B.S05 ", 
+                   "Plasma.S01" ,  "Plasma.S02 ", "Plasma.S03 ", "Plasma.S04 ", 
+                   "Plasma.S05 ", "Plasma.S06",
+                   "CD4 T.S01 ", "CD4 T.S02 ", "CD4 T.S03","CD4 T.S04 ", 
+                   "CD4 T.S05 ", "CD4 T.S06 ", "CD4 T.S07 ", 
+                   "CD8 T.S01 ", "CD8 T.S02 ", "CD8 T.S03 ", 
+                   "NK.S01 ", "NK.S02 ", "NK.S03 ", "NK.S04 ", "NK.S05 ", 
+                   "DC.S01" , "DC.S02 ", "DC.S03 ", "DC.S04 ", "DC.S05 ", 
+                   "DC.S06 ", "DC.S07 ", "DC.S08 ", 
+                   "Mono/Macro.S01 ", "Mono/Macro.S02",  "Mono/Macro.S03 ", 
+                   "Mono/Macro.S04 ", "Mono/Macro.S05 ", "Mono/Macro.S06 ", 
+                   "Mono/Macro.S07 ", "Mono/Macro.S08 ", "Mono/Macro.S09 ",
+                   "Mast.S01 ", "Mast.S02 ", "Mast.S03 ", 
+                   "Mast.S04 ", "Mast.S05 ", "Mast.S06 ", 
+                   "Neutrophil.S01",  "Neutrophil.S02 ", "Neutrophil.S03 ", 
+                   
+                   "Epithelial.S01 ", "Epithelial.S02 ", "Epithelial.S03 ", 
+                   "Epithelial.S04 ", "Epithelial.S05", "Epithelial.S06 ", 
+                   "Endo.S01", "Endo.S02 ", "Endo.S04 ", "Endo.S05 ", 
+                   "Fibroblast.S01 ", "Fibroblast.S02 ", 
+                   "Fibroblast.S03 ", "Fibroblast.S04 ", "Fibroblast.S05 ", 
+                   "Fibroblast.S06 ", "Fibroblast.S08"
+        )
+        group <- c(rep("B Cell", 5),
+                   rep("Plasma Cell", 6),
+                   rep("CD4 T Cell", 7),
+                   rep("CD8 T Cell", 3),
+                   rep("NK Cell", 5),
+                   rep("DC", 8),
+                   rep("Mononuclear phagocyte system", 9),
+                   rep("Mast Cells", 6),
+                   rep("Neutrophil", 3),
+                   rep("Epithelial Cells", 6),
+                   rep("Endothelial Cells", 4), 
+                   rep("Fibroblast", 7))
+        
+        geneset <- Ann_dec_list$Luca2021
+        att <- data.frame(row.names =cell,group=group)
+        node <- table(geneset$CellType) %>% 
+          data.frame(row.names = 1) %>% 
+          merge(att,by=0)
+        names(node) <- c("Key", "No.Markers", "Group")
+        
+        
+        
+        if(sum(selected %in% cell) == 0) {
+          stop('No Cell Type were found in Luca2021. Please choose "Other" and defined your groups')
+        }
+      }
+    # "Tirosh2016" =============================================================
+    if (dataset == "Tirosh2016"){
+      
+      cell <- c("B"  ,"T", "Macrophage"  ,
+                "Endo","CAF",
+                "Melanoma"  )
       
       group <- c(rep("TIL", 3),
-                 rep("Skin Immune", 6),
-                 rep("Skin Tissue",9),
-                 rep("Cancer", 2))
+                 rep("Stroma", 2),
+                 rep("Cancer", 1))
+     
       
       geneset <- Ann_melanoma_TME
       att <- data.frame(row.names =cell,group=group)
@@ -284,11 +406,11 @@ TimiCellNetwork<-  function(resdata = NULL,
       names(node) <- c("Key", "No.Markers", "Group")
       
       if(sum(selected %in% cell) == 0) {
-        stop('No Cell Type were found in Hughes2020_Tirosh2016. Please choose "Other" and defined your groups')
+        stop('No Cell Type were found in Tirosh2016. Please choose "Other" and defined your groups')
       }
       
     }
-    
+    # "Zheng2021" ==============================================================
     if (dataset == "Zheng2021"){
       cell <- c("CD4+Tn",              "CD4+CXCR5+ pre-Tfh" ,
                 "CD4+ADSL+ Tn"  ,      "CD4+IL7R- Tn",      "CD4+TNF+ T",
@@ -353,16 +475,18 @@ TimiCellNetwork<-  function(resdata = NULL,
 ##' Generate gene network files for Cytoscape
 ##' 
 ##' It generates three files that can be used to build network in Cytoscape:
-##' 1. network files: simple interaction file (network.sif);
-##' 2. node attributes (node.txt);
-##' 3. edge attributes (edge.txt).
+##' 1. network files: simple interaction file (gene_network.sif);
+##' 2. node attributes (gene_node.txt);
+##' 3. edge attributes (gene_edge.txt).
 ##' The function also returns a list of above files that can be modified in R.
 ##'
 ##' @param resdata TimiGP cox result generated from TimiCOX
 ##' @param select a character vector of selected gene pairs according to rownames in resdata. 
-##' Default selection is all statistically significantly enriched cell pairs(adjusted p value < 0.05).
+##' Default selection is all functional interactions(adjusted p value < 0.05).
 ##' @param dataset a value in one of 
-##' c("Bindea2013_Cancer","Immune3", "Hughes2020_Tirosh2016","Zheng2021","Other")
+##' c("Bindea2013_Cancer","Immune3", 
+##' "Newman2015", "Aran2017", "Luca2021",
+##' "Tirosh2016","Zheng2021","Other")
 ##' The first four options include default group and color settings. 
 ##' If you use other dataset or want to change group and colors, 
 ##' please choose "Other".
@@ -380,7 +504,7 @@ TimiCellNetwork<-  function(resdata = NULL,
 ##' \dontrun{
 ##'   data(Bindea2013c_COX_MP_SKCM06)
 ##'   cox_res <- Bindea2013c_COX_MP_SKCM06
-##'   NET <- TimiGeneNetwork(resdata = cox_res,dataset = "Bindea2013_Cancer")
+##'   NET <- TimiGeneNetwork(resdata = cox_res,dataset = "Bindea2013_Cancer",export=T,path="./")
 ##' }
 ##' @author Chenyang Skylar Li
 
@@ -390,19 +514,19 @@ TimiGeneNetwork<-  function(resdata = NULL,
                             geneset = NULL,
                             export = TRUE,
                             path = NULL){
-  # Examine required parameters
+  # Examine required parameters ################################################
   if (is.null(resdata)){
     stop('The parameter "resdata" is required.')
   }
   
   if (is.null(dataset)){
-    stop('The parameter "dataset" is required. Please choose one of c("Bindea2013_Cancer","Immune3", "Hughes2020_Tirosh2016","Zheng2021","Other")')
-  } else if(sum(dataset %in% c("Bindea2013_Cancer","Immune3", "Hughes2020_Tirosh2016","Zheng2021","Other")) == 0){
-    stop('Please choose one of c("Bindea2013_Cancer","Immune3", "Hughes2020_Tirosh2016","Zheng2021","Other")')
+    stop('The parameter "dataset" is required. Please choose one of c("Bindea2013_Cancer","Immune3", "Newman2015", "Aran2017", "Luca2021","Tirosh2016","Zheng2021","Other")')
+  } else if(sum(dataset %in% c("Bindea2013_Cancer","Immune3", "Newman2015", "Aran2017", "Luca2021","Tirosh2016","Zheng2021","Other")) == 0){
+    stop('Please choose one of c("Bindea2013_Cancer","Immune3", "Newman2015", "Aran2017", "Luca2021","Tirosh2016","Zheng2021","Other")')
     
   }
   
-  # selection
+  # selection##################################################################
   if (is.null(select)) {
     se.r <- which(resdata$QV < 0.05)
     
@@ -419,7 +543,7 @@ TimiGeneNetwork<-  function(resdata = NULL,
     resdata <- resdata[se.r, ]
   }
   
-  # Generate network file
+  # Generate network file######################################################
   xx <- row.names(resdata)
   tmp <- unlist(strsplit(xx, "_"))
   nn <- length(xx)
@@ -433,7 +557,7 @@ TimiGeneNetwork<-  function(resdata = NULL,
   net <- net[c("Source","Interaction", "Target")]
 
   
-  # Generate edge file
+  # Generate edge file##########################################################
   edge <- resdata
   edge$Key <- paste0(edge$Favorable.Gene, " (TimiGP) ", edge$Unfavorable.Gene)
   edge <- edge[c(ncol(edge),1:(ncol(edge)-1))]
@@ -496,11 +620,48 @@ TimiGeneNetwork<-  function(resdata = NULL,
       
     }
     
-    if (dataset == "Hughes2020_Tirosh2016"){
+    if (dataset == "Newman2015"){
+      
+      geneset <- Ann_dec_list$Newman2015
+      if(sum(selected %in% geneset[,2] ) == 0) {
+        stop('No Gene were found in Newman2015. Please choose "Other" and use your geneset')
+      } else {
+        se <- which(geneset[,2] %in% selected)
+        node <- geneset[se,]
+      }
+      
+    }
+    
+    if (dataset == "Aran2017"){
+      
+      geneset <- Ann_dec_list$Aran2017
+      if(sum(selected %in% geneset[,2] ) == 0) {
+        stop('No Gene were found in Aran2017. Please choose "Other" and use your geneset')
+      } else {
+        se <- which(geneset[,2] %in% selected)
+        node <- geneset[se,]
+      }
+      
+      
+    }
+    
+    if (dataset == "Luca2021"){
+      
+      geneset <- Ann_dec_list$Luca2021
+      if(sum(selected %in% geneset[,2] ) == 0) {
+        stop('No Gene were found in Luca2021. Please choose "Other" and use your geneset')
+      } else {
+        se <- which(geneset[,2] %in% selected)
+        node <- geneset[se,]
+      }
+      
+    }
+    
+    if (dataset == "Tirosh2016"){
       
       geneset <- Ann_melanoma_TME
       if(sum(selected %in% geneset[,2] ) == 0) {
-        stop('No Gene were found in Hughes2020_Tirosh2016. Please choose "Other" and use your geneset')
+        stop('No Gene were found in Tirosh2016. Please choose "Other" and use your geneset')
       } else {
         se <- which(geneset[,2] %in% selected)
         node <- geneset[se,]
@@ -512,7 +673,7 @@ TimiGeneNetwork<-  function(resdata = NULL,
       
       geneset <- Ann_Tcell
       if(sum(selected %in% geneset[,2] ) == 0) {
-        stop('No Gene were found in Hughes2020_Tirosh2016. Please choose "Other" and use your geneset')
+        stop('No Gene were found in Tirosh2016. Please choose "Other" and use your geneset')
       } else {
         se <- which(geneset[,2] %in% selected)
         node <- geneset[se,]

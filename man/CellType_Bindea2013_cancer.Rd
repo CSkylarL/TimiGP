@@ -5,7 +5,7 @@
 \alias{CellType_Bindea2013_cancer}
 \title{Cell Type generated from Bindea2013 with cancer cells}
 \format{
-A data frame with 579 rows and 3 variables:
+A data frame with 545 rows and 3 variables:
 \describe{
   \item{CellType}{Immune cell type and cancer cell type}
   \item{Gene}{Marker gene of the cell type}

@@ -3,9 +3,9 @@
 \docType{data}
 \name{melanoma_TME_COX_MP_SKCM06}
 \alias{melanoma_TME_COX_MP_SKCM06}
-\title{COX regression Results from function TimiCOX with cell type meaker annotated by Hughes2020_Tirosh2016_melanoma_TME}
+\title{COX regression Results from function TimiCOX with cell type meaker annotated by Tirosh2016_melanoma_TME}
 \format{
-A data frame with 153735 rows and 3 variables:
+A data frame with 73536 rows and 3 variables:
 \describe{
   \item{Row name}{Marker pair}
   \item{HR}{Hazard.Ratio}

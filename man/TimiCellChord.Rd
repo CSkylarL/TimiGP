@@ -15,12 +15,13 @@ TimiCellChord(
 \arguments{
 \item{resdata}{TimiGP enrichment result generated from TimiEnrich}
 
-\item{select}{a numeric vector of selected cell pairs according to "Index" column in resdata. 
-Default selection is all statistically significantly enriched cell pairs(adjusted p value < 0.05).}
+\item{select}{a numeric vector of selected cell interactions according to "Index" column in resdata. 
+Default selection is all functional interactions(adjusted p value < 0.05).}
 
 \item{dataset}{a value in one of 
-c("Bindea2013","Bindea2013_Cancer","Charoentong2017", 
-"Hughes2020_Tirosh2016","Zheng2021","Xu2018","Other"). 
+c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Xu2018"
+,"Newman2015", "Aran2017", "Luca2021",
+"Tirosh2016","Zheng2021","Other"). 
 The first four options include default group and color settings. 
 If you use other dataset or want to change group and colors, 
 please choose "Other".}
@@ -35,9 +36,9 @@ whose names are the all favorable and unfavorable cells types in selection.}
 Chord diagram of Cell Interaction
 }
 \description{
-Chord diagram reveals the cell interaction(cell pair) associated with good prognosis.
+Chord diagram reveals the functional interaction network.
 The arrow points from favorable cell type A to unfavorable cell type B, 
-which denotes that high A-to-B ratio associated with a good prognosis.
+which denotes that function of A greater than B associated with a good prognosis.
 The width of the arrow represents -log10(Adjust.P.Value),namely,
 the wider the arrow is, the smaller the adjusted p-value is.
 }

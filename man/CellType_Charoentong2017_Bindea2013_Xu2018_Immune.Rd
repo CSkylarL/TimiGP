@@ -5,7 +5,7 @@
 \alias{CellType_Charoentong2017_Bindea2013_Xu2018_Immune}
 \title{Immune Cell Type generated from Charoentong2017, Bindea2013, Xu2018}
 \format{
-A data frame with 1409 rows and 3 variables:
+A data frame with 1375 rows and 3 variables:
 \describe{
   \item{CellType}{Immune cell type}
   \item{Gene}{Marker gene of the cell type}

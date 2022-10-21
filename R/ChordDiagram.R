@@ -1,17 +1,18 @@
 ##' Chord diagram of Cell Interaction
 ##' 
-##' Chord diagram reveals the cell interaction(cell pair) associated with good prognosis.
+##' Chord diagram reveals the functional interaction network.
 ##' The arrow points from favorable cell type A to unfavorable cell type B, 
-##' which denotes that high A-to-B ratio associated with a good prognosis.
+##' which denotes that function of A greater than B associated with a good prognosis.
 ##' The width of the arrow represents -log10(Adjust.P.Value),namely,
 ##' the wider the arrow is, the smaller the adjusted p-value is.
 ##'
 ##' @param resdata TimiGP enrichment result generated from TimiEnrich
-##' @param select a numeric vector of selected cell pairs according to "Index" column in resdata. 
-##' Default selection is all statistically significantly enriched cell pairs(adjusted p value < 0.05).
+##' @param select a numeric vector of selected cell interactions according to "Index" column in resdata. 
+##' Default selection is all functional interactions(adjusted p value < 0.05).
 ##' @param dataset a value in one of 
-##' c("Bindea2013","Bindea2013_Cancer","Charoentong2017", 
-##' "Hughes2020_Tirosh2016","Zheng2021","Xu2018","Other"). 
+##' c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Xu2018"
+##' ,"Newman2015", "Aran2017", "Luca2021",
+##' "Tirosh2016","Zheng2021","Other"). 
 ##' The first four options include default group and color settings. 
 ##' If you use other dataset or want to change group and colors, 
 ##' please choose "Other".
@@ -38,40 +39,40 @@ TimiCellChord<-  function(resdata = NULL,
                         dataset = NULL,
                         group = NULL,
                         color = NULL){
-   # Examine required parameters
+   # Examine required parameters ###############################################
   if (is.null(resdata)){
     stop('The parameter "resdata" is required.')
   }
   if (is.null(dataset)){
-    stop('The parameter "dataset" is required. Please choose one of c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Hughes2020_Tirosh2016","Zheng2021","Xu2018","Other")')
-  } else if(sum(dataset %in% c("Bindea2013","Bindea2013_Cancer","Charoentong2017","Hughes2020_Tirosh2016","Zheng2021","Xu2018","Other")) == 0){
-    stop('Please choose one of c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Hughes2020_Tirosh2016","Zheng2021","Xu2018","Other")')
+    stop('The parameter "dataset" is required. Please choose one of c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Xu2018","Newman2015", "Aran2017", "Luca2021", "Tirosh2016","Zheng2021","Other")')
+  } else if(sum(dataset %in% c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Xu2018","Newman2015", "Aran2017", "Luca2021", "Tirosh2016","Zheng2021","Other")) == 0){
+    stop('Please choose one of c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Xu2018","Newman2015", "Aran2017", "Luca2021", "Tirosh2016","Zheng2021","Other")')
     
   }
-   # -log10(adjust.P.Value)
+   # -log10(adjust.P.Value) ####################################################
   
   resdata$rev.p.adj <- -log10(resdata$Adjust.P.Value+1e-300)
   
-  # selection
+  # selection ##################################################################
   if (is.null(select)) {
     se.c <- c("Favorable.Cell.Type", "Unfavorable.Cell.Type", "rev.p.adj")
     se.r <- which(resdata$Adjust.P.Value < 0.05)
     
     if (length(se.r) < 5){
-      stop('There are less than 5 significant cell pairs.')
+      stop('There are less than 5 functional interactions.')
     } else {
-      message('Using all significant cell pairs(Adjested P.Value < 0.05)')
+      message('Using all functional interactions(Adjested P.Value < 0.05)')
       p.data <- resdata[se.r, se.c]
     }
     
   } else {
-    message('Using selected cell pairs')
+    message('Using selected cell interactions')
     se.c <- c("Favorable.Cell.Type", "Unfavorable.Cell.Type", "rev.p.adj")
     se.r <- which(resdata$Index %in%  select)
     p.data <- resdata[se.r, se.c]
   }
     
-  # Default group and color setting for internal cell type annotations  
+  # Default group and color setting for internal cell type annotations #########  
   selected <- unique(c(p.data$Unfavorable.Cell.Type, p.data$Favorable.Cell.Type))
   
   if (dataset == "Other"){
@@ -101,9 +102,9 @@ TimiCellChord<-  function(resdata = NULL,
       if(!is.null(color)){
         warning('Using default colors. If you have self-defined color, please set dataset = "Other"')
       }
-      
+    # "Bindea2013" =============================================================
       if (dataset == "Bindea2013"){
-        if(length(grep(selected,pattern = "Cancer cells",ignore.case=TRUE)) == 1) {
+        if(length(grep(selected,pattern = "Tumor",ignore.case=TRUE)) == 1) {
           stop('You should set dataset = "Bindea2013_Cancer"')
         }
         
@@ -147,7 +148,8 @@ TimiCellChord<-  function(resdata = NULL,
         
       }
       
-      
+    # "Bindea2013_Cancer" ======================================================
+    
       if (dataset == "Bindea2013_Cancer"){
         
         cell <- c("B", 
@@ -192,7 +194,7 @@ TimiCellChord<-  function(resdata = NULL,
           stop('No Cell Type were found in Bindea2013_Cancer. Please choose "Other" and defined your groups and colors ')
         }
       }
-      
+      # "Charoentong2017" ======================================================
       if (dataset == "Charoentong2017"){
         cell <- c("iB", "aB" , "Memory B",
                   "Th1" ,"Th2", "Th17" ,
@@ -243,7 +245,7 @@ TimiCellChord<-  function(resdata = NULL,
         }
       }
       
-      
+    # "Xu2018" =================================================================
       if (dataset == "Xu2018"){
         cell <- c("B",
                   "T" , "CD4 T", "CD8 T",
@@ -284,20 +286,270 @@ TimiCellChord<-  function(resdata = NULL,
         
       }
       
-      if (dataset == "Hughes2020_Tirosh2016"){
-        cell <- c("TI B"  ,"TI T", "TI Macrophage"  ,
-                  "Skin B"  ,"Skin Plasma"  ,"Skin T" ,
-                  "Skin Myeloid"  ,"Langerhans" ,"Skin Mast" ,
-                  "Endo","LEC"  ,
-                  "Fibroblast","Hair follicle"  ,"Keratinocyte",
-                  "Schwann" ,"Sebocyte"  ,
-                  "VSMC" , "Melanocyte",
-                  "Melanoma"  ,"CAF")
+    # "Newman2015" ======================================================
+    
+    if (dataset == "Newman2015"){
+      
+      cell <- c("Bn", "Bm", "Plasma" ,
+                "CD8 T" ,"CD4 Tn","Tfh",  "Treg", "rCD4 Tm", "aCD4 Tm" , "Tgd" ,
+                "rNK", "aNK",
+                "rDC", "aDC",
+                "M0",   "M1",   "M2" , "Monocyte",
+                "Neutrophil", "rMast" ,"aMast", "Eosinophil" )
+      group <- c(rep("B Cell", 3),
+                 rep("T Cell", 7),
+                 rep("NK Cell", 2),
+                 rep("DC", 2),
+                 rep("Mononuclear phagocyte system", 4),
+                 rep("Granulocytes", 4))
+      
+      
+      names(group) <- cell
+      color <- c("#66c2a4",
+                 "#2ca25f",
+                 "#006d2c",
+                 "#dadaeb","#fcc5c0",
+                 "#bcbddc","#fa9fb5",
+                 "#9e9ac8","#f768a1",
+                 "#807dba",
+                 "#4eb3d3",
+                 "#2b8cbe",
+                 "#1d91c0",
+                 "#225ea8",
+                 "#fed976",
+                 "#feb24c",
+                 "#ec7014",
+                 "#cc4c02",
+                 "#fc4e2a",
+                 "#e31a1c",
+                 "#bd0026",
+                 "#800026")
+      
+      names(color) <- cell
+      if(sum(selected %in% cell) == 0) {
+        stop('No Cell Type were found in Newman2015. Please choose "Other" and defined your groups and colors ')
+      }
+    }
+    
+    # "Aran2017" ======================================================
+    
+    if (dataset == "Aran2017"){
+      
+      cell <- c("pro B-cell", "B", "Bn" , "Plasma" , "Bm","csBm" ,
+                "CD4 T" , "CD8 T","CD4 Tn", "CD8 Tn",  "Th1", "Th2", "Treg", 
+                "CD4 Tm", "CD4 Tem" ,"CD8 Tem",  "CD4 Tcm" , "CD8 Tcm", "Tgd", "NKT" ,
+                "NK",
+                "DC", "iDC", "cDC" ,  "aDC", "pDC" ,
+                "Macrophage" ,  "M1",  "M2", "Monocyte" ,
+                "Neutrophil" ,"Mast", "Eosinophil", "Basophil" ,
+                "Endo", "LEC","MEC", "Fibroblast", "Pericyte" ,
+                "Epithelial", "MSC" ,"Adipocyte", "Preadipocyte",
+                "HSC", "CLP", "CMP", "GMP",  "MEP",  "MPP"  ,  
+                "Megakaryocyte","Erythrocyte", "Platelet",
+                "Neuron", "Astrocyte", "Chondrocyte", "Osteoblast", "Keratinocyte" ,
+                "Hepatocyte",  "Melanocyte","Sebocyte", "Mesangial",  "Myocyte",
+                "Skeletal muscle", "Smooth muscle"  
+      )
+      group <- c(rep("B Cell", 6),
+                 rep("T Cell", 14),
+                 rep("NK Cell", 1),
+                 rep("DC", 5),
+                 rep("Mononuclear phagocyte system", 4),
+                 rep("Granulocytes", 4),
+                 rep("Epithelial & Stromal Cells", 9), 
+                 rep("Stem Cells", 9), 
+                 rep("Tissue Specific Cells", 12))
+      
+      
+      
+      
+      names(group) <- cell
+      color <- c("#ccece6",
+                 "#99d8c9",
+                 "#66c2a4",
+                 "#41ae76",
+                 "#238b45",
+                 "#006d2c",
+                 "#dadaeb","#fcc5c0",
+                 "#bcbddc","#fa9fb5",
+                 "#9e9ac8","#f768a1",
+                 "#807dba","#dd3497",
+                 "#6a51a3","#ae017e",
+                 "#54278f","#7a0177",
+                 "#3f007d","#49006a",
+                 "#4eb3d3",
+                 "#0868ac",
+                 "#1d91c0",
+                 "#225ea8",
+                 "#253494",
+                 "#081d58",
+                 "#fed976",
+                 "#feb24c",
+                 "#ec7014",
+                 "#cc4c02",
+                 "#fc4e2a",
+                 "#e31a1c",
+                 "#bd0026",
+                 "#800026",
+                 "#DCDCDC",
+                 "#D3D3D3",
+                 "#C0C0C0",
+                 "#A9A9A9",
+                 "#808080",
+                 "#696969",
+                 "#778899",
+                 "#708090",
+                 "#000000",
+                 "#fdae6b", "#fcc5c0",
+                 "#fd8d3c", "#fa9fb5",
+                 "#f16913", "#f768a1",
+                 "#d94801", "#dd3497",
+                 "#a63603", 
+                 "#FFFFCC",
+                 "#FFFACD",
+                 "#FAFAD2",
+                 "#FFEFD5",
+                 "#FFFF99",
+                 "#FFFF66",
+                 "#FFFF33",
+                 "#FFFF00",
+                 "#BDB76B",
+                 "#CCCC00",
+                 "#999900",
+                 "#666600")
+      
+      names(color) <- cell
+      if(sum(selected %in% cell) == 0) {
+        stop('No Cell Type were found in Aran2017. Please choose "Other" and defined your groups and colors ')
+      }
+    }
+    # "Luca2021" ======================================================
+    
+    if (dataset == "Luca2021"){
+      
+      cell <- c( "B.S01","B.S02","B.S03","B.S04","B.S05", 
+                "Plasma.S01" , "Plasma.S02","Plasma.S03","Plasma.S04", 
+                "Plasma.S05","Plasma.S06",
+                "CD4 T.S01","CD4 T.S02","CD4 T.S03","CD4 T.S04", 
+                "CD4 T.S05","CD4 T.S06","CD4 T.S07", 
+                "CD8 T.S01","CD8 T.S02","CD8 T.S03", 
+                "NK.S01","NK.S02","NK.S03","NK.S04","NK.S05", 
+                "DC.S01" ,"DC.S02","DC.S03","DC.S04","DC.S05", 
+                "DC.S06","DC.S07","DC.S08", 
+                "Mono/Macro.S01","Mono/Macro.S02", "Mono/Macro.S03", 
+                "Mono/Macro.S04","Mono/Macro.S05","Mono/Macro.S06", 
+                "Mono/Macro.S07","Mono/Macro.S08","Mono/Macro.S09",
+                "Mast.S01","Mast.S02","Mast.S03", 
+                "Mast.S04","Mast.S05","Mast.S06", 
+                "Neutrophil.S01", "Neutrophil.S02","Neutrophil.S03", 
+                "Epithelial.S01","Epithelial.S02","Epithelial.S03", 
+                "Epithelial.S04","Epithelial.S05","Epithelial.S06", 
+                "Endo.S01","Endo.S02","Endo.S04","Endo.S05", 
+                "Fibroblast.S01","Fibroblast.S02", 
+                "Fibroblast.S03","Fibroblast.S04","Fibroblast.S05", 
+                "Fibroblast.S06","Fibroblast.S08"
+      )
+      group <- c(rep("B Cell", 5),
+                 rep("Plasma Cell", 6),
+                 rep("CD4 T Cell", 7),
+                 rep("CD8 T Cell", 3),
+                 rep("NK Cell", 5),
+                 rep("DC", 8),
+                 rep("Mononuclear phagocyte system", 9),
+                 rep("Mast Cells", 6),
+                 rep("Neutrophil", 3),
+                 rep("Epithelial Cells", 6),
+                 rep("Endothelial Cells", 4), 
+                 rep("Fibroblast", 7))
+      
+      
+      
+      
+      names(group) <- cell
+      color <- c("#ccece6",
+                 "#7bccc4",
+                 "#99d8c9",
+                 "#66c2a4",
+                 "#41ae76",
+                 "#c7e9c0",
+                 "#a1d99b",
+                 "#74c476",
+                 "#41ab5d",
+                 "#238b45",
+                 "#006d2c",
+                 "#efedf5",
+                 "#dadaeb",
+                 "#bcbddc",
+                 "#9e9ac8",
+                 "#807dba",
+                 "#6a51a3",
+                 "#54278f",
+                 "#3f007d",
+                 "#88419d",
+                 "#810f7c",
+                 "#4d004b",
+                 "#4eb3d3",
+                 "#2b8cbe",
+                 "#0868ac",
+                 "#084081",
+                 "#deebf7",
+                 "#c6dbef",
+                 "#9ecae1",
+                 "#6baed6",
+                 "#4292c6",
+                 "#2171b5",
+                 "#08519c",
+                 "#08306b",
+                 "#fff5eb",
+                 "#fee6ce",
+                 "#fdd0a2",
+                 "#fdae6b",
+                 "#fd8d3c",
+                 "#f16913",
+                 "#d94801",
+                 "#a63603",
+                 "#7f2704",
+                 "#fff5f0",
+                 "#fee0d2",
+                 "#fcbba1",
+                 "#fc9272",
+                 "#fb6a4a",
+                 "#ef3b2c",
+                 "#cb181d",
+                 "#a50f15",
+                 "#67000d",
+                 "#fde0dd",
+                 "#fcc5c0",
+                 "#fa9fb5",
+                 "#f768a1",
+                 "#dd3497",
+                 "#ae017e",
+                 "#df65b0",
+                 "#e7298a",
+                 "#ce1256",
+                 "#980043",
+                 "#f0f0f0",
+                 "#d9d9d9",
+                 "#bdbdbd",
+                 "#969696",
+                 "#737373",
+                 "#525252",
+                 "#252525")
+      
+      names(color) <- cell
+      if(sum(selected %in% cell) == 0) {
+        stop('No Cell Type were found in Luca2021. Please choose "Other" and defined your groups and colors ')
+      }
+    }  
+    # "Tirosh2016" ===========================================================
+      if (dataset == "Tirosh2016"){
+        cell <- c("B"  ,"T", "Macrophage"  ,
+                  "Endo","CAF",
+                  "Melanoma"  )
         
         group <- c(rep("TIL", 3),
-                   rep("Skin Immune", 6),
-                   rep("Skin Tissue",9),
-                   rep("Cancer", 2))
+                   rep("Stroma", 2),
+                   rep("Cancer", 1))
         
         names(group) <- cell
         
@@ -305,27 +557,16 @@ TimiCellChord<-  function(resdata = NULL,
                    "#756bb1",
                    "#54278f",
                    
-                   "#9ecae1",
-                   "#6baed6",
-                   "#4292c6",
-                   "#2171b5",
-                   "#08519c",
-                   "#08306b",
-                   
                    "#fdae6b", "#fcc5c0",
-                   "#fd8d3c", "#fa9fb5",
-                   "#f16913", "#f768a1",
-                   "#d94801", "#dd3497",
-                   "#a63603",
-                   "#969696",
-                   "#525252")
+
+                   "#969696")
         names(color) <- cell
         if(sum(selected %in% cell) == 0) {
-          stop('No Cell Type were found in Hughes2020_Tirosh2016. Please choose "Other" and defined your groups and colors ')
+          stop('No Cell Type were found in Tirosh2016. Please choose "Other" and defined your groups and colors ')
         }
         
       }
-      
+      # "Zheng2021" ============================================================
       if (dataset == "Zheng2021"){
         cell <- c("CD4+Tn",              "CD4+CXCR5+ pre-Tfh" ,
                   "CD4+ADSL+ Tn"  ,      "CD4+IL7R- Tn",      "CD4+TNF+ T",
@@ -420,12 +661,12 @@ TimiCellChord<-  function(resdata = NULL,
 ##' the expression of F greater than that of U is associated with a good prognosis.
 ##'
 ##' @param resdata TimiGP enrichment result generated from TimiEnrich
-##' @param select a numeric value of selected cell pairs according to "Index" column. 
-##' Default selection is the top 1 cell pair.
+##' @param select a numeric value of selected cell interactions according to "Index" column. 
+##' Default selection is the top 1 cell interaction.
 ##' @param color a vector of self-defined marker colors, 
 ##' whose names are the enriched markers
-##' (not pair,you need to split the genes in Shared.Marker.Pair column) 
-##' in selected cell pair. 
+##' (not pair,you need to split the genes in Shared.IMGP column) 
+##' in selected cell interaction. 
 ##' @return Chord diagram of Gene Interaction
 ##' @import circlize
 ##' @import RColorBrewer
@@ -447,15 +688,16 @@ TimiGeneChord<-  function(resdata = NULL,
   if (is.null(resdata)){
     stop('The parameter "resdata" is required.')
   }
+  
   # selction
   if (length(select) >1){
-    stop('Please only choose 1 cell pair at one time')
+    stop('Please only choose 1 cell interaction at one time')
   } else if (select > max(resdata$Index)){
-    stop('There are only ',max(resdata$Index),' cell pairs')
+    stop('There are only ',max(resdata$Index),' cell interactions')
   } else {
     se.idx <- which(resdata$Index == select)
     
-    xx <- unlist(strsplit(resdata$Shared.Marker.Pair[se.idx ], split = "/"))
+    xx <- unlist(strsplit(resdata$Shared.IMGP[se.idx ], split = "/"))
     xx <- unlist(strsplit(xx, split = "_"))
     favorable.gene <- xx[seq(1,length(xx),2)]
     unfavorable.gene <- xx[seq(2,length(xx),2)]
@@ -480,11 +722,14 @@ TimiGeneChord<-  function(resdata = NULL,
     
     color <- c(fav.col,unfav.col)
   } else if (length(color) != length(unique(c(p.data[,1],p.data[,2])))) {
-    stop('The number of colors are different of unique markers enriched in the given cell pair')
+    stop('The number of colors are different of unique markers enriched in the given cell interaction')
   } else {
     message('Using self-defined color')
   }
   # plot
+  PV.label <- round(resdata$Adjust.P.Value,3)
+  PV.label <- ifelse(PV.label < 0.001, "< 0.001",paste0("= ", PV.label))
+  
   circos.clear()
   circos.par(start.degree = 180, clock.wise = T,
              cell.padding = c(0, 0, 0, 0))
@@ -500,11 +745,7 @@ TimiGeneChord<-  function(resdata = NULL,
                big.gap = 10,
                transparency = 0.4,
                #             scale = T,
-               grid.col = color,
-               #            col = arrow_col,
-               link.sort = TRUE, 
-               link.decreasing = TRUE,
-               link.zindex = rank(p.data$rev.p.adj))
+               grid.col = color)
   
   circos.trackPlotRegion(track.index = 1, panel.fun = function(x, y) {
     xlim = get.cell.meta.data("xlim")
@@ -515,7 +756,10 @@ TimiGeneChord<-  function(resdata = NULL,
                 cex = 0.8)
   }, bg.border = NA)
   
-  title(resdata$Cell.Pair[se.idx])
+  title(
+    paste0(resdata$Cell.Interaction[se.idx],
+           "(Adjusted P-Value ",PV.label[se.idx],")")
+  )
   
   #circos.info()
   circos.clear()

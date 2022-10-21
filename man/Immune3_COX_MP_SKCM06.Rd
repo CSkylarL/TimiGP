@@ -5,7 +5,7 @@
 \alias{Immune3_COX_MP_SKCM06}
 \title{COX regression Results from function TimiCOX with cell type meaker annotated by Charoentong2017_Bindea2013_Xu2018_Immune}
 \format{
-A data frame with 739936 rows and 3 variables:
+A list of 3 data frames
 \describe{
   \item{Row name}{Marker pair}
   \item{HR}{Hazard.Ratio}

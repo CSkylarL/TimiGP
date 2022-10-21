@@ -15,7 +15,7 @@
 ##' @author Chenyang Skylar Li
 TimiBG <- function(marker.pair = NULL){
   
-  # Examine required parameters
+  # Examine required parameters-------------------------------------------------
   if (is.null(marker.pair)){
     stop('The parameter "marker.pair" is required.')
   }
@@ -33,7 +33,7 @@ TimiBG <- function(marker.pair = NULL){
 
 ##' Enrichment Analysis
 ##' 
-##' It identify cell pair associated with favorable prognosis 
+##' It statistically determines the functional interactions
 ##' by performing over-representation(enrichment analysis) 
 ##'
 ##' @param gene a vector of gene symbol
@@ -47,11 +47,11 @@ TimiBG <- function(marker.pair = NULL){
 ##' If using the function for general cell type enrichment analysis, please choose FALSE.
 ##' @import foreach
 ##' @import doParallel
-##' @return A dataframe of enrichment results showing the cell pair associated with favorable prognosis
+##' @return A dataframe of enrichment results including fucntional interactions
 ##' @export 
 ##' @examples
 ##' \dontrun{
-##'   # Generate Cell Pair Annotation: TimiCellPair
+##'   # Generate cell interaction Annotation: TimiCellPair
 ##'   data(CellType_Bindea2013_cancer)
 ##'   geneset <- CellType_Bindea2013_cancer
 ##'   cell_pair <- TimiCellPair(geneset = geneset,core = 20)
@@ -63,7 +63,7 @@ TimiBG <- function(marker.pair = NULL){
 ##'   background <- TimiBG(marker.pair = row.names(cox_res))
 ##'   # Enrichment Analysis: TimiEnrich
 ##'   res <- TimiEnrich(gene = GP, background = background, 
-##'                     geneset = cell_pair, p.adj = "BH",core=20)
+##'                     geneset = cell_pair, p.adj = "BH",core=2)
 ##'   
 ##' }
 ##' @author Chenyang Skylar Li
@@ -74,7 +74,7 @@ TimiEnrich <- function(gene = NULL,
                        p.adj =  NULL,
                        core = 1,
                        pair=TRUE){
-  # examine required parameters
+  # examine required parameters------------------------------------------------
   if (is.null(gene)){
     stop('The parameter "gene" is required.')
   }
@@ -90,7 +90,7 @@ TimiEnrich <- function(gene = NULL,
   # Parallel 
   registerDoParallel(cores=core)
 
-  ## prepare parameter for hypergeometric test
+  ## prepare parameter for hypergeometric test---------------------------------
   ##               Annotated Cell Interaction X->Y | Not Annotated | Row Sum
   ## Prognostic Pair |     k                       |     n-k          |    n
   ## Not Prognostic  |    M-k                      |    N+k-n-m       |
@@ -121,21 +121,21 @@ TimiEnrich <- function(gene = NULL,
     ## are annotated to the gene set.
     k_gene <- gene[which(gene %in% M_gene)]
     k <- length(k_gene)
-    data.frame("Cell.Pair" = ann[i],
-               "No.Total.Marker.Pair" = M, 
-               "No.Shared.Marker.Pair" = k, 
+    data.frame("Cell.Interaction" = ann[i],
+               "No.Total.IMGP" = M, 
+               "No.Shared.IMGP" = k, 
                "Enrichment.Ratio" = round(k*N/M/n,3), 
                "P.Value" = phyper(k-1, M, N-M, n, lower.tail=FALSE), 
-               "Shared.Marker.Pair" =  paste(k_gene,collapse="/"),
-               "Total.Marker.Pair" = paste(M_gene,collapse="/"))             
+               "Shared.IMGP" =  paste(k_gene,collapse="/"),
+               "Total.IMGP" = paste(M_gene,collapse="/"))             
   }
-  ## P adjust
+  ## P adjust------------------------------------------------------------------
   res$Adjust.P.Value <- p.adjust(res$P.Value, method=p.adj)
   res$Rank <- rank(res$Adjust.P.Value,ties.method = "min")
   res <- res[order(res$Adjust.P.Value), ]
   res$Index <- 1:nrow(res)
   if (pair == TRUE){
-    xx <- unlist(strsplit(res$Cell.Pair,split = "_"))
+    xx <- unlist(strsplit(res$Cell.Interaction,split = "_"))
     res$Favorable.Cell.Type <- xx[seq(1,length(xx),2)]
     res$Unfavorable.Cell.Type <- xx[seq(2,length(xx),2)]
     res <- res[, c(10,9,1,11:12,2:5,8,6:7)]
