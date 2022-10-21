@@ -1,27 +1,38 @@
 # TimiGP
-TimiGP: Tumor Immune Microenvironment Illustration based on Gene Pairing.
+
 An R package to infer cell interactions and clinical values in tumor immune microenvironment through gene pairs.
 ### Background 
-The immune cell co-infiltration sometimes causes **Prognostic Bias**, which makes existing transcriptome-based cell-type quantification methods challenging to identify the biological and clinical values. The below figure demonstrates the prognostic bias in metastatic melanoma: almost all cell types inferred by 8 popular methods are associated with favorable prognosis
+The immune cell co-infiltration sometimes causes `**Prognostic Bias**`, which makes existing transcriptome-based cell-type quantification methods challenging to identify the biological and clinical values. The below figure demonstrates the prognostic bias in metastatic melanoma: almost all cell types inferred by 8 popular methods are associated with favorable prognosis
 
 ![Fig1A](/assets/images/Fig1A.png)
 
 ### Rationale
 
-As the representative schema shown above, the absolute infiltration of immune effectors and suppressors are positively correlated and therefore have the same impact on prognosis. One solution is to consider the pairwise relation betwen celss. For example, relative abundance enables us to capture subtle differences between them and reveal the prognostic values of those cells in line with their biological functions. 
-![Fig1E](/assets/images/Fig1E.png)
-Based on this analysis and the charastics of immune system, we propose a novel concept, **Functinoal Interaction**, to investigate Tumor Immune Microenvironment by Gene Pairs. Considering the dynamic balance of immune system
+As the representative schema shown above, the absolute infiltration of immune effectors and suppressors are positively correlated and therefore have the same impact on prognosis. One solution is to consider the pairwise relation betwen celss. For example, relative abundance enables us to capture subtle differences between them and reveal the prognostic values of those cells in line with their biological functions(left). 
+Based on this analysis and the charastics of immune system, we propose a novel concept, `**Functinoal Interaction**`, to investigate Tumor Immune Microenvironment(TIME) by Gene Pairs. The tumor immune microenvironment(TIME) is a balance between anti-tumor and pro-tumor immune cells. If the function of anti-tumor cell types is more vital than the pro-tumor cells (e.g., higher abundance, higher marker expression), the TIME is associated with favorable patients’ prognosis; otherwise, it is associated with unfavorable patients’ prognosis.
 
-
-
-developed a novel method TimiGP, Tumor Immune Microenvironment Illustration based on Gene Pairing.
+![Fig1E](/assets/images/Fig1E_S11.png)
 
 ### TimiGP framework
+Based on the rationale, we developed a novel method, `**TimiGP, Tumor Immune Microenvironment Illustration based on Gene Pairing**`. Below is the **Overview of TimiGP framework**.
 ![Overview of TimiGP framework](/assets/images/Fig2.png)
-
+`**Inputs**`
+ 1. Transcriptomic profile of immune marker genes(IMGs); 
+ 2. Survival statistics including event(e.g., death, recurrence) and time-to-event of the same cohort. 
+`**TimiGP Steps**`
+ 1. Performing pairwise comparisons between IMGs based on expression profile;
+ 2. Selecting prognostic IMG pairs by survival analysis; 
+ 3. Generating cell interactions annotations from cell-type markers;
+ 4. Determining functional interaction with enrichment analysis; 
+ 5. Annotating the clinical function of immune cells through network analysis.
+`**Outputs**`
+ 1. Functional inter-cell interaction network,
+ 2. Clinical value of infiltrating cells.
+ 
 ### TimiGP Applications
- The package is flexible to explore the cell interactions in other disease.
- ![Supp11](/assets/images/Supp11.png)
+TimiGP is designed to **infer the functional interaction network and clinical function of immune cells**. Based on the resulting immunological insights, The method will **facilitate the development of prognostic models**. Taking advantage of different biomarker references derived from **bulk and single-cell RNA-seq**, TimiGP can be applied to investigate the **entire tumor microenvironment** or **cell subpopulations**, perform **pan-cancer analysis** or study **other diseases**. 
+ ![Supp12](/assets/images/Supp12.png)
+ 
 ## Citation
 This package is intended for research use only. 
 
@@ -46,37 +57,38 @@ Here is a summary of the functions in the package:
 | Step                                                               | Function                                                        |
 | ------------------------------------------------------------------ | --------------------------------------------------------------- |
 | 1.1   Preprocess of Clinical Info                                  | `TimiCheckEvent`(info = NULL) |  
-| 1.2   Preprocess of Transcriptome Profile                          | `TimiPrePropress`(marker, rna = NULL, cohort, log = TRUE)|
+| 1.2   Preprocess of Transcriptome Profile                          | `TimiPrePropress`(marker, rna = NULL, cohort, log = TRUE, GMNorm=TRUE)|
 | 2.1   Pairwise Comparison                                          | `TimiGenePair`(rna = NULL)|
-| 2.2   Directed IRGP Selection                                      | `TimiCOX`(mps = NULL,info = NULL, p.adj = c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"))|
+| 2.2   Prognostic IMGP Selection                                    | `TimiCOX`(mps = NULL,info = NULL, p.adj = c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"))|
 | 2.3   Directed Gene Network                                        | `TimiGeneNetwork`(resdata = NULL, select = NULL, dataset = NULL, geneset = NULL, export = TRUE, path = NULL)|
-| 3.1   Cell Pair Annotation                                         | `TimiCellPair`(geneset = NULL, dataset = NULL, core = 1)|
+| 3.1   Cell Interaction Annotation                                  | `TimiCellPair`(geneset = NULL, dataset = NULL, core = 1)|
 | 3.2   Prepare Enrichment Background                                | `TimiBG`(marker.pair = NULL)|
 | 3.3.1 Enrichment Analysis                                          | `TimiEnrich`(gene = NULL, background = NULL, geneset = NULL, p.adj = NULL, core = 1, pair = TRUE)|
-| 3.3.2 Visualization: Dotplot of Enrichment                         | `TimiDotplot`(resdata = NULL, select = 1:5)|
-| 3.4.1 Visualization: Chord Diagram of Cell Interaction             | `TimiCellChord`(resdata = NULL,select = NULL, dataset = NULL,group = NULL, color = NULL)|
+| 3.3.2 Visualization: Dotplot of Cell Interaction                   | `TimiDotplot`(resdata = NULL, select = 1:5)|
+| 3.4.1 Visualization: Chord Diagram of Functional Interaction       | `TimiCellChord`(resdata = NULL,select = NULL, dataset = NULL,group = NULL, color = NULL)|
 | 3.4.2 Visualization: Chord Diagram of Selected Gene Interaction    | `TimiGeneChord`(resdata = NULL, select = 1, color = NULL)|
-| 3.5.1 Cell Interaction Network                                     | `TimiCellNetwork`(resdata = NULL, select = NULL, dataset = NULL, group = NULL, geneset = NULL, export = TRUE, path = NULL)|
+| 3.5.1 Functional Interaction Network                               | `TimiCellNetwork`(resdata = NULL, select = NULL, dataset = NULL, group = NULL, geneset = NULL, export = TRUE, path = NULL)|
 | 3.5.2 Favorability Score                                           | `TimiFS`(resdata = NULL, cutoff = 0.05)|
 | 3.5.3 Visualization: Bar plot of Favorability Score                | `TimiFSBar`(score = NULL, select = NULL)|
 
 ## Available Data
 Here is a summary of available data in the package:
-| Available Data                                             | Description                                              |
-| ---------------------------------------------------------- | -------------------------------------------------------- | 
-| 1.1   data(SKCM06info)                                     | TCGA SKCM06(metastatic melnoma) clinical info                                                                             |
-| 1.2   data(SKCM06rna)                                      | TCGA SKCM06(metastatic melnoma) transcriptome profile                                                                     |
-| 2.1   data(Immune_Marker_n1326)                            | #1326 immune cell markers                                                                                                 |
-| 2.2   data(`CellType_Charoentong2017_Galon2013_TIP_Immune`)| Immune cell types and markers                                                                                             |
+| Available Data                                             | Description                                                       |
+| ---------------------------------------------------------- | ------------------------------------------------------------------| 
+| 1.1   data(SKCM06info)                                     | TCGA SKCM06(metastatic melnoma) clinical info                     |
+| 1.2   data(SKCM06rna)                                      | TCGA SKCM06(metastatic melnoma) transcriptome profile             |
+| 2.1   data(Immune_Marker_n1293)                            | #1293 immune cell markers                                         |
+| 2.2   data(`CellType_Charoentong2017_Bindea2013_Xu2018_Immune`)| Immune cell types and markers from 3 publications             |
 | 2.3   data(Immune3_COX_MP_SKCM06)                          | `TimiCOX` results with above annotation that reveals the association between each marker pairs and favorable prognosis.   |
-| 3.1   data(`CellType_Alex2020_Levi2019_TME`)               | Melanoma tumor microenvironment cell types and markers                                                                    |
+| 3.1   data(`CellType_Tirosh2016_melanoma_TME`)             | Metastatic melanoma tumor microenvironment cell types and markers |
 | 3.2   data(TME_COX_MP_SKCM06)                              | `TimiCOX` results with above annotation that reveals the association between each marker pairs and favorable prognosis.   |
-| 4.1   data(`CellType_Zhang2021S2_Tcell`)                   | T cell subtypes and markers                                                                                               |
+| 4.1   data(`CellType_Zheng2021_Tcell`)                     | T cell subtypes and markers                                       |
 | 4.2   data(Tcell_COX_MP_SKCM06)                            | `TimiCOX` results with above annotation that reveals the association between each marker pairs and favorable prognosis.   |
-| 5.1   data(`CellType_Galon2013_cancer`)                    | Markers of immune cell types and 1 cancer cell type                                                                       |
-| 5.2   data(Galon2013c_COX_MP_SKCM06)                       | `TimiCOX` results with above annotation that reveals the association between each marker pairs and favorable prognosis.   |
-| 5.3   data(Galon2013c_enrich)                              | An example of `TimiEnrich` results on cell interactions                                                                   |
-
+| 5.1   data(`CellType_Bindea2013_cancer`)                   | Markers of immune cell types and 1 cancer cell type               |
+| 5.2   data(Bindea2013c_COX_MP_SKCM06)                      | `TimiCOX` results with above annotation that reveals the association between each marker pairs and favorable prognosis.   |
+| 5.3   data(Bindea2013c_enrich)                             | An example of `TimiEnrich` results on cell interactions           |
+| 6.1   data(`CellType_Newman2015_LM22`)                     | Markers of immune cell types(LM22 signature) generated by CIBERSORT|
+| 6.2   data(Newman2015_COX_MP_SKCM06)                      | `TimiCOX` results with above annotation that reveals the association between each marker pairs and favorable prognosis.   |
 ## Example
 Here is an example that how to use the package to infer gene and cell interaction based on relative abundance. 
 Other examples can be found in the `example` folder. And the process to generate the cell markers can be found in `inst/extdata`.
@@ -98,8 +110,8 @@ data("SKCM06info")
 head(SKCM06info)
 data("SKCM06rna")
 #2. Load cell type and marker annotation ----
-data("CellType_Galon2013_cancer")
-geneset <- CellType_Galon2013_cancer
+data("CellType_Bindea2013_cancer")
+geneset <- CellType_Bindea2013_cancer
 marker <- unique(geneset$Gene)
 #3. Preprocess: TimiCheckEvent & TimiPrePropress ----
 info <- TimiCheckEvent(SKCM06info)
@@ -116,7 +128,7 @@ rna <- TimiPrePropress(marker = marker,rna = SKCM06rna,cohort = rownames(info))
 #4. Generate marker pair score: TimiGenePair  ----
 mps <- TimiGenePair(rna)
 ```
-#### 2.2   Directed IRGP Selection
+#### 2.2   Directed IMGP Selection
 `TimiCOX` will perform univariate Cox regression that fits each marker pair as a variable. The result of Cox regression is returned as the first list. If a Pair A_B associated with poor prognosis(HR > 1), even not significant, it will be changed to B_A and reverse its value in the matrix of pair. The new matrix of Marker Pair Score(MPS) is returned as the second list.
 
 This step takes about 20-30 min, which depends on the number of gene pairs.
@@ -128,31 +140,31 @@ mps <- res[[1]]
 cox_res <- res[[2]]
 
 # This step takes about 20-30 min, the result has been saved in data as examples
-# Galon2013c_COX_MP_SKCM06 <- cox_res
-# save(Galon2013c_COX_MP_SKCM06, file = "data/Galon2013c_COX_MP_SKCM06.rda")
+# Bindea2013c_COX_MP_SKCM06 <- cox_res
+# save(Bindea2013c_COX_MP_SKCM06, file = "data/Bindea2013c_COX_MP_SKCM06.rda")
 ```
 #### 2.3   Directed Gene Network
 By setting "export = TRUE", `TimiGeneNetwork` generates three files that can be used to build network in Cytoscape: 
- - network files: simple interaction file (network.sif); 
- - node attributes (node.txt); 
- - edge attributes (edge.txt). 
+ - network files: simple interaction file (gene_network.sif); 
+ - node attributes (gene_node.txt); 
+ - edge attributes (gene_edge.txt). 
 The function also returns a list of above files that can be modified in R.
 ```R
 rm(list=ls())
 # 6. Generate Directed Gene Network:TimiGeneNetwork  ----
-data(Galon2013c_COX_MP_SKCM06)
-cox_res <- Galon2013c_COX_MP_SKCM06
+data(Bindea2013c_COX_MP_SKCM06)
+cox_res <- Bindea2013c_COX_MP_SKCM06
 # You can use Cytoscape to visualize the network by setting "export = TRUE"
-NET <- TimiGeneNetwork(resdata = cox_res,dataset = "Galon2013_Cancer",export =TRUE, path = "./")
+NET <- TimiGeneNetwork(resdata = cox_res,dataset = "Bindea2013_Cancer",export =TRUE, path = "./")
 ```
 ### 3 Cell Interaction
-`TimiCellPair` will generate an marker pair annotations of cell pairs. For example, given any two different cell types, Cell A has markers a1 and a2 and cell B has markers b1 and b2. Cell pair A_B includes marker pairs: a1_b1, a1_b2, a2_b1, a2_b2 while Cell pair B_A includes marker pairs: b1_a1, b1_a2, b2_a1, b2_a2.
-#### 3.1   Cell Pair Annotation
+`TimiCellPair` will generate an marker pair annotations of cell interactions. For example, given any two different cell types, Cell A has markers a1 and a2 and cell B has markers b1 and b2. Cell interaction A_B includes marker pairs: a1_b1, a1_b2, a2_b1, a2_b2 while cell interaction B_A includes marker pairs: b1_a1, b1_a2, b2_a1, b2_a2.
+#### 3.1   Cell interaction Annotation
 ```R
 rm(list=ls())
-# 7. Generate Cell Pair Annotation: TimiCellPair ----
-data(CellType_Galon2013_cancer)
-geneset <- CellType_Galon2013_cancer
+# 7. Generate Cell Interaction Annotation: TimiCellPair ----
+data(CellType_Bindea2013_cancer)
+geneset <- CellType_Bindea2013_cancer
 cell_pair <- TimiCellPair(geneset = geneset,core = 20)
 ```
 #### 3.2   Prepare Enrichment Background
@@ -165,65 +177,66 @@ background <- TimiBG(marker.pair = row.names(cox_res))
 `TimiEnrich` will perform the analysis according to the query gene pairs. 
 ```R
 # 9. Query: Select marker pairs A_B=1 significantly associated with good prognosis ----
-data(Galon2013c_COX_MP_SKCM06)
-cox_res <- Galon2013c_COX_MP_SKCM06
+data(Bindea2013c_COX_MP_SKCM06)
+cox_res <- Bindea2013c_COX_MP_SKCM06
 GP <- rownames(cox_res)[which(cox_res$QV<0.05)]
 # 10. Enrichment Analysis: TimiEnrich ----
 res <- TimiEnrich(gene = GP, background = background, 
                   geneset = cell_pair, p.adj = "BH",core=20)
 # This has been saved to data as an example
-# Galon2013c_enrich <- res
-# save(Galon2013c_enrich,file = "data/Galon2013c_enrich.rda")
+# Bindea2013c_enrich <- res
+# save(Bindea2013c_enrich,file = "data/Bindea2013c_enrich.rda")
 ```
 `TimiDotplot` can visualize the enrichment analysis results.
 ```R
-# 11. Visualization: Dot plot of selected cell pair enrichment: TimiDotplot-----
+# 11. Visualization: Dot plot of selected cell interaction: TimiDotplot-----
 rm(list=ls())
-data("Galon2013c_enrich")
-res <- Galon2013c_enrich
+data("Bindea2013c_enrich")
+res <- Bindea2013c_enrich
 p <- TimiDotplot(resdata = res,select = c(1:10))
 p
 ```
-![Supp3A](/assets/images/Supp3A.png)
+![Fig3A](/assets/images/Fig3A.png)
 
 `TimiCellChord` can visualize the cell interaction in Chord Diagram.
 ```R
-# 12. Visualization: Chord Diagram of significant cell pair enrichment: TimiCellChord----
+# 12. Visualization: Chord Diagram of functional interaction: TimiCellChord----
 rm(list=ls())
-data("Galon2013c_enrich")
-res <- Galon2013c_enrich
+data("Bindea2013c_enrich")
+res <- Bindea2013c_enrich
 # Cell Chord Diagram
-TimiCellChord(resdata = res,dataset = "Galon2013_Cancer")
+TimiCellChord(resdata = res,dataset = "Bindea2013_Cancer")
 ```
-![Supp3B](/assets/images/Supp3B.png)
+![Fig3B](/assets/images/Fig3B.png)
 
-If you are interested in enriched marker pairs in specific cell pair such as Cytotoxic cells_Cancer cells, please use `TimiGeneChord`.
+If you are interested in enriched marker pairs in specific cell interaction such as Cytotoxic cells_Cancer cells, please use `TimiGeneChord`.
 ```R
-# Chord Diagram of marker pairs in seltect cell pair
+# Chord Diagram of marker pairs in seltect cell interaction
 TimiGeneChord(resdata = res,select = 3)
 ```
-![Supp3C](/assets/images/Supp3C.png)
+![Fig3x](/assets/images/Fig3x.png)
 #### 3.4  Cell Interaction Network
 By setting "export = TRUE", `TimiCellNetwork` generates three files that can be used to build network in Cytoscape: 
- - network files: simple interaction file (network.sif); 
- - node attributes (node.txt); 
- - edge attributes (edge.txt). 
+ - network files: simple interaction file (cell_network.sif); 
+ - node attributes (cell_node.txt); 
+ - edge attributes (cell_edge.txt). 
 The function also returns a list of above files that can be modified in R.
 
 ```R
 # 13. Generate Directed Cell Network:TimiCellNetwork  ----
 # You can use Cytoscape to visualize the network
 rm(list=ls())
-data("Galon2013c_enrich")
-res <- Galon2013c_enrich
-NET <- TimiCellNetwork(resdata = res,dataset = "Galon2013_Cancer",export =TRUE, path = "./")
+data("Bindea2013c_enrich")
+res <- Bindea2013c_enrich
+NET <- TimiCellNetwork(resdata = res,dataset = "Bindea2013_Cancer",export =TRUE, path = "./")
 ```
+![Fig3C](/assets/images/Fig3C.png)
 #### 3.5  Favorability Score
 Based on the degree information of the cell interaction network, `TimiFS` calculates the favorability score of each cell type. In the network, 
 
- - the out-degree of cell A means how many times high A-to-other cell ratio is associated with favorable prognosis; 
+ - the out-degree of cell A means how many times high A-over-other cell function is associated with favorable prognosis; 
 
- - the in-degree of cell A means how many times low A-to-other cell ratio is associated with favorable prognosis. 
+ - the in-degree of cell A means how many times low A-over-other cell function is associated with favorable prognosis. 
 
 The favorability score includes favorable score and unfavorable score. 
  - Favorable score: out-degree of the cell/sum of out-degree of all cell*100. 
@@ -234,8 +247,8 @@ The favorability score includes favorable score and unfavorable score.
 # 13. Calculate favorability score: TimiFS ----
 # Visualization: TimiFSBar 
 rm(list=ls())
-data("Galon2013c_enrich")
-res <- Galon2013c_enrich
+data("Bindea2013c_enrich")
+res <- Bindea2013c_enrich
 # Calculate
 score <- TimiFS(res)
 head(score)
@@ -246,4 +259,4 @@ This result can be visulized by `TimiFSBar`.
 p <- TimiFSBar(score,select = c(1:5,(nrow(score)-2):nrow(score)))
 p
 ```
-![Supp3E](/assets/images/Supp3E.png)
+![Fig3D](/assets/images/Fig3D.png)
