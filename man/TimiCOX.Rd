@@ -41,8 +41,8 @@ it will be changed to B_A and reverse its value in the matrix of pair
   dim(mps)
   # TimiCOX 
   res <- TimiCOX(mps = mps,info = info,p.adj = "BH")
-  mps <- res[[1]]
-  cox_res <- res[[2]]
+  mps <- res[["mps"]] 
+  cox_res <- res[["cox_res"]]
 }
 }
 \author{

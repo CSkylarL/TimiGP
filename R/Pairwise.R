@@ -27,20 +27,20 @@
 
 TimiGenePair <-  function(rna = NULL){
   
-  # examine required parameters
+  # examine required parameters-------------------------------------------------
   if (is.null(rna)){
     stop('The parameter "rna" is required. ')
   }
   
   message("Generating marker pairs")
-  ### S1: pairwise comparision 
+  ### S1: pairwise comparision -------------------------------------------------
   irg <- rownames(rna)
   irgp <- outer(irg, irg, paste, sep="_")
   myfun <- function(myvec){as.vector(outer(myvec, myvec, ">"))}
   irgp_res <- apply(rna, 2, myfun)
   row.names(irgp_res) <- irgp	 
   
-  ### S2: Remove B_A, A_A pairsm, only keep A_B
+  ### S2: Remove B_A, A_A pairsm, only keep A_B---------------------------------
   xx <- row.names(irgp_res)
   nn <- length(xx)
   tmp <- unlist(strsplit(xx, "_"))
@@ -50,7 +50,7 @@ TimiGenePair <-  function(rna = NULL){
   irgp_res <- irgp_res[se,] 
   dim(irgp_res) 
   
-  ### S3: choose GPs with at least 10% samples in both groups
+  ### S3: choose GPs with at least 10% samples in both groups-------------------
   n.thr <- round(ncol(rna)*0.1)
   xx1 <- apply(irgp_res==1, 1, sum)
   xx2 <- apply(irgp_res==0, 1, sum)
@@ -67,7 +67,8 @@ TimiGenePair <-  function(rna = NULL){
 
 
 
-##' Generate cell pair with the corresponding marker pair annotation
+##' Generate cell pair representing potential interaction using 
+##' the corresponding marker pair annotation
 ##' 
 ##' Given any two different cell types,
 ##' Cell A has markers a1 and a2 and cell B has markers b1 and b2.
@@ -90,20 +91,20 @@ TimiGenePair <-  function(rna = NULL){
 ##' \dontrun{
 ##'   data(CellType_Galon2013_cancer)
 ##'   geneset <- CellType_Galon2013_cancer
-##'   cell_pair <- TimiCellPair(geneset = geneset,core = 20)
+##'   cell_pair <- TimiCellPair(geneset = geneset,core = 2)
 ##' }
 ##' @author Chenyang Skylar Li
 TimiCellPair <- function(geneset = NULL,
                          dataset = NULL,
                          core = 1){
   
-  # examine required parameters
+  # examine required parameters-------------------------------------------------
   if (is.null(geneset)){
     stop('The parameter "geneset" is required. ')
   }
   # Parallel 
   registerDoParallel(cores=core)
-  # optional 3rd column dataset
+  # optional 3rd column dataset-------------------------------------------------
   if (ncol(geneset) == 3) {
     
     num <- table(geneset[3])
@@ -130,7 +131,7 @@ TimiCellPair <- function(geneset = NULL,
   
   
   
-  # Cell Pair 
+  # Cell Pair ------------------------------------------------------------------
   ann <- unique(set[, 1])
   if(length(ann) <=1){
     stop('Less than 2 cell types were found.')

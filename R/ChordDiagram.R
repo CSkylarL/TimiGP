@@ -1,14 +1,14 @@
 ##' Chord diagram of Cell Interaction
 ##' 
-##' Chord diagram reveals the cell interaction(cell pair) associated with good prognosis.
+##' Chord diagram reveals the functional interaction network.
 ##' The arrow points from favorable cell type A to unfavorable cell type B, 
-##' which denotes that high A-to-B ratio associated with a good prognosis.
+##' which denotes that function of A greater than B associated with a good prognosis.
 ##' The width of the arrow represents -log10(Adjust.P.Value),namely,
 ##' the wider the arrow is, the smaller the adjusted p-value is.
 ##'
 ##' @param resdata TimiGP enrichment result generated from TimiEnrich
-##' @param select a numeric vector of selected cell pairs according to "Index" column in resdata. 
-##' Default selection is all statistically significantly enriched cell pairs(adjusted p value < 0.05).
+##' @param select a numeric vector of selected cell interactions according to "Index" column in resdata. 
+##' Default selection is all functional interactions(adjusted p value < 0.05).
 ##' @param dataset a value in one of 
 ##' c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Xu2018"
 ##' ,"Newman2015", "Aran2017", "Luca2021",
@@ -59,14 +59,14 @@ TimiCellChord<-  function(resdata = NULL,
     se.r <- which(resdata$Adjust.P.Value < 0.05)
     
     if (length(se.r) < 5){
-      stop('There are less than 5 significant cell pairs.')
+      stop('There are less than 5 functional interactions.')
     } else {
-      message('Using all significant cell pairs(Adjested P.Value < 0.05)')
+      message('Using all functional interactions(Adjested P.Value < 0.05)')
       p.data <- resdata[se.r, se.c]
     }
     
   } else {
-    message('Using selected cell pairs')
+    message('Using selected cell interactions')
     se.c <- c("Favorable.Cell.Type", "Unfavorable.Cell.Type", "rev.p.adj")
     se.r <- which(resdata$Index %in%  select)
     p.data <- resdata[se.r, se.c]
@@ -661,12 +661,16 @@ TimiCellChord<-  function(resdata = NULL,
 ##' the expression of F greater than that of U is associated with a good prognosis.
 ##'
 ##' @param resdata TimiGP enrichment result generated from TimiEnrich
-##' @param select a numeric value of selected cell pairs according to "Index" column. 
-##' Default selection is the top 1 cell pair.
+##' @param select a numeric value of selected cell interactions according to "Index" column. 
+##' Default selection is the top 1 cell interaction.
 ##' @param color a vector of self-defined marker colors, 
 ##' whose names are the enriched markers
 ##' (not pair,you need to split the genes in Shared.IMGP column) 
+<<<<<<< HEAD
 ##' in selected cell pair. 
+=======
+##' in selected cell interaction. 
+>>>>>>> ExtraMarker
 ##' @return Chord diagram of Gene Interaction
 ##' @import circlize
 ##' @import RColorBrewer
@@ -691,9 +695,9 @@ TimiGeneChord<-  function(resdata = NULL,
   
   # selction
   if (length(select) >1){
-    stop('Please only choose 1 cell pair at one time')
+    stop('Please only choose 1 cell interaction at one time')
   } else if (select > max(resdata$Index)){
-    stop('There are only ',max(resdata$Index),' cell pairs')
+    stop('There are only ',max(resdata$Index),' cell interactions')
   } else {
     se.idx <- which(resdata$Index == select)
     
@@ -722,7 +726,7 @@ TimiGeneChord<-  function(resdata = NULL,
     
     color <- c(fav.col,unfav.col)
   } else if (length(color) != length(unique(c(p.data[,1],p.data[,2])))) {
-    stop('The number of colors are different of unique markers enriched in the given cell pair')
+    stop('The number of colors are different of unique markers enriched in the given cell interaction')
   } else {
     message('Using self-defined color')
   }

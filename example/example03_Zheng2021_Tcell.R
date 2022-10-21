@@ -1,17 +1,17 @@
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # This is an example how to use TimiGP with Zheng2021 Tcell annotation
 # Date: 03/07/2022
-# Chenyang Li
-#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Chenyang Skylar Li
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 library(TimiGP)
 rm(list=ls())
-#A Preprocess data #####################################################
+#A Preprocess data #############################################################
 rm(list=ls())
-#1. Load SCKCM06 data ----
+#1. Load SCKCM06 data ----------------------------------------------------------
 data("SKCM06info")
 head(SKCM06info)
 data("SKCM06rna")
-#2. Load cell type and marker annotation ----
+#2. Load cell type and marker annotation ---------------------------------------
 data("CellType_Zheng2021_Tcell")
 geneset <- CellType_Zheng2021_Tcell
 marker <- unique(geneset$Gene)
@@ -22,12 +22,16 @@ dim(info)
 dim(SKCM06rna)
 
 rna <- TimiPrePropress(marker = marker,rna = SKCM06rna,cohort = rownames(info))
+<<<<<<< HEAD
 
 
 #4. Generate marker pair score: TimiGenePair  ----
+=======
+#4. Generate marker pair score: TimiGenePair  ----------------------------------
+>>>>>>> ExtraMarker
 mps <- TimiGenePair(rna)
 dim(mps)
-#5. Perform univariate Cox regression to find the association between marker pair and survival: TimiCOX ----
+#5. Perform univariate Cox regression: TimiCOX ---------------------------------
 
 res <- TimiCOX(mps = mps,info = info,p.adj = "BH")
 mps <- res$mps
@@ -41,28 +45,30 @@ Tcell_MPS_SKCM06 <- mps
 
 
 
-#B Gene Pair and gene network ###################################################
+#B Gene Pair and gene network ##################################################
 rm(list=ls())
 # 6. Generate Directed Gene Network:TimiGeneNetwork  ----
 data(Tcell_COX_MP_SKCM06)
 cox_res <- Tcell_COX_MP_SKCM06
 
 # You can use Cytoscape to visualize the network
-NET <- TimiGeneNetwork(resdata = cox_res,dataset = "Zheng2021",export =TRUE, path = "./notebook/manuscript/Zheng2021_Tcell/")
+NET <- TimiGeneNetwork(resdata = cox_res,dataset = "Zheng2021", 
+                       export = F)
+#                      export =TRUE, path = "./")
 head(NET$network,n = 3)
 head(NET$node,n = 3)
 head(NET$edge,n = 3)
 
 
-#B Cell interaction and network ###########################################
+#B Cell interaction and network ################################################
 rm(list=ls())
-# 7. Generate Cell Pair Annotation: TimiCellPair ----
+# 7. Generate Cell Interaction Annotation: TimiCellPair ------------------------
 
 data("CellType_Zheng2021_Tcell")
 geneset <- CellType_Zheng2021_Tcell
 cell_pair <- TimiCellPair(geneset = geneset,core = 20)
 
-# 8. Select marker pairs A_B=1 associated with good prognosis ----
+# 8. Select marker pairs A_B=1 associated with good prognosis ------------------
 data(Tcell_COX_MP_SKCM06)
 cox_res <- Tcell_COX_MP_SKCM06
 GP <- rownames(cox_res)[which(cox_res$QV<0.05)]
@@ -76,22 +82,24 @@ res <- TimiEnrich(gene = GP, background = background,
 
 # 11. Generate Directed Cell Network:TimiCellNetwork  ----
 # You can use Cytoscape to visualize the network
-NET <- TimiCellNetwork(resdata = res,dataset = "Zheng2021",export =TRUE, path = "./notebook/manuscript/Zheng2021_Tcell/")
+NET <- TimiCellNetwork(resdata = res,dataset = "Zheng2021",
+                       export = F)
+#                      export =TRUE, path = "./")
 
-# 12. Visualization: Dot plot of selected cell pair enrichment: TimiDotplot-----
+# 12. Visualization: Dot plot of selected cell interaction: TimiDotplot---------
 
 p <- TimiDotplot(resdata = res,select = c(1:10))
 p
 
-# 13. Visualization: Chord Diagram of significant cell pair enrichment: TimiCellChord----
+# 13. Visualization: Chord Diagram of functional interaction: TimiCellChord-----
 
 # Cell Chord Diagram
 TimiCellChord(resdata = res,dataset = "Zheng2021")
-# Chord Diagram of marker pairs in seltect cell pair
+# Chord Diagram of marker pairs in seltect cell interaction
 TimiGeneChord(resdata = res,select = 1)
 
-# 13. Calculate favorability score: TimiFS ----
-# Visualization: Timi 
+# 13. Calculate favorability score: TimiFS -------------------------------------
+# Visualization: TimiFSBar
 # Calculate
 score <- TimiFS(res)
 head(score)

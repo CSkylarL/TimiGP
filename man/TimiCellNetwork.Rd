@@ -17,8 +17,8 @@ TimiCellNetwork(
 \arguments{
 \item{resdata}{TimiGP enrichment result generated from TimiEnrich}
 
-\item{select}{a numeric vector of selected cell pairs according to "Index" column in resdata. 
-Default selection is all statistically significantly enriched cell pairs(adjusted p value < 0.05).}
+\item{select}{a numeric vector of selected cell interactions according to "Index" column in resdata. 
+Default selection is all functional interactions(adjusted p value < 0.05).}
 
 \item{dataset}{a value in one of 
 c("Bindea2013","Bindea2013_Cancer",
@@ -47,16 +47,16 @@ A list of network required files(network,node,edge)
 }
 \description{
 It generates three files that can be used to build network in Cytoscape:
-1. network files: simple interaction file (network.sif);
-2. node attributes (node.txt);
-3. edge attributes (edge.txt).
+1. network files: simple interaction file (cell_network.sif);
+2. node attributes (cell_node.txt);
+3. edge attributes (cell_edge.txt).
 The function also returns a list of above files that can be modified in R.
 }
 \examples{
 \dontrun{
   data("Bindea2013c_enrich")
   res <- Bindea2013c_enrich
-  NET <- TimiCellNetwork(resdata = res,dataset = "Bindea2013_Cancer")
+  NET <- TimiCellNetwork(resdata = res,dataset = "Bindea2013_Cancer",export=T,path="./")
 }
 }
 \author{

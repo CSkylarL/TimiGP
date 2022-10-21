@@ -1,6 +1,6 @@
 #' Cell Type in melanoma microenvironment generated from Hughes2020 and Tirosh2016 with cancer cells
 #'
-#' A dataset containing the cell type and markers annotated by Hughes2020 and Tirosh2016
+#' A dataset containing the cell type and markers annotated by Tirosh2016
 #' 
 #' @docType data
 #'
@@ -8,7 +8,7 @@
 #' 
 #' @keywords datasets
 #' 
-#' @format A data frame with 663 rows and 3 variables:
+#' @format A data frame with 391 rows and 3 variables:
 #' \describe{
 #'   \item{CellType}{Immune cell type, skin cell type and cancer cell type}
 #'   \item{Gene}{Marker gene of the cell type}
@@ -36,7 +36,7 @@
 #' 
 #' @keywords datasets
 #' 
-#' @format A data frame with 579 rows and 3 variables:
+#' @format A data frame with 545 rows and 3 variables:
 #' \describe{
 #'   \item{CellType}{Immune cell type and cancer cell type}
 #'   \item{Gene}{Marker gene of the cell type}
@@ -67,7 +67,7 @@
 #' 
 #' @keywords datasets
 #' 
-#' @format A data frame with 1409 rows and 3 variables:
+#' @format A data frame with 1375 rows and 3 variables:
 #' \describe{
 #'   \item{CellType}{Immune cell type}
 #'   \item{Gene}{Marker gene of the cell type}
@@ -179,7 +179,7 @@
 
 #' TCGA metastatic melanoma(SKCM06) clinical infomation
 #'
-#' A dataset containing 20,501 genes from 368  metastatic melanoma samples.
+#' A dataset containing survival statistic of 368 patients.
 #' 
 #' @docType data
 #'
@@ -213,7 +213,7 @@
 #' 
 #' @keywords intermediate result
 #' 
-#' @format A data frame with 127765 rows and 3 variables:
+#' @format A data frame with 110215 rows and 3 variables:
 #' \describe{
 #'   \item{Row name}{Marker pair}
 #'   \item{HR}{Hazard.Ratio}
@@ -244,7 +244,7 @@
 #' 
 #' @keywords intermediate result
 #' 
-#' @format A data frame with 739936 rows and 3 variables:
+#' @format A list of 3 data frames
 #' \describe{
 #'   \item{Row name}{Marker pair}
 #'   \item{HR}{Hazard.Ratio}
@@ -282,7 +282,7 @@
 #' 
 #' @keywords intermediate result
 #' 
-#' @format A data frame with 153735 rows and 3 variables:
+#' @format A data frame with 73536 rows and 3 variables:
 #' \describe{
 #'   \item{Row name}{Marker pair}
 #'   \item{HR}{Hazard.Ratio}
@@ -319,7 +319,7 @@
 #' 
 #' @keywords intermediate result
 #' 
-#' @format A data frame with 153735 rows and 3 variables:
+#' @format A data frame with  69006 rows and 3 variables:
 #' \describe{
 #'   \item{Row name}{Marker pair}
 #'   \item{HR}{Hazard.Ratio}
@@ -330,24 +330,6 @@
 #' 
 #' @source intermediate result generated from function TimiCOX
 "Tcell_COX_MP_SKCM06"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -380,16 +362,16 @@
 #' \describe{
 #'   \item{Index}{A numeric vector used to specify which cell pair would be used in visualization}
 #'   \item{Rank}{A rank of cell interaction according to Adjust. P-value}
-#'   \item{Cell.Pair}{Cell Interaction, e.g. Cell A_Cell B}
+#'   \item{Cell.Interaction}{Cell Interaction, e.g. Cell A_Cell B}
 #'   \item{Favorable.Cell.Type}{In the cell pair A_B, the first cell A}
 #'   \item{Unfavorable.Cell.Type}{In the cell pair A_B, the second cell B}
-#'   \item{No.Total.Marker.Pair}{The total number of marker pairs in the cell pair annotation}
-#'   \item{No.Shared.Marker.Pair}{The number of marker pairs shared by query pairs and annotation}
+#'   \item{No.Total.IMGP}{The total number of marker pairs in the cell pair annotation}
+#'   \item{No.Shared.IMGP}{The number of marker pairs shared by query pairs and annotation}
 #'   \item{Enrichment.Ratio}{Enrichment Ratio}
 #'   \item{P.Value}{P. value}
 #'   \item{Adjust.P.Value}{Adjust.P.Value}
-#'   \item{Shared.Marker.Pair}{The marker pairs shared by query pairs and annotation}
-#'   \item{Total.Marker.Pair}{The marker pairs in the annotation}
+#'   \item{Shared.IMGP}{The marker pairs shared by query pairs and annotation}
+#'   \item{Total.IMGP}{The marker pairs in the annotation}
 #' }
 #' 
 #' 

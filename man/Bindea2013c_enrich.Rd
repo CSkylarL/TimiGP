@@ -10,16 +10,16 @@ a data frame of enrichment result:
 \describe{
   \item{Index}{A numeric vector used to specify which cell pair would be used in visualization}
   \item{Rank}{A rank of cell interaction according to Adjust. P-value}
-  \item{Cell.Pair}{Cell Interaction, e.g. Cell A_Cell B}
+  \item{Cell.Interaction}{Cell Interaction, e.g. Cell A_Cell B}
   \item{Favorable.Cell.Type}{In the cell pair A_B, the first cell A}
   \item{Unfavorable.Cell.Type}{In the cell pair A_B, the second cell B}
-  \item{No.Total.Marker.Pair}{The total number of marker pairs in the cell pair annotation}
-  \item{No.Shared.Marker.Pair}{The number of marker pairs shared by query pairs and annotation}
+  \item{No.Total.IMGP}{The total number of marker pairs in the cell pair annotation}
+  \item{No.Shared.IMGP}{The number of marker pairs shared by query pairs and annotation}
   \item{Enrichment.Ratio}{Enrichment Ratio}
   \item{P.Value}{P. value}
   \item{Adjust.P.Value}{Adjust.P.Value}
-  \item{Shared.Marker.Pair}{The marker pairs shared by query pairs and annotation}
-  \item{Total.Marker.Pair}{The marker pairs in the annotation}
+  \item{Shared.IMGP}{The marker pairs shared by query pairs and annotation}
+  \item{Total.IMGP}{The marker pairs in the annotation}
 }
 }
 \source{

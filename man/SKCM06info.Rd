@@ -18,7 +18,7 @@ Modification can be found in inst/extdata/build_SKCM06_RNA_info.R
 data(SKCM06info)
 }
 \description{
-A dataset containing 20,501 genes from 368  metastatic melanoma samples.
+A dataset containing survival statistic of 368 patients.
 }
 \references{
 \url{"https://gdac.broadinstitute.org/"}

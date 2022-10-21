@@ -5,7 +5,7 @@
 \alias{Bindea2013c_COX_MP_SKCM06}
 \title{COX regression Results from function TimiCOX with cell type meaker annotated by Bindea2013_cancer}
 \format{
-A data frame with 127765 rows and 3 variables:
+A data frame with 110215 rows and 3 variables:
 \describe{
   \item{Row name}{Marker pair}
   \item{HR}{Hazard.Ratio}

@@ -9,13 +9,17 @@ TimiGeneChord(resdata = NULL, select = 1, color = NULL)
 \arguments{
 \item{resdata}{TimiGP enrichment result generated from TimiEnrich}
 
-\item{select}{a numeric value of selected cell pairs according to "Index" column. 
-Default selection is the top 1 cell pair.}
+\item{select}{a numeric value of selected cell interactions according to "Index" column. 
+Default selection is the top 1 cell interaction.}
 
 \item{color}{a vector of self-defined marker colors, 
 whose names are the enriched markers
 (not pair,you need to split the genes in Shared.IMGP column) 
+<<<<<<< HEAD
 in selected cell pair.}
+=======
+in selected cell interaction.}
+>>>>>>> ExtraMarker
 }
 \value{
 Chord diagram of Gene Interaction

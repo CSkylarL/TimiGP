@@ -1,14 +1,14 @@
 ##' Generate cell network files for Cytoscape
 ##' 
 ##' It generates three files that can be used to build network in Cytoscape:
-##' 1. network files: simple interaction file (network.sif);
-##' 2. node attributes (node.txt);
-##' 3. edge attributes (edge.txt).
+##' 1. network files: simple interaction file (cell_network.sif);
+##' 2. node attributes (cell_node.txt);
+##' 3. edge attributes (cell_edge.txt).
 ##' The function also returns a list of above files that can be modified in R.
 ##'
 ##' @param resdata TimiGP enrichment result generated from TimiEnrich
-##' @param select a numeric vector of selected cell pairs according to "Index" column in resdata. 
-##' Default selection is all statistically significantly enriched cell pairs(adjusted p value < 0.05).
+##' @param select a numeric vector of selected cell interactions according to "Index" column in resdata. 
+##' Default selection is all functional interactions(adjusted p value < 0.05).
 ##' @param dataset a value in one of 
 ##' c("Bindea2013","Bindea2013_Cancer",
 ##' "Charoentong2017", "Xu2018",
@@ -33,7 +33,7 @@
 ##' \dontrun{
 ##'   data("Bindea2013c_enrich")
 ##'   res <- Bindea2013c_enrich
-##'   NET <- TimiCellNetwork(resdata = res,dataset = "Bindea2013_Cancer")
+##'   NET <- TimiCellNetwork(resdata = res,dataset = "Bindea2013_Cancer",export=T,path="./")
 ##' }
 ##' @author Chenyang Skylar Li
 
@@ -62,14 +62,14 @@ TimiCellNetwork<-  function(resdata = NULL,
     se.r <- which(resdata$Adjust.P.Value < 0.05)
     
     if (length(se.r) < 5){
-      stop('There are less than 5 significant cell pairs.')
+      stop('There are less than 5 functional interactions.')
     } else {
-      message('Using all significant cell pairs(Adjested P.Value < 0.05)')
+      message('Using all functional interactions(Adjested P.Value < 0.05)')
       resdata <- resdata[se.r, ]
     }
     
   } else {
-    message('Using selected cell pairs')
+    message('Using selected cell interactions')
     se.r <- which(resdata$Index %in%  select)
     resdata <- resdata[se.r, ]
   }
@@ -475,14 +475,14 @@ TimiCellNetwork<-  function(resdata = NULL,
 ##' Generate gene network files for Cytoscape
 ##' 
 ##' It generates three files that can be used to build network in Cytoscape:
-##' 1. network files: simple interaction file (network.sif);
-##' 2. node attributes (node.txt);
-##' 3. edge attributes (edge.txt).
+##' 1. network files: simple interaction file (gene_network.sif);
+##' 2. node attributes (gene_node.txt);
+##' 3. edge attributes (gene_edge.txt).
 ##' The function also returns a list of above files that can be modified in R.
 ##'
 ##' @param resdata TimiGP cox result generated from TimiCOX
 ##' @param select a character vector of selected gene pairs according to rownames in resdata. 
-##' Default selection is all statistically significantly enriched cell pairs(adjusted p value < 0.05).
+##' Default selection is all functional interactions(adjusted p value < 0.05).
 ##' @param dataset a value in one of 
 ##' c("Bindea2013_Cancer","Immune3", 
 ##' "Newman2015", "Aran2017", "Luca2021",
@@ -504,7 +504,7 @@ TimiCellNetwork<-  function(resdata = NULL,
 ##' \dontrun{
 ##'   data(Bindea2013c_COX_MP_SKCM06)
 ##'   cox_res <- Bindea2013c_COX_MP_SKCM06
-##'   NET <- TimiGeneNetwork(resdata = cox_res,dataset = "Bindea2013_Cancer")
+##'   NET <- TimiGeneNetwork(resdata = cox_res,dataset = "Bindea2013_Cancer",export=T,path="./")
 ##' }
 ##' @author Chenyang Skylar Li
 

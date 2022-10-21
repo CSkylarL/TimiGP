@@ -2,11 +2,6 @@
 ##' 
 ##' It calculates the favorability score of each cell type 
 ##' based on TimiGP cell interaction network.
-##' In the network, 
-##' the out-degree of cell A means how many times high  A-to-other cell ratio 
-##' is associated with favorable prognosis.
-##' The in-degree of cell A means how many times low A-to-other cell ratio 
-##' is  associated with favorable prognosis.
 ##' The favorability score  includes favorable score and unfavorable score.
 ##' Favorable score: out-degree of the cell/sum of out-degree of all cell*100.
 ##' Unfavorable score: in-degree of the cell/sum of in-degree of all cell*100.
@@ -25,37 +20,39 @@
 ##' \dontrun{
 ##'   data("Bindea2013c_enrich")
 ##'   res <- Bindea2013c_enrich
-##'   score <- TimiFS(res)
+##'   score <- TimiFS(res, cutoff = 0.05)
 ##'   head(score)
 ##' }
 ##' @author Chenyang Skylar Li
 
 TimiFS<-  function(resdata = NULL,
                    cutoff=0.05){
-  # Examine required parameters
+  # Examine required parameters-------------------------------------------------
   if (is.null(resdata)){
     stop('The parameter "resdata" is required.')
   }
   resdata <- resdata %>% filter(Adjust.P.Value < cutoff)
-  # favorable cells
+  # favorable cells-------------------------------------------------------------
   total_ct <- unique(c(resdata$Favorable.Cell.Type,
                        resdata$Unfavorable.Cell.Type))
 
   faCell <- table(resdata$Favorable.Cell.Type) %>% data.frame() 
   se <- which(! total_ct %in% faCell$Var1)
-  faCell <- faCell %>% rbind(data.frame(Var1=total_ct[se],Freq=rep(0,length(se)))) %>%
+  faCell <- faCell %>% 
+    rbind(data.frame(Var1=total_ct[se],Freq=rep(0,length(se)))) %>%
     mutate(F=Freq/sum(Freq) *100)
   
   dim(faCell)
   
-  # unfavorable cell
+  # unfavorable cell------------------------------------------------------------
   unfaCell <- table(resdata$Unfavorable.Cell.Type) %>% data.frame()
   se <- which(! total_ct %in% unfaCell$Var1)
-  unfaCell <- unfaCell %>% rbind(data.frame(Var1=total_ct[se],Freq=rep(0,length(se)))) %>%
+  unfaCell <- unfaCell %>% 
+    rbind(data.frame(Var1=total_ct[se],Freq=rep(0,length(se)))) %>%
     mutate(U=Freq/sum(Freq) *100)
   dim(unfaCell)
   
-  # all cell 
+  # all cell -------------------------------------------------------------------
   score <- merge(faCell,unfaCell,by="Var1") %>% data.frame() %>%
     mutate(diff=F-U) %>%
     arrange(-diff) %>%
@@ -84,7 +81,7 @@ TimiFS<-  function(resdata = NULL,
 ##' to evaluate its favorable(orange,positive) or unfavorable(Blue,negative) role in prognosis.
 ##'
 ##' @param score Favorability score calculated from TimiFS
-##' @param select a numeric vector of selected cell pairs according to "Index" column in resdata. 
+##' @param select a numeric vector of selected cell interactions according to "Index" column in resdata. 
 ##' Default selection is all cell type.
 ##' @return A barplot of Favorability Score 
 ##' @import dplyr
@@ -102,7 +99,7 @@ TimiFS<-  function(resdata = NULL,
 
 TimiFSBar<-  function(score = NULL,
                       select=NULL){
-  # Examine required parameters
+  # Examine required parameters-------------------------------------------------
   if (is.null(score)){
     stop('The parameter "score" is required.')
   }
@@ -118,7 +115,7 @@ TimiFSBar<-  function(score = NULL,
   }
   
   
-  # plot
+  # plot------------------------------------------------------------------------
   max <- ceiling(max(score$Favorable.Score)/10)*10
   min <- ceiling(max(score$Unfavorable.Score)/10)*10
   score$Cell.Type <- factor(score$Cell.Type,levels = score$Cell.Type)

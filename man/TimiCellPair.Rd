@@ -2,7 +2,8 @@
 % Please edit documentation in R/Pairwise.R
 \name{TimiCellPair}
 \alias{TimiCellPair}
-\title{Generate cell pair with the corresponding marker pair annotation}
+\title{Generate cell pair representing potential interaction using 
+the corresponding marker pair annotation}
 \usage{
 TimiCellPair(geneset = NULL, dataset = NULL, core = 1)
 }
@@ -30,7 +31,7 @@ Cell pair B_A includes marker pairs: b1_a1, b1_a2, b2_a1, b2_a2
 \dontrun{
   data(CellType_Galon2013_cancer)
   geneset <- CellType_Galon2013_cancer
-  cell_pair <- TimiCellPair(geneset = geneset,core = 20)
+  cell_pair <- TimiCellPair(geneset = geneset,core = 2)
 }
 }
 \author{
