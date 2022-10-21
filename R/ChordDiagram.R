@@ -11,7 +11,7 @@
 ##' Default selection is all functional interactions(adjusted p value < 0.05).
 ##' @param dataset a value in one of 
 ##' c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Xu2018"
-##' ,"Newman2015", "Aran2017", "Luca2021",
+##' ,"Newman2015", 
 ##' "Tirosh2016","Zheng2021","Other"). 
 ##' The first four options include default group and color settings. 
 ##' If you use other dataset or want to change group and colors, 
@@ -44,9 +44,9 @@ TimiCellChord<-  function(resdata = NULL,
     stop('The parameter "resdata" is required.')
   }
   if (is.null(dataset)){
-    stop('The parameter "dataset" is required. Please choose one of c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Xu2018","Newman2015", "Aran2017", "Luca2021", "Tirosh2016","Zheng2021","Other")')
-  } else if(sum(dataset %in% c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Xu2018","Newman2015", "Aran2017", "Luca2021", "Tirosh2016","Zheng2021","Other")) == 0){
-    stop('Please choose one of c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Xu2018","Newman2015", "Aran2017", "Luca2021", "Tirosh2016","Zheng2021","Other")')
+    stop('The parameter "dataset" is required. Please choose one of c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Xu2018","Newman2015",  "Tirosh2016","Zheng2021","Other")')
+  } else if(sum(dataset %in% c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Xu2018","Newman2015",  "Tirosh2016","Zheng2021","Other")) == 0){
+    stop('Please choose one of c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Xu2018","Newman2015",  "Tirosh2016","Zheng2021","Other")')
     
   }
    # -log10(adjust.P.Value) ####################################################
@@ -331,216 +331,7 @@ TimiCellChord<-  function(resdata = NULL,
       }
     }
     
-    # "Aran2017" ======================================================
-    
-    if (dataset == "Aran2017"){
-      
-      cell <- c("pro B-cell", "B", "Bn" , "Plasma" , "Bm","csBm" ,
-                "CD4 T" , "CD8 T","CD4 Tn", "CD8 Tn",  "Th1", "Th2", "Treg", 
-                "CD4 Tm", "CD4 Tem" ,"CD8 Tem",  "CD4 Tcm" , "CD8 Tcm", "Tgd", "NKT" ,
-                "NK",
-                "DC", "iDC", "cDC" ,  "aDC", "pDC" ,
-                "Macrophage" ,  "M1",  "M2", "Monocyte" ,
-                "Neutrophil" ,"Mast", "Eosinophil", "Basophil" ,
-                "Endo", "LEC","MEC", "Fibroblast", "Pericyte" ,
-                "Epithelial", "MSC" ,"Adipocyte", "Preadipocyte",
-                "HSC", "CLP", "CMP", "GMP",  "MEP",  "MPP"  ,  
-                "Megakaryocyte","Erythrocyte", "Platelet",
-                "Neuron", "Astrocyte", "Chondrocyte", "Osteoblast", "Keratinocyte" ,
-                "Hepatocyte",  "Melanocyte","Sebocyte", "Mesangial",  "Myocyte",
-                "Skeletal muscle", "Smooth muscle"  
-      )
-      group <- c(rep("B Cell", 6),
-                 rep("T Cell", 14),
-                 rep("NK Cell", 1),
-                 rep("DC", 5),
-                 rep("Mononuclear phagocyte system", 4),
-                 rep("Granulocytes", 4),
-                 rep("Epithelial & Stromal Cells", 9), 
-                 rep("Stem Cells", 9), 
-                 rep("Tissue Specific Cells", 12))
-      
-      
-      
-      
-      names(group) <- cell
-      color <- c("#ccece6",
-                 "#99d8c9",
-                 "#66c2a4",
-                 "#41ae76",
-                 "#238b45",
-                 "#006d2c",
-                 "#dadaeb","#fcc5c0",
-                 "#bcbddc","#fa9fb5",
-                 "#9e9ac8","#f768a1",
-                 "#807dba","#dd3497",
-                 "#6a51a3","#ae017e",
-                 "#54278f","#7a0177",
-                 "#3f007d","#49006a",
-                 "#4eb3d3",
-                 "#0868ac",
-                 "#1d91c0",
-                 "#225ea8",
-                 "#253494",
-                 "#081d58",
-                 "#fed976",
-                 "#feb24c",
-                 "#ec7014",
-                 "#cc4c02",
-                 "#fc4e2a",
-                 "#e31a1c",
-                 "#bd0026",
-                 "#800026",
-                 "#DCDCDC",
-                 "#D3D3D3",
-                 "#C0C0C0",
-                 "#A9A9A9",
-                 "#808080",
-                 "#696969",
-                 "#778899",
-                 "#708090",
-                 "#000000",
-                 "#fdae6b", "#fcc5c0",
-                 "#fd8d3c", "#fa9fb5",
-                 "#f16913", "#f768a1",
-                 "#d94801", "#dd3497",
-                 "#a63603", 
-                 "#FFFFCC",
-                 "#FFFACD",
-                 "#FAFAD2",
-                 "#FFEFD5",
-                 "#FFFF99",
-                 "#FFFF66",
-                 "#FFFF33",
-                 "#FFFF00",
-                 "#BDB76B",
-                 "#CCCC00",
-                 "#999900",
-                 "#666600")
-      
-      names(color) <- cell
-      if(sum(selected %in% cell) == 0) {
-        stop('No Cell Type were found in Aran2017. Please choose "Other" and defined your groups and colors ')
-      }
-    }
-    # "Luca2021" ======================================================
-    
-    if (dataset == "Luca2021"){
-      
-      cell <- c( "B.S01","B.S02","B.S03","B.S04","B.S05", 
-                "Plasma.S01" , "Plasma.S02","Plasma.S03","Plasma.S04", 
-                "Plasma.S05","Plasma.S06",
-                "CD4 T.S01","CD4 T.S02","CD4 T.S03","CD4 T.S04", 
-                "CD4 T.S05","CD4 T.S06","CD4 T.S07", 
-                "CD8 T.S01","CD8 T.S02","CD8 T.S03", 
-                "NK.S01","NK.S02","NK.S03","NK.S04","NK.S05", 
-                "DC.S01" ,"DC.S02","DC.S03","DC.S04","DC.S05", 
-                "DC.S06","DC.S07","DC.S08", 
-                "Mono/Macro.S01","Mono/Macro.S02", "Mono/Macro.S03", 
-                "Mono/Macro.S04","Mono/Macro.S05","Mono/Macro.S06", 
-                "Mono/Macro.S07","Mono/Macro.S08","Mono/Macro.S09",
-                "Mast.S01","Mast.S02","Mast.S03", 
-                "Mast.S04","Mast.S05","Mast.S06", 
-                "Neutrophil.S01", "Neutrophil.S02","Neutrophil.S03", 
-                "Epithelial.S01","Epithelial.S02","Epithelial.S03", 
-                "Epithelial.S04","Epithelial.S05","Epithelial.S06", 
-                "Endo.S01","Endo.S02","Endo.S04","Endo.S05", 
-                "Fibroblast.S01","Fibroblast.S02", 
-                "Fibroblast.S03","Fibroblast.S04","Fibroblast.S05", 
-                "Fibroblast.S06","Fibroblast.S08"
-      )
-      group <- c(rep("B Cell", 5),
-                 rep("Plasma Cell", 6),
-                 rep("CD4 T Cell", 7),
-                 rep("CD8 T Cell", 3),
-                 rep("NK Cell", 5),
-                 rep("DC", 8),
-                 rep("Mononuclear phagocyte system", 9),
-                 rep("Mast Cells", 6),
-                 rep("Neutrophil", 3),
-                 rep("Epithelial Cells", 6),
-                 rep("Endothelial Cells", 4), 
-                 rep("Fibroblast", 7))
-      
-      
-      
-      
-      names(group) <- cell
-      color <- c("#ccece6",
-                 "#7bccc4",
-                 "#99d8c9",
-                 "#66c2a4",
-                 "#41ae76",
-                 "#c7e9c0",
-                 "#a1d99b",
-                 "#74c476",
-                 "#41ab5d",
-                 "#238b45",
-                 "#006d2c",
-                 "#efedf5",
-                 "#dadaeb",
-                 "#bcbddc",
-                 "#9e9ac8",
-                 "#807dba",
-                 "#6a51a3",
-                 "#54278f",
-                 "#3f007d",
-                 "#88419d",
-                 "#810f7c",
-                 "#4d004b",
-                 "#4eb3d3",
-                 "#2b8cbe",
-                 "#0868ac",
-                 "#084081",
-                 "#deebf7",
-                 "#c6dbef",
-                 "#9ecae1",
-                 "#6baed6",
-                 "#4292c6",
-                 "#2171b5",
-                 "#08519c",
-                 "#08306b",
-                 "#fff5eb",
-                 "#fee6ce",
-                 "#fdd0a2",
-                 "#fdae6b",
-                 "#fd8d3c",
-                 "#f16913",
-                 "#d94801",
-                 "#a63603",
-                 "#7f2704",
-                 "#fff5f0",
-                 "#fee0d2",
-                 "#fcbba1",
-                 "#fc9272",
-                 "#fb6a4a",
-                 "#ef3b2c",
-                 "#cb181d",
-                 "#a50f15",
-                 "#67000d",
-                 "#fde0dd",
-                 "#fcc5c0",
-                 "#fa9fb5",
-                 "#f768a1",
-                 "#dd3497",
-                 "#ae017e",
-                 "#df65b0",
-                 "#e7298a",
-                 "#ce1256",
-                 "#980043",
-                 "#f0f0f0",
-                 "#d9d9d9",
-                 "#bdbdbd",
-                 "#969696",
-                 "#737373",
-                 "#525252",
-                 "#252525")
-      
-      names(color) <- cell
-      if(sum(selected %in% cell) == 0) {
-        stop('No Cell Type were found in Luca2021. Please choose "Other" and defined your groups and colors ')
-      }
-    }  
+   
     # "Tirosh2016" ===========================================================
       if (dataset == "Tirosh2016"){
         cell <- c("B"  ,"T", "Macrophage"  ,

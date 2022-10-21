@@ -23,7 +23,7 @@ Default selection is all functional interactions(adjusted p value < 0.05).}
 \item{dataset}{a value in one of 
 c("Bindea2013","Bindea2013_Cancer",
 "Charoentong2017", "Xu2018",
-"Newman2015", "Aran2017", "Luca2021", 
+"Newman2015",  
 "Tirosh2016","Zheng2021","Other")
 The first four options include default group and color settings. 
 If you use other dataset or want to change group and colors, 

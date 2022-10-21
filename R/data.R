@@ -53,6 +53,30 @@
 
 
 
+#' Immune Cell Type generated from LM22
+#'
+#' A dataset containing the cell type and markers annotated by LM22, 
+#' which is the cell-type signature of CIBERSORT and CIBERSORTx.
+#' 
+#' @docType data
+#'
+#' @usage data(CellType_Newman2015_LM22)
+#' 
+#' @keywords datasets
+#' 
+#' @format A data frame with 1140 rows and 3 variables:
+#' \describe{
+#'   \item{CellType}{Immune cell type}
+#'   \item{Gene}{Marker gene of the cell type}
+#'   \item{Dataset}{The source of the annotation}
+#' }
+#' 
+#' @references Newman, A. M., Liu, C. L., Green, M. R., Gentles, A. J., Feng, W., Xu, Y., ... & Alizadeh, A. A. (2015). Robust enumeration of cell subsets from tissue expression profiles. Nature methods, 12(5), 453-457.
+#'
+#' @source Modification can be found in inst/extdata/build_CellType_Newman2015_LM22.R
+"CellType_Newman2015_LM22"
+
+
 
 
 
@@ -263,6 +287,31 @@
 
 
 
+
+
+
+#' COX regression Results from function TimiCOX with cell type meaker annotated by Newman2015_LM22
+#'
+#' An intermediate result generated from function TimiCOX
+#' that reveals the association between each marker pairs and favorable prognosis.
+#' 
+#' @docType data
+#'
+#' @usage data(Newman2015_COX_MP_SKCM06)
+#' 
+#' @keywords intermediate result
+#' 
+#' @format A data frame with 115440 rows and 3 variables:
+#' \describe{
+#'   \item{Row name}{Marker pair}
+#'   \item{HR}{Hazard.Ratio}
+#'   \item{PV}{P-Value}
+#'   \item{QV}{Adjust P-value}
+#' }
+#' 
+#' 
+#' @source intermediate result generated from function TimiCOX
+"Newman2015_COX_MP_SKCM06"
 
 
 
