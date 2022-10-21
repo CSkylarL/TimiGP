@@ -16,23 +16,28 @@ Based on this analysis and the charastics of immune system, we propose a novel c
 
 ### TimiGP framework
 Based on the rationale, we developed a novel method, `**TimiGP, Tumor Immune Microenvironment Illustration based on Gene Pairing**`. Below is the **Overview of TimiGP framework**.
+
 ![Overview of TimiGP framework](/assets/images/Fig2.png)
+
 `**Inputs**`
  1. Transcriptomic profile of immune marker genes(IMGs); 
  2. Survival statistics including event(e.g., death, recurrence) and time-to-event of the same cohort. 
+ 
 `**TimiGP Steps**`
  1. Performing pairwise comparisons between IMGs based on expression profile;
  2. Selecting prognostic IMG pairs by survival analysis; 
  3. Generating cell interactions annotations from cell-type markers;
  4. Determining functional interaction with enrichment analysis; 
  5. Annotating the clinical function of immune cells through network analysis.
+ 
 `**Outputs**`
  1. Functional inter-cell interaction network,
  2. Clinical value of infiltrating cells.
  
 ### TimiGP Applications
 TimiGP is designed to **infer the functional interaction network and clinical function of immune cells**. Based on the resulting immunological insights, The method will **facilitate the development of prognostic models**. Taking advantage of different biomarker references derived from **bulk and single-cell RNA-seq**, TimiGP can be applied to investigate the **entire tumor microenvironment** or **cell subpopulations**, perform **pan-cancer analysis** or study **other diseases**. 
- ![Supp12](/assets/images/Supp12.png)
+
+ ![FigS12](/assets/images/FigS12.png)
  
 ## Citation
 This package is intended for research use only. 
