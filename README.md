@@ -2,7 +2,7 @@
 
 An R package to infer cell interactions and clinical values in tumor immune microenvironment through gene pairs.
 ### Background 
-The immune cell co-infiltration sometimes causes `**Prognostic Bias**`, which makes existing transcriptome-based cell-type quantification methods challenging to identify the biological and clinical values. The below figure demonstrates the prognostic bias in metastatic melanoma: almost all cell types inferred by 8 popular methods are associated with favorable prognosis
+The immune cell co-infiltration sometimes causes `Prognostic Bias`, which makes existing transcriptome-based cell-type quantification methods challenging to identify the biological and clinical values. The below figure demonstrates the prognostic bias in metastatic melanoma: almost all cell types inferred by 8 popular methods are associated with favorable prognosis
 
 ![Fig1A](/assets/images/Fig1A.png)
 
@@ -10,27 +10,27 @@ The immune cell co-infiltration sometimes causes `**Prognostic Bias**`, which ma
 
 As the representative schema shown above, the absolute infiltration of immune effectors and suppressors are positively correlated and therefore have the same impact on prognosis. One solution is to consider the pairwise relation betwen celss. For example, relative abundance enables us to capture subtle differences between them and reveal the prognostic values of those cells in line with their biological functions(left). 
 
-Based on this analysis and the charastics of immune system, we propose a novel concept, `**Functinoal Interaction**`, to investigate Tumor Immune Microenvironment(TIME) by Gene Pairs(right). The tumor immune microenvironment(TIME) is a balance between anti-tumor and pro-tumor immune cells. If the function of anti-tumor cell types is more vital than the pro-tumor cells (e.g., higher abundance, higher marker expression), the TIME is associated with favorable patients’ prognosis; otherwise, it is associated with unfavorable patients’ prognosis.
+Based on this analysis and the charastics of immune system, we propose a novel concept, `Functinoal Interaction`, to investigate Tumor Immune Microenvironment(TIME) by Gene Pairs(right). The tumor immune microenvironment(TIME) is a balance between anti-tumor and pro-tumor immune cells. If the function of anti-tumor cell types is more vital than the pro-tumor cells (e.g., higher abundance, higher marker expression), the TIME is associated with favorable patients’ prognosis; otherwise, it is associated with unfavorable patients’ prognosis.
 
 ![Fig1E](/assets/images/Fig1E_S11.png)
 
 ### TimiGP framework
-Based on the rationale, we developed a novel method, `**TimiGP, Tumor Immune Microenvironment Illustration based on Gene Pairing**`. Below is the **Overview of TimiGP framework**.
+Based on the rationale, we developed a novel method, `TimiGP, Tumor Immune Microenvironment Illustration based on Gene Pairing`. Below is the **Overview of TimiGP framework**.
 
 ![Overview of TimiGP framework](/assets/images/Fig2.png)
 
-`**Inputs**`
+`Inputs`
  1. Transcriptomic profile of immune marker genes(IMGs); 
  2. Survival statistics including event(e.g., death, recurrence) and time-to-event of the same cohort. 
  
-`**TimiGP Steps**`
+`TimiGP Steps`
  1. Performing pairwise comparisons between IMGs based on expression profile;
  2. Selecting prognostic IMG pairs by survival analysis; 
  3. Generating cell interactions annotations from cell-type markers;
  4. Determining functional interaction with enrichment analysis; 
  5. Annotating the clinical function of immune cells through network analysis.
  
-`**Outputs**`
+`Outputs`
  1. Functional inter-cell interaction network,
  2. Clinical value of infiltrating cells.
  
