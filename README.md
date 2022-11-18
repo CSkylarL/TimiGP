@@ -1,6 +1,9 @@
 # TimiGP
 
-An R package to infer cell interactions and clinical values in tumor immune microenvironment through gene pairs.
+An `R package` to infer cell functional interactions and clinical values in tumor immune microenvironment through gene pairs.
+
+For more details, please read our manuscript: [TimiGP: inferring inter-cell functional interactions and clinical values in the tumor immune microenvironment through gene pairs.](https://www.biorxiv.org/content/biorxiv/early/2022/11/18/2022.11.17.515465.full.pdf)
+
 ### Background 
 The immune cell co-infiltration sometimes causes `Prognostic Bias`, which makes existing transcriptome-based cell-type quantification methods challenging to identify the biological and clinical values. The below figure demonstrates the prognostic bias in metastatic melanoma: almost all cell types inferred by 8 popular methods are associated with favorable prognosis
 
@@ -43,7 +46,8 @@ TimiGP is designed to **infer the functional interaction network and clinical fu
 This package is intended for research use only. 
 
 If you use TimiGP in your publication, please cite the paper:
-Li, Chenyang et al. "TimiGP: inferring inter-cell functional interactions and clinical values in the tumor immune microenvironment through gene pairs." (In submission)
+
+Li, C. et al. TimiGP: inferring inter-cell functional interactions and clinical values in the tumor immune microenvironment through gene pairs. bioRxiv, 2022.2011.2017.515465 (2022).
 
 ## Installation
  1. Install [the `devtools` package](https://github.com/r-lib/devtools) from CRAN.
