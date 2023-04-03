@@ -63,10 +63,14 @@ TimiCOX <-  function(mps = NULL,
     
   }
   # perform cox ----------------------------------------------------------------
-  pval <- hr  <- rep(0, nrow(mps))
+  # examine the mps is generated from logical relation or continuous relation
+  
+  if (is.logical(mps) == T) {
+    # perform cox logical ------------------------------------------------------
+    pval <- hr  <- rep(0, nrow(mps))
     for(k in 1:nrow(mps)){
       cat("\rCOX:", k,"/",nrow(mps))
-      mytag <- ifelse(mps[k,], 1, 0)
+      mytag <- ifelse(mps[k,], 1, 0) # only diff
       xx <- as.data.frame(cbind(info, mytag))
       mycox <- coxph(Surv(as.numeric(info[,2]), as.numeric( info[,1]))~mytag, xx) 
       mycox <- summary(mycox)
@@ -74,7 +78,25 @@ TimiCOX <-  function(mps = NULL,
       tmp <- mycox$conf.int
       hr[k] <- tmp[1]
     }
-  cat("\n")
+    cat("\n")
+    
+  } else if (is.numeric(mps) == T) {
+    # perform cox continuous ---------------------------------------------------
+    pval <- hr  <- rep(0, nrow(mps))
+    for(k in 1:nrow(mps)){
+      cat("\rCOX:", k,"/",nrow(mps))
+      mytag <- as.numeric(mps[k,]) # only diff
+      xx <- as.data.frame(cbind(info, mytag))
+      mycox <- coxph(Surv(as.numeric(info[,2]), as.numeric( info[,1]))~mytag, xx) 
+      mycox <- summary(mycox)
+      pval[k] <- mycox$coefficients[5]
+      tmp <- mycox$conf.int
+      hr[k] <- tmp[1]
+    }
+    cat("\n")
+  } else {
+    stop('The matrix are neither logical nor numeric values')
+  }
   
   QV <- p.adjust(pval, method=p.adj)
   
@@ -95,7 +117,14 @@ TimiCOX <-  function(mps = NULL,
   
   # change pair direction and reverse value of marker pair score----------------
   rownames(mps)[se] <- xx
+  
+  if (is.logical(mps) == T) {
   mps[se,] <- !mps[se,]
+  } else if (is.numeric(mps) == T) {
+    mps[se,] <- -mps[se,]
+  }  else {
+    stop('The matrix are neither logical nor numeric values')
+  }
   
   cox_res <-cox_res[order(cox_res[,2]),]
   res <- list("mps" = mps,"cox_res" = cox_res)

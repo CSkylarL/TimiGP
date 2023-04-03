@@ -1,12 +1,17 @@
-##' Capture logical relation of marker pairs
+##' Capture logical/continuous relation between marker pairs
 ##' 
-##' Capture logical relation of any two marker pairs, 
+##' Default: Capture logical relation of any two marker pairs, 
 ##' and generate a matrix of Marker Pair Score:
 ##' 1 or TRUE = the expression of gene A > that of gene B, 
 ##' 0 or FALSE = the expression of gene A < that of gene B. 
-##' 
+##' \cr
+##' Optional:  Capture continuous relation of any two marker pairs, 
+##' and generate a matrix of Marker Pair Score:
+##' the expression of gene A - that of gene B,
 ##'
 ##' @param rna a data.frame of preprocessed transcriptomic profile
+##' @param cont a logical value. If TRUE, capture the continuous relation. 
+##' The default is FALSE
 ##' @return a matrix of Marker Pair Score
 ##' @export 
 ##' @examples
@@ -25,18 +30,36 @@
 ##' }
 ##' @author Chenyang Skylar Li
 
-TimiGenePair <-  function(rna = NULL){
+TimiGenePair <-  function(rna = NULL,
+                          cont = FALSE){
   
   # examine required parameters-------------------------------------------------
   if (is.null(rna)){
     stop('The parameter "rna" is required. ')
   }
   
+  if (is.logical(cont) == F){
+    stop('cont is a logical value. Please set it to TRUE or FALSE')
+  }
+  
+  if (cont == T & (all(apply(rna,1,median) == 0) == T)) {
+    stop('If you want to capture continuous relation between gene pairs,
+         please do not use gene-wise median normalization. 
+         Please set "GMNorm = F" in "TimiPrePropress" then re-run this function')
+  }
+  
   message("Generating marker pairs")
   ### S1: pairwise comparision -------------------------------------------------
   irg <- rownames(rna)
   irgp <- outer(irg, irg, paste, sep="_")
-  myfun <- function(myvec){as.vector(outer(myvec, myvec, ">"))}
+  if (cont == FALSE) {
+    message("The default is to capture logical relation")
+    myfun <- function(myvec){as.vector(outer(myvec, myvec, ">"))}
+  } else if (cont == TRUE) {
+    message("You choose to capture continuous relation")
+    myfun <- function(myvec){as.vector(outer(myvec, myvec, "-"))}
+  }
+  
   irgp_res <- apply(rna, 2, myfun)
   row.names(irgp_res) <- irgp	 
   
@@ -50,18 +73,28 @@ TimiGenePair <-  function(rna = NULL){
   irgp_res <- irgp_res[se,] 
   dim(irgp_res) 
   
-  ### S3: choose GPs with at least 10% samples in both groups-------------------
-  n.thr <- round(ncol(rna)*0.1)
-  xx1 <- apply(irgp_res==1, 1, sum)
-  xx2 <- apply(irgp_res==0, 1, sum)
-  se <- which(xx1>=n.thr & xx2>=n.thr)
-  
-  message(nrow(irgp_res)-length(se)," marker pairs were filtered out")
-  irgp_res <- irgp_res[se,]
-  dim(irgp_res) 
-
-  message(nrow(irgp_res)," marker pairs were produced")
-  
+  ### S3: filter GPs
+  if (cont == FALSE) {
+    ### choose GPs with at least 10% samples in both groups-------------------
+    n.thr <- round(ncol(rna)*0.1)
+    xx1 <- apply(irgp_res==1, 1, sum)
+    xx2 <- apply(irgp_res==0, 1, sum)
+    se <- which(xx1>=n.thr & xx2>=n.thr)
+    
+    message(nrow(irgp_res)-length(se)," marker pairs were filtered out")
+    irgp_res <- irgp_res[se,]
+    dim(irgp_res) 
+    
+    message(nrow(irgp_res)," marker pairs were produced")
+  } else if (cont == TRUE) {
+    ### choose GPs with difference > 0.1 across patients -----------------------
+    min_range <- 0.1
+    se <- apply(irgp_res, 1, function(x) { (max(x) - min(x)) > min_range }) 
+    message(nrow(irgp_res)-length(se)," marker pairs were filtered out (CONT)")
+    irgp_res <- irgp_res[se,]
+    message(nrow(irgp_res)," marker pairs were produced (CONT)")
+  }
+    
   return(irgp_res)
 }
 
@@ -79,7 +112,7 @@ TimiGenePair <-  function(rna = NULL){
 ##' @param geneset a data.frame of cell markers, 
 ##' in which the 1st column is cell type, 
 ##' the 2nd column is the marker gene 
-##' and the 3rd column is the name of the dataset(optional)
+##' and the 3rd column is the name of the dataset (optional)
 ##' @param core a numeric value shows the number of cores 
 ##' to use for parallel execution. The default value is 1.
 ##' @param dataset specified at least 1 dataset occured in the 3rd column of geneset

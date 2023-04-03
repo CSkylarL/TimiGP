@@ -11,7 +11,7 @@ TimiCellPair(geneset = NULL, dataset = NULL, core = 1)
 \item{geneset}{a data.frame of cell markers, 
 in which the 1st column is cell type, 
 the 2nd column is the marker gene 
-and the 3rd column is the name of the dataset(optional)}
+and the 3rd column is the name of the dataset (optional)}
 
 \item{dataset}{specified at least 1 dataset occured in the 3rd column of geneset}
 

@@ -2,21 +2,28 @@
 % Please edit documentation in R/Pairwise.R
 \name{TimiGenePair}
 \alias{TimiGenePair}
-\title{Capture logical relation of marker pairs}
+\title{Capture logical/continuous relation between marker pairs}
 \usage{
-TimiGenePair(rna = NULL)
+TimiGenePair(rna = NULL, cont = FALSE)
 }
 \arguments{
 \item{rna}{a data.frame of preprocessed transcriptomic profile}
+
+\item{cont}{a logical value. If TRUE, capture the continuous relation. 
+The default is FALSE}
 }
 \value{
 a matrix of Marker Pair Score
 }
 \description{
-Capture logical relation of any two marker pairs, 
+Default: Capture logical relation of any two marker pairs, 
 and generate a matrix of Marker Pair Score:
 1 or TRUE = the expression of gene A > that of gene B, 
-0 or FALSE = the expression of gene A < that of gene B.
+0 or FALSE = the expression of gene A < that of gene B. 
+\cr
+Optional:  Capture continuous relation of any two marker pairs, 
+and generate a matrix of Marker Pair Score:
+the expression of gene A - that of gene B,
 }
 \examples{
 \dontrun{
