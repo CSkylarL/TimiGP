@@ -8,7 +8,7 @@ TimiEnrich(
   gene = NULL,
   background = NULL,
   geneset = NULL,
-  p.adj = NULL,
+  p.adj = "BH",
   core = 1,
   pair = TRUE
 )
@@ -18,23 +18,27 @@ TimiEnrich(
 
 \item{background}{background genes or pairs}
 
-\item{geneset}{a data frame, column 1 shows cell(pair), column 2 shows gene(pair)}
+\item{geneset}{a data frame, column 1 shows cell (pair), 
+column 2 shows gene (pair)}
 
 \item{p.adj}{p.adjust.methods. 
-One of "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"}
+One of "holm", "hochberg", "hommel", "bonferroni", 
+"BH", "BY", "fdr", "none". The default is "BH".}
 
-\item{core}{a numeric value shows the number of cores to use for parallel execution. 
+\item{core}{a numeric value shows the number of cores for parallel execution. 
 The default value is 1.}
 
-\item{pair}{a logical value. If TRUE(default), perform enrichment analysis in cell pair. 
-If using the function for general cell type enrichment analysis, please choose FALSE.}
+\item{pair}{a logical value. If TRUE (default), 
+perform enrichment analysis in cell pair. 
+If using the function for general cell type enrichment analysis, 
+please choose FALSE.}
 }
 \value{
-A dataframe of enrichment results including fucntional interactions
+A dataframe of enrichment results including inter-cell interactions
 }
 \description{
-It statistically determines the functional interactions
-by performing over-representation(enrichment analysis)
+It statistically determines the inter-interactions
+by performing over-representation (enrichment analysis)
 }
 \examples{
 \dontrun{

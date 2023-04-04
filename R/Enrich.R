@@ -33,21 +33,25 @@ TimiBG <- function(marker.pair = NULL){
 
 ##' Enrichment Analysis
 ##' 
-##' It statistically determines the functional interactions
-##' by performing over-representation(enrichment analysis) 
+##' It statistically determines the inter-interactions
+##' by performing over-representation (enrichment analysis) 
 ##'
 ##' @param gene a vector of gene symbol
-##' @param geneset a data frame, column 1 shows cell(pair), column 2 shows gene(pair)
+##' @param geneset a data frame, column 1 shows cell (pair), 
+##' column 2 shows gene (pair)
 ##' @param background background genes or pairs
 ##' @param p.adj p.adjust.methods. 
-##' One of "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"
-##' @param core a numeric value shows the number of cores to use for parallel execution. 
+##' One of "holm", "hochberg", "hommel", "bonferroni", 
+##' "BH", "BY", "fdr", "none". The default is "BH".
+##' @param core a numeric value shows the number of cores for parallel execution. 
 ##' The default value is 1.
-##' @param pair a logical value. If TRUE(default), perform enrichment analysis in cell pair. 
-##' If using the function for general cell type enrichment analysis, please choose FALSE.
+##' @param pair a logical value. If TRUE (default), 
+##' perform enrichment analysis in cell pair. 
+##' If using the function for general cell type enrichment analysis, 
+##' please choose FALSE.
 ##' @import foreach
 ##' @import doParallel
-##' @return A dataframe of enrichment results including fucntional interactions
+##' @return A dataframe of enrichment results including inter-cell interactions
 ##' @export 
 ##' @examples
 ##' \dontrun{
@@ -71,7 +75,7 @@ TimiBG <- function(marker.pair = NULL){
 TimiEnrich <- function(gene = NULL,
                        background = NULL,
                        geneset = NULL,
-                       p.adj =  NULL,
+                       p.adj =  "BH",
                        core = 1,
                        pair=TRUE){
   # examine required parameters------------------------------------------------
@@ -84,8 +88,12 @@ TimiEnrich <- function(gene = NULL,
   if (is.null(geneset)){
     stop('The parameter "geneset" is required.')
   }
-  if (is.null(p.adj)){
-    stop('The parameter "p.adj" is required. Please choose one of c("holm", "hochberg", "hommel", "bonferroni","BH", "BY","fdr", "none")')
+  if (sum(p.adj %in% 
+          c("holm", "hochberg", "hommel", 
+            "bonferroni","BH", "BY","fdr", "none")) !=1 ){
+    stop('The parameter "p.adj" is required.' ,
+         'Please choose one of c("holm", "hochberg",' ,
+         ' "hommel", "bonferroni", "BH", "BY", "fdr", "none")')
   }
   # Parallel 
   registerDoParallel(cores=core)
@@ -131,8 +139,8 @@ TimiEnrich <- function(gene = NULL,
   }
   ## P adjust------------------------------------------------------------------
   res$Adjust.P.Value <- p.adjust(res$P.Value, method=p.adj)
-  res$Rank <- rank(res$Adjust.P.Value,ties.method = "min")
-  res <- res[order(res$Adjust.P.Value), ]
+  res$Rank <- rank(res$P.Value,ties.method = "min")
+  res <- res[order(res$P.Value,res$Adjust.P.Value), ]
   res$Index <- 1:nrow(res)
   if (pair == TRUE){
     xx <- unlist(strsplit(res$Cell.Interaction,split = "_"))

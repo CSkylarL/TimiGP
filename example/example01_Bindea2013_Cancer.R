@@ -72,6 +72,11 @@ background <- TimiBG(marker.pair = row.names(cox_res))
 # 10. Enrichment Analysis: TimiEnrich ------------------------------------------
 res <- TimiEnrich(gene = GP, background = background, 
                   geneset = cell_pair, p.adj = "BH",core=20)
+
+# Optional: Permutation to generate FDR: TimiPermFFDR --------------------------
+res <- TimiPermFDR(resdata = res, geneset = geneset, gene = GP,
+                   background = background, niter = 100, core = 20)
+
 # This has been saved to data as an example
 #Bindea2013c_enrich <- res
 #save(Bindea2013c_enrich,file = "data/Bindea2013c_enrich.rda")

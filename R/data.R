@@ -407,7 +407,8 @@
 #' @keywords example result
 #' 
 #' 
-#' @format a data frame of enrichment result:
+#' @format a data frame of enrichment result 
+#' generated from TimiEnrich and TimiPermFDR:
 #' \describe{
 #'   \item{Index}{A numeric vector used to specify which cell pair would be used in visualization}
 #'   \item{Rank}{A rank of cell interaction according to Adjust. P-value}
@@ -419,6 +420,7 @@
 #'   \item{Enrichment.Ratio}{Enrichment Ratio}
 #'   \item{P.Value}{P. value}
 #'   \item{Adjust.P.Value}{Adjust.P.Value}
+#'   \item{Permutation.FDR}{FDR calculated from permutation tests by shuffling cell-type markers}
 #'   \item{Shared.IMGP}{The marker pairs shared by query pairs and annotation}
 #'   \item{Total.IMGP}{The marker pairs in the annotation}
 #' }
