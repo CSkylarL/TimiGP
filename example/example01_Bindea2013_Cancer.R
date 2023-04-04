@@ -105,7 +105,7 @@ res <- Bindea2013c_enrich
 p <- TimiDotplot(resdata = res,select = c(1:10))
 p
 
-# 13. Visualization: Chord Diagram of functional interaction: TimiCellChord-----
+# 13. Visualization: Chord Diagram of inter-cell interaction: TimiCellChord-----
 rm(list=ls())
 data("Bindea2013c_enrich")
 res <- Bindea2013c_enrich
@@ -117,7 +117,7 @@ TimiCellChord(resdata = res,dataset = "Bindea2013_Cancer")
 # Chord Diagram of marker pairs in seltect cell interaction
 TimiGeneChord(resdata = res,select = 1)
 
-# 13. Calculate favorability score: TimiFS -------------------------------------
+# 14. Calculate favorability score: TimiFS -------------------------------------
 # Visualization: TimiFSBar
 rm(list=ls())
 data("Bindea2013c_enrich")

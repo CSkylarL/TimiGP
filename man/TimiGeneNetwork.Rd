@@ -17,7 +17,7 @@ TimiGeneNetwork(
 \item{resdata}{TimiGP cox result generated from TimiCOX}
 
 \item{select}{A  character vector of selected gene pairs according to rownames in resdata. 
-Default selection is all functional interactions(adjusted p value < 0.05).}
+Default selection is all inter-cell interactions(adjusted p value < 0.05).}
 
 \item{dataset}{A  value in one of 
 c("Bindea2013_Cancer","Immune3", 

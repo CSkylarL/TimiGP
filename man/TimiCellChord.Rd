@@ -18,7 +18,7 @@ TimiCellChord(
 \item{resdata}{TimiGP enrichment result generated from TimiEnrich}
 
 \item{select}{A numeric vector of selected cell interactions according to "Index" column in resdata. 
-Default selection is all functional interactions(adjusted p value < 0.05).}
+Default selection is all inter-cell interactions(adjusted p value < 0.05).}
 
 \item{dataset}{A value in one of 
 c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Xu2018"
@@ -44,7 +44,7 @@ The default cutoff is 0.05.}
 Chord diagram of Cell Interaction
 }
 \description{
-Chord diagram reveals the functional interaction network.
+Chord diagram reveals the inter-cell interaction network.
 The arrow points from favorable cell type A to unfavorable cell type B, 
 which denotes that function of A greater than B associated with a good prognosis.
 The width of the arrow represents -log10(Adjust.P.Value),namely,

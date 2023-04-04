@@ -85,14 +85,15 @@ NET <- TimiCellNetwork(resdata = res,dataset = "Zheng2021",
 p <- TimiDotplot(resdata = res,select = c(1:10))
 p
 
-# 13. Visualization: Chord Diagram of functional interaction: TimiCellChord-----
+# 13. Visualization: Chord Diagram of inter-cell interaction: TimiCellChord-----
+
 
 # Cell Chord Diagram
 TimiCellChord(resdata = res,dataset = "Zheng2021")
 # Chord Diagram of marker pairs in seltect cell interaction
 TimiGeneChord(resdata = res,select = 1)
 
-# 13. Calculate favorability score: TimiFS -------------------------------------
+# 134 Calculate favorability score: TimiFS -------------------------------------
 # Visualization: TimiFSBar
 # Calculate
 score <- TimiFS(res)

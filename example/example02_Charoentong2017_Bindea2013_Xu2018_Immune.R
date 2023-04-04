@@ -112,7 +112,7 @@ p2
 
 p3 <- TimiDotplot(resdata = res$Xu2018,select = c(1:10))
 p3
-# 13. Visualization: Chord Diagram of functional interaction: TimiCellChord-----
+# 13. Visualization: Chord Diagram of inter-cell interaction: TimiCellChord-----
 
 # Cell Chord Diagram
 TimiCellChord(resdata = res$Charoentong2017,dataset = "Charoentong2017")
@@ -122,7 +122,7 @@ TimiCellChord(resdata = res$Xu2018,dataset = "Xu2018")
 TimiGeneChord(resdata = res$Charoentong2017,select = 1)
 TimiGeneChord(resdata = res$Bindea2013,select = 1)
 TimiGeneChord(resdata = res$Xu2018,select = 1)
-# 13. Calculate favorability score: TimiFS -------------------------------------
+# 14. Calculate favorability score: TimiFS -------------------------------------
 # Visualization: TimiFSBar
 # Calculate
 score1 <- TimiFS(res$Charoentong2017)
