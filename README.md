@@ -1,6 +1,6 @@
 # TimiGP
 
-An `R package` to infer cell functional interactions and clinical values in tumor immune microenvironment through gene pairs.
+An `R package` to infer inter-cell interactions and clinical values in tumor immune microenvironment through gene pairs.
 
 For more details, please read our manuscript: [TimiGP: inferring inter-cell functional interactions and clinical values in the tumor immune microenvironment through gene pairs.](https://www.biorxiv.org/content/10.1101/2022.11.17.515465v1.full)
 
@@ -13,7 +13,7 @@ The immune cell co-infiltration sometimes causes `Prognostic Bias`, which makes 
 
 As the representative schema shown above, the absolute infiltration of immune effectors and suppressors are positively correlated and therefore have the same impact on prognosis. One solution is to consider the pairwise relation betwen celss. For example, relative abundance enables us to capture subtle differences between them and reveal the prognostic values of those cells in line with their biological functions(left). 
 
-Based on this analysis and the charastics of immune system, we propose a novel concept, `Functinoal Interaction`, to investigate Tumor Immune Microenvironment(TIME) by Gene Pairs(right). The tumor immune microenvironment(TIME) is a balance between anti-tumor and pro-tumor immune cells. If the function of anti-tumor cell types is more vital than the pro-tumor cells (e.g., higher abundance, higher marker expression), the TIME is associated with favorable patients’ prognosis; otherwise, it is associated with unfavorable patients’ prognosis.
+Based on this analysis and the charastics of immune system, we propose a novel concept, `Ratio representative inter-cell interaction`, to investigate Tumor Immune Microenvironment(TIME) by Gene Pairs(right). The tumor immune microenvironment(TIME) is a balance between anti-tumor and pro-tumor immune cells. If the function of anti-tumor cell types is more vital than the pro-tumor cells (e.g., higher abundance, higher marker expression), the TIME is associated with favorable patients’ prognosis; otherwise, it is associated with unfavorable patients’ prognosis.
 
 ![Fig1E](/assets/images/Fig1E_S11.png)
 
@@ -23,22 +23,23 @@ Based on the rationale, we developed a novel method, `TimiGP, Tumor Immune Micro
 ![Overview of TimiGP framework](/assets/images/Fig2.png)
 
 `Inputs`
- 1. Transcriptomic profile of immune marker genes(IMGs); 
- 2. Survival statistics including event(e.g., death, recurrence) and time-to-event of the same cohort. 
- 
+ 1. Immune cell-type markers; 
+ 2. Transcriptomic profiles; 
+ 3. Survival statistics, including event (e.g., death, recurrence) and time-to-event of the same cohort. 
+
 `TimiGP Steps`
- 1. Performing pairwise comparisons between IMGs based on expression profile;
- 2. Selecting prognostic IMG pairs by survival analysis; 
- 3. Generating cell interactions annotations from cell-type markers;
- 4. Determining functional interaction with enrichment analysis; 
- 5. Annotating the clinical function of immune cells through network analysis.
+ 1. Defining and selecting marker gene pair matrix;
+ 2. Choosing gene pairs associated with favorable prognosis; 
+ 3. Constructing the directed gene-gene network; 
+ 4. Identifying cell-cell interactions by enrichment analysis;
+ 5. Building and analyzing cell interaction network.
  
 `Outputs`
- 1. Functional inter-cell interaction network,
- 2. Clinical value of infiltrating cells.
+ 1. Inter-cell interaction network,
+ 2. Prognostic association of infiltrating cells (favorability score).
  
 ### TimiGP Applications
-TimiGP is designed to **infer the functional interaction network and clinical function of immune cells**. Based on the resulting immunological insights, The method will **facilitate the development of prognostic models**. Taking advantage of different biomarker references derived from **bulk and single-cell RNA-seq**, TimiGP can be applied to investigate the **entire tumor microenvironment** or **cell subpopulations**, perform **pan-cancer analysis** or study **other diseases**. 
+TimiGP is designed to **infer the inter-cell interaction network and prognostic association of immune cells**. Based on the resulting immunological insights, The method will **facilitate the development of prognostic models**. Taking advantage of different biomarker references derived from **bulk and single-cell RNA-seq**, TimiGP can be applied to investigate the **entire tumor microenvironment** or **cell subpopulations**, perform **pan-cancer analysis** or study **other diseases**. 
 
  ![FigS12](/assets/images/FigS12.png)
  
