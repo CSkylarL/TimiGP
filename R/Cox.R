@@ -8,7 +8,8 @@
 ##' @param info a data.frame in which the 1st column is event 
 ##' and the 2nd column is days-to-event.
 ##' @param p.adj p.adjust.methods. 
-##' One of "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"	
+##' One of "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none".
+##' The default value is "BH".
 ##' @return A list of two results: 
 ##' 1. Result of cox regression(cox_res)
 ##' (HR: Hazard.Ratio,PV: P-Value,QV: Adjust P-value). 
@@ -33,8 +34,7 @@
 
 TimiCOX <-  function(mps = NULL,
                      info = NULL,
-                     p.adj = c("holm", "hochberg", "hommel", "bonferroni", 
-                               "BH", "BY","fdr", "none")){
+                     p.adj = "BH"){
   # examine required parameters-------------------------------------------------
   if (is.null(mps)){
     stop('The parameter "mps" is required. ')
