@@ -4,11 +4,7 @@
 \alias{TimiCOX}
 \title{Find marker pairs associated with favorable prognosis}
 \usage{
-TimiCOX(
-  mps = NULL,
-  info = NULL,
-  p.adj = c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none")
-)
+TimiCOX(mps = NULL, info = NULL, p.adj = "BH")
 }
 \arguments{
 \item{mps}{a matrix of Marker Pair Score}
@@ -17,7 +13,8 @@ TimiCOX(
 and the 2nd column is days-to-event.}
 
 \item{p.adj}{p.adjust.methods. 
-One of "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"}
+One of "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none".
+The default value is "BH".}
 }
 \value{
 A list of two results: 
