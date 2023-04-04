@@ -7,19 +7,23 @@
 ##' the wider the arrow is, the smaller the adjusted p-value is.
 ##'
 ##' @param resdata TimiGP enrichment result generated from TimiEnrich
-##' @param select a numeric vector of selected cell interactions according to "Index" column in resdata. 
+##' @param select A numeric vector of selected cell interactions according to "Index" column in resdata. 
 ##' Default selection is all functional interactions(adjusted p value < 0.05).
-##' @param dataset a value in one of 
+##' @param dataset A value in one of 
 ##' c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Xu2018"
 ##' ,"Newman2015", 
 ##' "Tirosh2016","Zheng2021","Other"). 
 ##' The first four options include default group and color settings. 
 ##' If you use other dataset or want to change group and colors, 
 ##' please choose "Other".
-##' @param group a vector of self-defined cell groups, 
+##' @param group A vector of self-defined cell groups, 
 ##' whose names are the all favorable and unfavorable cells types in selection. 
-##' @param color a vector of self-defined cell colors, 
-##' whose names are the all favorable and unfavorable cells types in selection. 
+##' @param color A vector of self-defined cell colors, 
+##' @param condition A value in one of 
+##' c("P.Value","Adjust.P.Value","Permutation.FDR"),
+##' which is the column name of resdata.
+##' @param cutoff A cutoff of condition used to filter cell interactions. 
+##' The default cutoff is 0.05.
 ##' @return Chord diagram of Cell Interaction
 ##' @import circlize
 ##' @import RColorBrewer
@@ -38,30 +42,43 @@ TimiCellChord<-  function(resdata = NULL,
                         select = NULL,
                         dataset = NULL,
                         group = NULL,
-                        color = NULL){
+                        color = NULL,
+                        condition = "Adjust.P.Value",
+                        cutoff = 0.05){
    # Examine required parameters ###############################################
   if (is.null(resdata)){
     stop('The parameter "resdata" is required.')
   }
   if (is.null(dataset)){
     stop('The parameter "dataset" is required. Please choose one of c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Xu2018","Newman2015",  "Tirosh2016","Zheng2021","Other")')
-  } else if(sum(dataset %in% c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Xu2018","Newman2015",  "Tirosh2016","Zheng2021","Other")) == 0){
+  } else if(sum(dataset %in% c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Xu2018","Newman2015",  "Tirosh2016","Zheng2021","Other")) != 1){
     stop('Please choose one of c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Xu2018","Newman2015",  "Tirosh2016","Zheng2021","Other")')
     
   }
-   # -log10(adjust.P.Value) ####################################################
-  
-  resdata$rev.p.adj <- -log10(resdata$Adjust.P.Value+1e-300)
+    
+  if (is.null(condition)){
+    stop('The parameter "condition" is required. Please choose one of c("P.Value","Adjust.P.Value","Permutation.FDR")')
+  } else if(sum(condition %in% c("P.Value","Adjust.P.Value","Permutation.FDR")) !=1){
+    stop('Please choose one of c("P.Value","Adjust.P.Value","Permutation.FDR")')
+    
+  }
+   # -log10(condition) #########################################################
+  if(condition == "Permutation.FDR") {
+    resdata$rev.p.adj <- 1-resdata[,condition]
+  } else {
+    resdata$rev.p.adj <- -log10(resdata[,condition]+1e-300)
+  }
   
   # selection ##################################################################
   if (is.null(select)) {
     se.c <- c("Favorable.Cell.Type", "Unfavorable.Cell.Type", "rev.p.adj")
-    se.r <- which(resdata$Adjust.P.Value < 0.05)
+    se.r <- which(resdata[,condition] < cutoff)
     
     if (length(se.r) < 5){
       stop('There are less than 5 functional interactions.')
     } else {
-      message('Using all functional interactions(Adjested P.Value < 0.05)')
+      message('Using inte-cell interactions(',
+      condition, ' < ', cutoff, ')')
       p.data <- resdata[se.r, se.c]
     }
     
@@ -452,9 +469,9 @@ TimiCellChord<-  function(resdata = NULL,
 ##' the expression of F greater than that of U is associated with a good prognosis.
 ##'
 ##' @param resdata TimiGP enrichment result generated from TimiEnrich
-##' @param select a numeric value of selected cell interactions according to "Index" column. 
+##' @param select A numeric value of selected cell interactions according to "Index" column. 
 ##' Default selection is the top 1 cell interaction.
-##' @param color a vector of self-defined marker colors, 
+##' @param color A vector of self-defined marker colors, 
 ##' whose names are the enriched markers
 ##' (not pair,you need to split the genes in Shared.IMGP column) 
 ##' in selected cell interaction. 

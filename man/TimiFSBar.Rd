@@ -9,7 +9,7 @@ TimiFSBar(score = NULL, select = NULL)
 \arguments{
 \item{score}{Favorability score calculated from TimiFS}
 
-\item{select}{a numeric vector of selected cell interactions according to "Index" column in resdata. 
+\item{select}{A numeric vector of selected cell interactions according to "Index" column in resdata. 
 Default selection is all cell type.}
 }
 \value{

@@ -16,10 +16,10 @@ TimiGeneNetwork(
 \arguments{
 \item{resdata}{TimiGP cox result generated from TimiCOX}
 
-\item{select}{a character vector of selected gene pairs according to rownames in resdata. 
+\item{select}{A  character vector of selected gene pairs according to rownames in resdata. 
 Default selection is all functional interactions(adjusted p value < 0.05).}
 
-\item{dataset}{a value in one of 
+\item{dataset}{A  value in one of 
 c("Bindea2013_Cancer","Immune3", 
 "Newman2015", 
 "Tirosh2016","Zheng2021","Other")
@@ -27,15 +27,15 @@ The first four options include default group and color settings.
 If you use other dataset or want to change group and colors, 
 please choose "Other".}
 
-\item{geneset}{a data.frame of cell markers, 
+\item{geneset}{A  data.frame of cell markers, 
 in which the 1st column is cell type, 
 the 2nd column is the marker gene 
 and the 3rd column is the name of the dataset(optional)}
 
-\item{export}{a logical value. If TRUE, it will generate network files 
+\item{export}{A  logical value. If TRUE, it will generate network files 
 for Cytoscape analysis. The default value is TRUE.}
 
-\item{path}{a directory to export the network files when "export = TRUE".}
+\item{path}{A  directory to export the network files when "export = TRUE".}
 }
 \value{
 A list of network required files(network,node,edge)

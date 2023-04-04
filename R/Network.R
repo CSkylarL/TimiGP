@@ -7,9 +7,9 @@
 ##' The function also returns a list of above files that can be modified in R.
 ##'
 ##' @param resdata TimiGP enrichment result generated from TimiEnrich
-##' @param select a numeric vector of selected cell interactions according to "Index" column in resdata. 
+##' @param select A  numeric vector of selected cell interactions according to "Index" column in resdata. 
 ##' Default selection is all functional interactions(adjusted p value < 0.05).
-##' @param dataset a value in one of 
+##' @param dataset A  value in one of 
 ##' c("Bindea2013","Bindea2013_Cancer",
 ##' "Charoentong2017", "Xu2018",
 ##' "Newman2015",  
@@ -17,16 +17,21 @@
 ##' The first four options include default group and color settings. 
 ##' If you use other dataset or want to change group and colors, 
 ##' please choose "Other".
-##' @param group a vector of self-defined cell groups, 
+##' @param group A  vector of self-defined cell groups, 
 ##' whose names are the all favorable and unfavorable cells types in selection. 
-##' @param geneset a data.frame of cell markers, 
+##' @param geneset A  data.frame of cell markers, 
 ##' in which the 1st is cell type, 
 ##' the 2nd column is the marker gene 
 ##' and the 3rd column is the name of the dataset(optional)
-##' @param export a logical value. If TRUE, it will generate network files 
+##' @param condition A  value in one of 
+##' c("P.Value","Adjust.P.Value","Permutation.FDR"),
+##' which is the column name of resdata.
+##' @param cutoff A  cutoff of condition used to filter cell interactions. 
+##' The default cutoff is 0.05.
+##' @param export A  logical value. If TRUE, it will generate network files 
 ##' for Cytoscape analysis. The default value is TRUE.
-##' @param path a directory to export the network files when "export = TRUE".
-##' @return A list of network required files(network,node,edge)
+##' @param path A  directory to export the network files when "export = TRUE".
+##' @return A  list of network required files(network,node,edge)
 ##' @import dplyr
 ##' @export 
 ##' @examples
@@ -42,6 +47,8 @@ TimiCellNetwork<-  function(resdata = NULL,
                             dataset = NULL,
                             group = NULL,
                             geneset = NULL,
+                            condition = "Adjust.P.Value",
+                            cutoff = 0.05,
                             export = TRUE,
                             path = NULL){
   # Examine required parameters ################################################
@@ -56,15 +63,21 @@ TimiCellNetwork<-  function(resdata = NULL,
     
   }
 
-  
+  if (is.null(condition)){
+    stop('The parameter "condition" is required. Please choose one of c("P.Value","Adjust.P.Value","Permutation.FDR")')
+  } else if(sum(condition %in% c("P.Value","Adjust.P.Value","Permutation.FDR")) !=1){
+    stop('Please choose one of c("P.Value","Adjust.P.Value","Permutation.FDR")')
+    
+  }
   # selection ##################################################################
   if (is.null(select)) {
-    se.r <- which(resdata$Adjust.P.Value < 0.05)
+    se.r <- which(resdata[,condition] < cutoff)
     
     if (length(se.r) < 5){
       stop('There are less than 5 functional interactions.')
     } else {
-      message('Using all functional interactions(Adjested P.Value < 0.05)')
+      message('Using inte-cell interactions(',
+              condition, ' < ', cutoff, ')')
       resdata <- resdata[se.r, ]
     }
     
@@ -387,22 +400,22 @@ TimiCellNetwork<-  function(resdata = NULL,
 ##' The function also returns a list of above files that can be modified in R.
 ##'
 ##' @param resdata TimiGP cox result generated from TimiCOX
-##' @param select a character vector of selected gene pairs according to rownames in resdata. 
+##' @param select A  character vector of selected gene pairs according to rownames in resdata. 
 ##' Default selection is all functional interactions(adjusted p value < 0.05).
-##' @param dataset a value in one of 
+##' @param dataset A  value in one of 
 ##' c("Bindea2013_Cancer","Immune3", 
 ##' "Newman2015", 
 ##' "Tirosh2016","Zheng2021","Other")
 ##' The first four options include default group and color settings. 
 ##' If you use other dataset or want to change group and colors, 
 ##' please choose "Other".
-##' @param geneset a data.frame of cell markers, 
+##' @param geneset A  data.frame of cell markers, 
 ##' in which the 1st column is cell type, 
 ##' the 2nd column is the marker gene 
 ##' and the 3rd column is the name of the dataset(optional)
-##' @param export a logical value. If TRUE, it will generate network files 
+##' @param export A  logical value. If TRUE, it will generate network files 
 ##' for Cytoscape analysis. The default value is TRUE.
-##' @param path a directory to export the network files when "export = TRUE".
+##' @param path A  directory to export the network files when "export = TRUE".
 ##' @return A list of network required files(network,node,edge)
 ##' @import dplyr
 ##' @export 

@@ -4,12 +4,16 @@
 \alias{TimiFS}
 \title{Calculate Favorability Score of cell types}
 \usage{
-TimiFS(resdata = NULL, cutoff = 0.05)
+TimiFS(resdata = NULL, condition = "Adjust.P.Value", cutoff = 0.05)
 }
 \arguments{
 \item{resdata}{TimiGP enrichment result generated from TimiEnrich}
 
-\item{cutoff}{A cutoff of adjusted P-value used to filter cell interactions. 
+\item{condition}{A value in one of 
+c("P.Value","Adjust.P.Value","Permutation.FDR"),
+which is the column name of resdata.}
+
+\item{cutoff}{A cutoff of condition used to filter cell interactions. 
 The default cutoff is 0.05.}
 }
 \value{

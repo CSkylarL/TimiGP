@@ -10,6 +10,8 @@ TimiCellNetwork(
   dataset = NULL,
   group = NULL,
   geneset = NULL,
+  condition = "Adjust.P.Value",
+  cutoff = 0.05,
   export = TRUE,
   path = NULL
 )
@@ -17,10 +19,10 @@ TimiCellNetwork(
 \arguments{
 \item{resdata}{TimiGP enrichment result generated from TimiEnrich}
 
-\item{select}{a numeric vector of selected cell interactions according to "Index" column in resdata. 
+\item{select}{A  numeric vector of selected cell interactions according to "Index" column in resdata. 
 Default selection is all functional interactions(adjusted p value < 0.05).}
 
-\item{dataset}{a value in one of 
+\item{dataset}{A  value in one of 
 c("Bindea2013","Bindea2013_Cancer",
 "Charoentong2017", "Xu2018",
 "Newman2015",  
@@ -29,21 +31,28 @@ The first four options include default group and color settings.
 If you use other dataset or want to change group and colors, 
 please choose "Other".}
 
-\item{group}{a vector of self-defined cell groups, 
+\item{group}{A  vector of self-defined cell groups, 
 whose names are the all favorable and unfavorable cells types in selection.}
 
-\item{geneset}{a data.frame of cell markers, 
+\item{geneset}{A  data.frame of cell markers, 
 in which the 1st is cell type, 
 the 2nd column is the marker gene 
 and the 3rd column is the name of the dataset(optional)}
 
-\item{export}{a logical value. If TRUE, it will generate network files 
+\item{condition}{A  value in one of 
+c("P.Value","Adjust.P.Value","Permutation.FDR"),
+which is the column name of resdata.}
+
+\item{cutoff}{A  cutoff of condition used to filter cell interactions. 
+The default cutoff is 0.05.}
+
+\item{export}{A  logical value. If TRUE, it will generate network files 
 for Cytoscape analysis. The default value is TRUE.}
 
-\item{path}{a directory to export the network files when "export = TRUE".}
+\item{path}{A  directory to export the network files when "export = TRUE".}
 }
 \value{
-A list of network required files(network,node,edge)
+A  list of network required files(network,node,edge)
 }
 \description{
 It generates three files that can be used to build network in Cytoscape:

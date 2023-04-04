@@ -9,16 +9,18 @@ TimiCellChord(
   select = NULL,
   dataset = NULL,
   group = NULL,
-  color = NULL
+  color = NULL,
+  condition = "Adjust.P.Value",
+  cutoff = 0.05
 )
 }
 \arguments{
 \item{resdata}{TimiGP enrichment result generated from TimiEnrich}
 
-\item{select}{a numeric vector of selected cell interactions according to "Index" column in resdata. 
+\item{select}{A numeric vector of selected cell interactions according to "Index" column in resdata. 
 Default selection is all functional interactions(adjusted p value < 0.05).}
 
-\item{dataset}{a value in one of 
+\item{dataset}{A value in one of 
 c("Bindea2013","Bindea2013_Cancer","Charoentong2017", "Xu2018"
 ,"Newman2015", 
 "Tirosh2016","Zheng2021","Other"). 
@@ -26,11 +28,17 @@ The first four options include default group and color settings.
 If you use other dataset or want to change group and colors, 
 please choose "Other".}
 
-\item{group}{a vector of self-defined cell groups, 
+\item{group}{A vector of self-defined cell groups, 
 whose names are the all favorable and unfavorable cells types in selection.}
 
-\item{color}{a vector of self-defined cell colors, 
-whose names are the all favorable and unfavorable cells types in selection.}
+\item{color}{A vector of self-defined cell colors,}
+
+\item{condition}{A value in one of 
+c("P.Value","Adjust.P.Value","Permutation.FDR"),
+which is the column name of resdata.}
+
+\item{cutoff}{A cutoff of condition used to filter cell interactions. 
+The default cutoff is 0.05.}
 }
 \value{
 Chord diagram of Cell Interaction

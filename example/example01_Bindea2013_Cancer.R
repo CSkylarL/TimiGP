@@ -93,6 +93,9 @@ head(NET$network,n = 3)
 head(NET$node,n = 3)
 head(NET$edge,n = 3)
 
+# You can also use stricter condition, e.g. Permutation.FDR
+NET <- TimiCellNetwork(resdata = res,dataset = "Bindea2013_Cancer",
+                       condition = "Permutation.FDR", cutoff = 0.2, export = F)
 # C Visualization###############################################################
 
 # 12. Visualization: Dot plot of selected cell interaction: TimiDotplot---------
@@ -108,6 +111,9 @@ data("Bindea2013c_enrich")
 res <- Bindea2013c_enrich
 # Cell Chord Diagram
 TimiCellChord(resdata = res,dataset = "Bindea2013_Cancer")
+# You can also use stricter condition, e.g. Permutation.FDR
+# TimiCellChord(resdata = res,dataset = "Bindea2013_Cancer", 
+#               condition = "Permutation.FDR", cutoff = 0.2)
 # Chord Diagram of marker pairs in seltect cell interaction
 TimiGeneChord(resdata = res,select = 1)
 
@@ -118,6 +124,8 @@ data("Bindea2013c_enrich")
 res <- Bindea2013c_enrich
 # Calculate
 score <- TimiFS(res)
+# You can also use stricter condition, e.g. Permutation.FDR
+# score <- TimiFS(res,condition = "Permutation.FDR", cutoff = 0.2)
 head(score)
 # Visualization
 p <- TimiFSBar(score)

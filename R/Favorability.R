@@ -7,7 +7,10 @@
 ##' Unfavorable score: in-degree of the cell/sum of in-degree of all cell*100.
 ##'
 ##' @param resdata TimiGP enrichment result generated from TimiEnrich
-##' @param cutoff A cutoff of adjusted P-value used to filter cell interactions. 
+##' @param condition A value in one of 
+##' c("P.Value","Adjust.P.Value","Permutation.FDR"),
+##' which is the column name of resdata.
+##' @param cutoff A cutoff of condition used to filter cell interactions. 
 ##' The default cutoff is 0.05.
 ##' @return A matrix of Favorability Score 
 ##' which includes favorable score and unfavorable score.
@@ -26,12 +29,23 @@
 ##' @author Chenyang Skylar Li
 
 TimiFS<-  function(resdata = NULL,
-                   cutoff=0.05){
+                   condition = "Adjust.P.Value",
+                   cutoff = 0.05){
   # Examine required parameters-------------------------------------------------
   if (is.null(resdata)){
     stop('The parameter "resdata" is required.')
   }
-  resdata <- resdata %>% filter(Adjust.P.Value < cutoff)
+  
+  if (is.null(condition)){
+    stop('The parameter "condition" is required. Please choose one of c("P.Value","Adjust.P.Value","Permutation.FDR")')
+  } else if(sum(condition %in% c("P.Value","Adjust.P.Value","Permutation.FDR")) !=1){
+    stop('Please choose one of c("P.Value","Adjust.P.Value","Permutation.FDR")')
+    
+  }
+  
+  resdata <- resdata[which(resdata[,condition] < cutoff),]
+  message('Using inte-cell interactions(',
+          condition, ' < ', cutoff, ')')
   # favorable cells-------------------------------------------------------------
   total_ct <- unique(c(resdata$Favorable.Cell.Type,
                        resdata$Unfavorable.Cell.Type))
@@ -81,7 +95,7 @@ TimiFS<-  function(resdata = NULL,
 ##' to evaluate its favorable(orange,positive) or unfavorable(Blue,negative) role in prognosis.
 ##'
 ##' @param score Favorability score calculated from TimiFS
-##' @param select a numeric vector of selected cell interactions according to "Index" column in resdata. 
+##' @param select A numeric vector of selected cell interactions according to "Index" column in resdata. 
 ##' Default selection is all cell type.
 ##' @return A barplot of Favorability Score 
 ##' @import dplyr
