@@ -105,7 +105,7 @@ Here is a summary of available data in the package:
 | 6.2   data(Newman2015_COX_MP_SKCM06)                      | `TimiCOX` results with above annotation that reveals the association between each marker pairs and favorable prognosis.   |
 ## Example
 Here is an example that how to use the package to infer gene and cell interaction based on relative abundance. 
-Other examples can be found in the `example` folder. And the process to generate the cell markers can be found in `inst/extdata`.
+Other examples can be found in the [example](example/). And the process to generate the cell markers can be found in `inst/extdata`.
 
 Library the package
 ```R
