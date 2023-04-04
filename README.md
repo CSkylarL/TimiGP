@@ -71,17 +71,18 @@ Here is a summary of the functions in the package:
 | ------------------------------------------------------------------ | --------------------------------------------------------------- |
 | 1.1   Preprocess of Clinical Info                                  | `TimiCheckEvent`(info = NULL) |  
 | 1.2   Preprocess of Transcriptome Profile                          | `TimiPrePropress`(marker, rna = NULL, cohort, log = TRUE, GMNorm=TRUE)|
-| 2.1   Pairwise Comparison                                          | `TimiGenePair`(rna = NULL)|
-| 2.2   Prognostic IMGP Selection                                    | `TimiCOX`(mps = NULL,info = NULL, p.adj = c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"))|
+| 2.1   Pairwise Comparison                                          | `TimiGenePair`(rna = NULL, cont = FALSE)|
+| 2.2   Prognostic IMGP Selection                                    | `TimiCOX`(mps = NULL,info = NULL, p.adj = "BH")|
 | 2.3   Directed Gene Network                                        | `TimiGeneNetwork`(resdata = NULL, select = NULL, dataset = NULL, geneset = NULL, export = TRUE, path = NULL)|
 | 3.1   Cell Interaction Annotation                                  | `TimiCellPair`(geneset = NULL, dataset = NULL, core = 1)|
 | 3.2   Prepare Enrichment Background                                | `TimiBG`(marker.pair = NULL)|
 | 3.3.1 Enrichment Analysis                                          | `TimiEnrich`(gene = NULL, background = NULL, geneset = NULL, p.adj = NULL, core = 1, pair = TRUE)|
-| 3.3.2 Visualization: Dotplot of Cell Interaction                   | `TimiDotplot`(resdata = NULL, select = 1:5)|
-| 3.4.1 Visualization: Chord Diagram of Functional Interaction       | `TimiCellChord`(resdata = NULL,select = NULL, dataset = NULL,group = NULL, color = NULL)|
+| 3.3.2 Permutation Test                                             | `TimiPermFDR`(esdata = NULL, geneset = NULL, gene = NULL, background = NULL, niter = 100, core = 1)|
+| 3.3.3 Visualization: Dotplot of Cell Interaction                   | `TimiDotplot`(resdata = NULL, select = 1:5)|
+| 3.4.1 Visualization: Chord Diagram of Inter-cell Interaction       | `TimiCellChord`(resdata = NULL,select = NULL, dataset = NULL,group = NULL, color = NULL, condition = "Adjust.P.Value", cutoff = 0.05)|
 | 3.4.2 Visualization: Chord Diagram of Selected Gene Interaction    | `TimiGeneChord`(resdata = NULL, select = 1, color = NULL)|
-| 3.5.1 Functional Interaction Network                               | `TimiCellNetwork`(resdata = NULL, select = NULL, dataset = NULL, group = NULL, geneset = NULL, export = TRUE, path = NULL)|
-| 3.5.2 Favorability Score                                           | `TimiFS`(resdata = NULL, cutoff = 0.05)|
+| 3.5.1 Functional Interaction Network                               | `TimiCellNetwork`(resdata = NULL, select = NULL, dataset = NULL, group = NULL, geneset = NULL, , condition = "Adjust.P.Value", cutoff = 0.05, export = TRUE, path = NULL)|
+| 3.5.2 Favorability Score                                           | `TimiFS`(resdata = NULL, condition = "Adjust.P.Value", cutoff = 0.05)|
 | 3.5.3 Visualization: Bar plot of Favorability Score                | `TimiFSBar`(score = NULL, select = NULL)|
 
 ## Available Data
