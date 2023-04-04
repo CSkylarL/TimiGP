@@ -133,11 +133,15 @@ rna <- TimiPrePropress(marker = marker,rna = SKCM06rna,cohort = rownames(info))
 ```
 ### 2 Gene Interaction
 #### 2.1   Pairwise Comparison
-`TimiGenePair` will Capture logical relation of any two marker pairs, and generate a matrix of Marker Pair Score(MPS):
+In default, `TimiGenePair` will capture logical relation of any two marker pairs, and generate a matrix of Marker Pair Score(MPS):
 
   - 1 or TRUE = the expression of gene A > that of gene B, 
 
   - 0 or FALSE = the expression of gene A < that of gene B.
+
+Optional:  Capture continuous relation of any two marker pairs, and generate a matrix of Marker Pair Score:
+
+  -  the expression of gene A - that of gene B (See example06_Bindea2013_Cancer_continuous_pair.R)
 ```R
 #4. Generate marker pair score: TimiGenePair  ----
 mps <- TimiGenePair(rna)
