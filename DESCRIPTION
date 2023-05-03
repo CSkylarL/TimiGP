@@ -4,3 +4,13 @@ Title: TimiGP: inferring cell interactions and clinical values in tumor immune m
 Version: 1.1.0.0
 RoxygenNote: 7.2.3
 Encoding: UTF-8
+Depends: 
+    R (>= 4.0.0)
+Imports: 
+    circlize,
+    doParallel,
+    dplyr,
+    foreach,
+    ggplot2,
+    RColorBrewer,
+    survival
