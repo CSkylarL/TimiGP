@@ -1,5 +1,7 @@
 # TimiGP
 
+[![DOI](https://zenodo.org/badge/467312934.svg)](https://zenodo.org/badge/latestdoi/467312934)
+
 An `R package` to infer inter-cell interactions and clinical values in tumor immune microenvironment through gene pairs.
 
 For more details, please read our manuscript: [TimiGP: inferring inter-cell functional interactions and clinical values in the tumor immune microenvironment through gene pairs.](https://www.biorxiv.org/content/10.1101/2022.11.17.515465v1.full)
