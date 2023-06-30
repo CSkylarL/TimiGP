@@ -6,6 +6,7 @@ An `R package` to infer cell-cell interactions and clinical values in tumor immu
 
 For more details, please read our manuscript: [TimiGP: inferring inter-cell functional interactions and clinical values in the tumor immune microenvironment through gene pairs.](https://www.biorxiv.org/content/10.1101/2022.11.17.515465v1.full)
 
+## Prognosis module
 ### Background 
 The immune cell co-infiltration sometimes causes `Prognostic Bias`, which makes existing transcriptome-based cell-type quantification methods challenging to identify the biological and clinical values. The below figure demonstrates the prognostic bias in metastatic melanoma: almost all cell types inferred by 8 popular methods are associated with favorable prognosis
 
@@ -52,6 +53,24 @@ If you use TimiGP in your publication, please cite the paper:
 
 Li, C. et al. TimiGP: inferring cell-cell functional interactions and clinical values in the tumor immune microenvironment through gene pairs. bioRxiv, 2022.2011.2017.515465 (2022).
 
+## TimiGP system To-do-list
+
+- [x] TimiGP concept: prognosis module 
+- [x] Publish preprint and package for [prognosis module](https://www.biorxiv.org/content/10.1101/2022.11.17.515465v1.full)
+- [x] Update prognosis module 
+- [x] Publish peer-reviewed paper of prognosis module (In press, Cell Reports Medicine, July 18 online)
+- [x] TimiGP analysis: response module (wrap-up)
+- [ ] Publish preprint for **response module** (Expected: Oct 2023)
+- [ ] Publish peer-reviewed paper of **response module** 
+- [x] TimiGP tool: **single sample module** (validated)
+- [ ] Publish preprint and package for **response module** (Expected: Oct 2023)
+- [ ] Publish peer-reviewed paper of **response module** 
+- [ ] TimiGP upgrade: **single cell module** (conceptualized)
+
+## Contributing
+
+We greatly welcome contributions to TimiGP. Please submit a pull request if you have any ideas (e.g., new modules and functions) or bug fixes. We also welcome any issues you encounter while using TimiGP.
+
 ## Installation
  1. Install [the `devtools` package](https://github.com/r-lib/devtools) from CRAN.
  2. Run `devtools::install_github("CSkylarL/TimiGP")`.
@@ -67,7 +86,7 @@ devtools::install_github("CSkylarL/TimiGP")
 # Load the package
 library(TimiGP)
 ```
-## Usage
+## Usage of prognosis module
 Here is a summary of the functions in the package:
 | Step                                                               | Function                                                        |
 | ------------------------------------------------------------------ | --------------------------------------------------------------- |
