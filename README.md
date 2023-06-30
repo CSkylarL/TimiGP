@@ -53,6 +53,10 @@ If you use TimiGP in your publication, please cite the paper:
 
 Li, C. et al. TimiGP: inferring cell-cell functional interactions and clinical values in the tumor immune microenvironment through gene pairs. bioRxiv, 2022.2011.2017.515465 (2022).
 
+### Relavant publications
+1. bioRxiv preprint: [TimiGP: inferring cell-cell functional interactions and clinical values in the tumor immune microenvironment through gene pairs.](https://www.biorxiv.org/content/10.1101/2022.11.17.515465v1.full)
+2. AACR 2023 abstract: [TimiGP: Dissect the tumor immune microenvironment and its association with survival and immunotherapy response](https://aacrjournals.org/cancerres/article/83/7_Supplement/2080/723394/Abstract-2080-TimiGP-Dissect-the-tumor-immune)
+
 ## TimiGP system To-do-list
 
 - [x] TimiGP concept: prognosis module 
