@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/467312934.svg)](https://zenodo.org/badge/latestdoi/467312934)
 
-An `R package` to infer inter-cell interactions and clinical values in tumor immune microenvironment through gene pairs.
+An `R package` to infer cell-cell interactions and clinical values in tumor immune microenvironment through gene pairs.
 
 For more details, please read our manuscript: [TimiGP: inferring inter-cell functional interactions and clinical values in the tumor immune microenvironment through gene pairs.](https://www.biorxiv.org/content/10.1101/2022.11.17.515465v1.full)
 
@@ -15,7 +15,7 @@ The immune cell co-infiltration sometimes causes `Prognostic Bias`, which makes 
 
 As the representative schema shown above, the absolute infiltration of immune effectors and suppressors are positively correlated and therefore have the same impact on prognosis. One solution is to consider the pairwise relation between cells. For example, relative abundance enables us to capture subtle differences between them and reveal the prognostic values of those cells in line with their biological functions(left). 
 
-Based on this analysis and the characteristics of the immune system, we propose a novel concept, `Ratio representative inter-cell interaction`, to investigate Tumor Immune Microenvironment(TIME) by Gene Pairs(right). The tumor immune microenvironment(TIME) is a balance between anti-tumor and pro-tumor immune cells. If the function of anti-tumor cell types is more vital than the pro-tumor cells (e.g., higher abundance, higher marker expression), the TIME is associated with favorable patients’ prognosis; otherwise, it is associated with unfavorable patients’ prognosis.
+Based on this analysis and the characteristics of the immune system, we propose a novel concept, `Clinically relevant cell-cell interaction`, to investigate Tumor Immune Microenvironment(TIME) by Gene Pairs(right). The tumor immune microenvironment(TIME) is a balance between anti-tumor and pro-tumor immune cells. If the function of anti-tumor cell types is more vital than the pro-tumor cells (e.g., higher abundance, higher marker expression), the TIME is associated with favorable patients’ prognosis; otherwise, it is associated with unfavorable patients’ prognosis.
 
 ![Fig1E](/assets/images/Fig1E_S11.png)
 
@@ -37,11 +37,11 @@ Based on the rationale, we developed a novel method, `TimiGP, Tumor Immune Micro
  5. Building and analyzing cell interaction networks.
  
 `Outputs`
- 1. Inter-cell interaction network,
+ 1. Cell-cell interaction network,
  2. Prognostic association of infiltrating cells (favorability score).
  
 ### TimiGP Applications
-TimiGP is designed to **infer the inter-cell interaction network and prognostic association of immune cells**. Based on the resulting immunological insights, The method will **facilitate the development of prognostic models**. Taking advantage of different biomarker references derived from **bulk and single-cell RNA-seq**, TimiGP can be applied to investigate the **entire tumor microenvironment** or **cell subpopulations**, perform **pan-cancer analysis** or study **other diseases**. 
+TimiGP is designed to **infer the cell-cell interaction network and prognostic association of immune cells**. Based on the resulting immunological insights, The method will **facilitate the development of prognostic models**. Taking advantage of different biomarker references derived from **bulk and single-cell RNA-seq**, TimiGP can be applied to investigate the **entire tumor microenvironment** or **cell subpopulations**, perform **pan-cancer analysis** or study **other diseases**. 
 
  ![FigS12](/assets/images/FigS12.png)
  
@@ -50,7 +50,7 @@ This package is intended for research use only.
 
 If you use TimiGP in your publication, please cite the paper:
 
-Li, C. et al. TimiGP: inferring inter-cell functional interactions and clinical values in the tumor immune microenvironment through gene pairs. bioRxiv, 2022.2011.2017.515465 (2022).
+Li, C. et al. TimiGP: inferring cell-cell functional interactions and clinical values in the tumor immune microenvironment through gene pairs. bioRxiv, 2022.2011.2017.515465 (2022).
 
 ## Installation
  1. Install [the `devtools` package](https://github.com/r-lib/devtools) from CRAN.
@@ -81,7 +81,7 @@ Here is a summary of the functions in the package:
 | 3.3.1 Enrichment Analysis                                          | `TimiEnrich`(gene = NULL, background = NULL, geneset = NULL, p.adj = NULL, core = 1, pair = TRUE)|
 | 3.3.2 Permutation Test                                             | `TimiPermFDR`(esdata = NULL, geneset = NULL, gene = NULL, background = NULL, niter = 100, core = 1)|
 | 3.3.3 Visualization: Dotplot of Cell Interaction                   | `TimiDotplot`(resdata = NULL, select = 1:5)|
-| 3.4.1 Visualization: Chord Diagram of Inter-cell Interaction       | `TimiCellChord`(resdata = NULL,select = NULL, dataset = NULL,group = NULL, color = NULL, condition = "Adjust.P.Value", cutoff = 0.05)|
+| 3.4.1 Visualization: Chord Diagram of cell-cell Interaction       | `TimiCellChord`(resdata = NULL,select = NULL, dataset = NULL,group = NULL, color = NULL, condition = "Adjust.P.Value", cutoff = 0.05)|
 | 3.4.2 Visualization: Chord Diagram of Selected Gene Interaction    | `TimiGeneChord`(resdata = NULL, select = 1, color = NULL)|
 | 3.5.1 Functional Interaction Network                               | `TimiCellNetwork`(resdata = NULL, select = NULL, dataset = NULL, group = NULL, geneset = NULL, , condition = "Adjust.P.Value", cutoff = 0.05, export = TRUE, path = NULL)|
 | 3.5.2 Favorability Score                                           | `TimiFS`(resdata = NULL, condition = "Adjust.P.Value", cutoff = 0.05)|
