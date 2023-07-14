@@ -10,6 +10,9 @@
 ##' the expression of gene A - that of gene B,
 ##'
 ##' @param rna a data.frame of preprocessed transcriptomic profile
+##' @param both a logical value. 
+##' The default is FALSE that only keep A_B pairs
+##' If TRUE, keep both A_B and B_A pairs, this is only for ssTimiGP.
 ##' @param cont a logical value. If TRUE, capture the continuous relation. 
 ##' The default is FALSE
 ##' @return a matrix of Marker Pair Score
@@ -31,11 +34,16 @@
 ##' @author Chenyang Skylar Li
 
 TimiGenePair <-  function(rna = NULL,
+                          both = FALSE,
                           cont = FALSE){
   
   # examine required parameters-------------------------------------------------
   if (is.null(rna)){
     stop('The parameter "rna" is required. ')
+  }
+  
+  if (is.logical(both) == F){
+    stop('both is a logical value. Please set it to TRUE or FALSE')
   }
   
   if (is.logical(cont) == F){
@@ -63,15 +71,23 @@ TimiGenePair <-  function(rna = NULL,
   irgp_res <- apply(rna, 2, myfun)
   row.names(irgp_res) <- irgp	 
   
-  ### S2: Remove B_A, A_A pairsm, only keep A_B---------------------------------
+  ### S2: Remove B_A, A_A pairs, only keep A_B----------------------------------
   xx <- row.names(irgp_res)
   nn <- length(xx)
   tmp <- unlist(strsplit(xx, "_"))
   tmp1 <- tmp[(1:nn)*2-1]
   tmp2 <- tmp[(1:nn)*2-0]
-  se <- which(tmp1>tmp2)
-  irgp_res <- irgp_res[se,] 
-  dim(irgp_res) 
+  if (both == F) { # remove B_A, A_A pairs
+    se <- which(tmp1>tmp2)
+    irgp_res <- irgp_res[se,] 
+    dim(irgp_res) 
+  } else if ( both == T) { # remove  A_A pairs
+    message("You choose to keep both A_B and B_A pairs. Please note this is only used for ssTimiGP")
+    se <- which(tmp1!=tmp2)
+    irgp_res <- irgp_res[se,] 
+    dim(irgp_res) 
+  }
+
   
   ### S3: filter GPs
   if (cont == FALSE) {

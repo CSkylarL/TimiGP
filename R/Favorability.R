@@ -10,6 +10,7 @@
 ##' @param condition A value in one of 
 ##' c("P.Value","Adjust.P.Value","Permutation.FDR"),
 ##' which is the column name of resdata.
+##' The default value is the "Adjust.P.Value".
 ##' @param cutoff A cutoff of condition used to filter cell interactions. 
 ##' The default cutoff is 0.05.
 ##' @return A matrix of Favorability Score 

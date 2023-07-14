@@ -35,7 +35,8 @@ whose names are the all favorable and unfavorable cells types in selection.}
 
 \item{condition}{A value in one of 
 c("P.Value","Adjust.P.Value","Permutation.FDR"),
-which is the column name of resdata.}
+which is the column name of resdata.
+The default value is the "Adjust.P.Value".}
 
 \item{cutoff}{A cutoff of condition used to filter cell interactions. 
 The default cutoff is 0.05.}

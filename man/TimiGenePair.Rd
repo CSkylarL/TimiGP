@@ -4,10 +4,14 @@
 \alias{TimiGenePair}
 \title{Capture logical/continuous relation between marker pairs}
 \usage{
-TimiGenePair(rna = NULL, cont = FALSE)
+TimiGenePair(rna = NULL, both = FALSE, cont = FALSE)
 }
 \arguments{
 \item{rna}{a data.frame of preprocessed transcriptomic profile}
+
+\item{both}{a logical value. 
+The default is FALSE that only keep A_B pairs
+If TRUE, keep both A_B and B_A pairs, this is only for ssTimiGP.}
 
 \item{cont}{a logical value. If TRUE, capture the continuous relation. 
 The default is FALSE}

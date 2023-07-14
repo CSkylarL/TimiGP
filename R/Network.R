@@ -26,6 +26,7 @@
 ##' @param condition A  value in one of 
 ##' c("P.Value","Adjust.P.Value","Permutation.FDR"),
 ##' which is the column name of resdata.
+##' The default value is the "Adjust.P.Value".
 ##' @param cutoff A  cutoff of condition used to filter cell interactions. 
 ##' The default cutoff is 0.05.
 ##' @param export A  logical value. If TRUE, it will generate network files 
@@ -413,6 +414,12 @@ TimiCellNetwork<-  function(resdata = NULL,
 ##' in which the 1st column is cell type, 
 ##' the 2nd column is the marker gene 
 ##' and the 3rd column is the name of the dataset(optional)
+##' @param condition A  value in one of 
+##' "PV" (P.Value) and "QV" (Adjust.P.Value),
+##' which is the column name of resdata.
+##' The default value is the "QV".
+##' @param cutoff A  cutoff of condition used to filter gene interactions. 
+##' The default cutoff is 0.05.
 ##' @param export A  logical value. If TRUE, it will generate network files 
 ##' for Cytoscape analysis. The default value is TRUE.
 ##' @param path A  directory to export the network files when "export = TRUE".
@@ -431,6 +438,8 @@ TimiGeneNetwork<-  function(resdata = NULL,
                             select = NULL,
                             dataset = NULL,
                             geneset = NULL,
+                            condition = "QV",
+                            cutoff = 0.05,
                             export = TRUE,
                             path = NULL){
   # Examine required parameters ################################################
@@ -445,14 +454,23 @@ TimiGeneNetwork<-  function(resdata = NULL,
     
   }
   
+  if (is.null(condition)){
+    stop('The parameter "condition" is required. Please choose one of c("PV","QV")')
+  } else if(sum(condition %in% c("PV","QV")) !=1){
+    stop('Please choose one of c("PV","QV")')
+    
+  }
   # selection##################################################################
   if (is.null(select)) {
-    se.r <- which(resdata$QV < 0.05)
+    
+    se.r <- which(resdata[,condition] < cutoff)
+    
     
     if (length(se.r) < 5){
-      stop('There are less than 5 significant gene pairs.')
+      stop('There are less than 5 inter-cell interactions.You may want to change the condition and cutoff')
     } else {
-      message('Using all significant gene pairs(Adjested P.Value < 0.05)')
+      message('Using inte-cell interactions(',
+              condition, ' < ', cutoff, ')')
       resdata <- resdata[se.r, ]
     }
     

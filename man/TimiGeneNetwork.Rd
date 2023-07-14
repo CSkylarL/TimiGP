@@ -9,6 +9,8 @@ TimiGeneNetwork(
   select = NULL,
   dataset = NULL,
   geneset = NULL,
+  condition = "QV",
+  cutoff = 0.05,
   export = TRUE,
   path = NULL
 )
@@ -31,6 +33,14 @@ please choose "Other".}
 in which the 1st column is cell type, 
 the 2nd column is the marker gene 
 and the 3rd column is the name of the dataset(optional)}
+
+\item{condition}{A  value in one of 
+"PV" (P.Value) and "QV" (Adjust.P.Value),
+which is the column name of resdata.
+The default value is the "QV".}
+
+\item{cutoff}{A  cutoff of condition used to filter gene interactions. 
+The default cutoff is 0.05.}
 
 \item{export}{A  logical value. If TRUE, it will generate network files 
 for Cytoscape analysis. The default value is TRUE.}
