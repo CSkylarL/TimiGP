@@ -467,7 +467,7 @@ TimiGeneNetwork<-  function(resdata = NULL,
     
     
     if (length(se.r) < 5){
-      stop('There are less than 5 inter-cell interactions.You may want to change the condition and cutoff')
+      stop('There are less than 5 gene-gene interactions.You may want to change the condition and cutoff')
     } else {
       message('Using gene-gene interactions(',
               condition, ' < ', cutoff, ')')
