@@ -1,7 +1,7 @@
 Package: TimiGP
 Type: Package
-Title: TimiGP: inferring cell interactions and clinical values in tumor immune microenvironment through gene pairs
-Version: 1.2.0
+Title: TimiGP: Inferring cell-cell interactions and clinical associations in the tumor immune microenvironment through gene pairs
+Version: 1.1.0.0
 RoxygenNote: 7.2.3
 Encoding: UTF-8
 Depends: 
