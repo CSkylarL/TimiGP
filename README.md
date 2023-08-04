@@ -4,7 +4,7 @@
 
 An `R package` to infer cell-cell interactions and clinical values in tumor immune microenvironment through gene pairs.
 
-For more details, please read our manuscript: [TimiGP: inferring inter-cell functional interactions and clinical values in the tumor immune microenvironment through gene pairs.](https://www.biorxiv.org/content/10.1101/2022.11.17.515465v1.full)
+For more details, please read our manuscript: [TimiGP: Inferring cell-cell interactions and prognostic associations in the tumor immune microenvironment through gene pairs.](https://doi.org/10.1016/j.xcrm.2023.101121)
 
 ## Prognosis module
 ### Background 
@@ -51,19 +51,17 @@ This package is intended for research use only.
 
 If you use TimiGP in your publication, please cite the paper:
 
-Li, C. et al. TimiGP: inferring cell-cell functional interactions and clinical values in the tumor immune microenvironment through gene pairs. bioRxiv, 2022.2011.2017.515465 (2022).
+Li, C. et al. TimiGP: Inferring cell-cell interactions and prognostic associations in the tumor immune microenvironment through gene pairs. Cell Reports Medicine. (2023).
 
 ### Relavant publications
-1. bioRxiv preprint: [TimiGP: inferring cell-cell functional interactions and clinical values in the tumor immune microenvironment through gene pairs.](https://www.biorxiv.org/content/10.1101/2022.11.17.515465v1.full)
-2. AACR 2023 abstract: [TimiGP: Dissect the tumor immune microenvironment and its association with survival and immunotherapy response](https://aacrjournals.org/cancerres/article/83/7_Supplement/2080/723394/Abstract-2080-TimiGP-Dissect-the-tumor-immune)
+1. Cell Reports Medicine: [TimiGP: Inferring cell-cell interactions and prognostic associations in the tumor immune microenvironment through gene pairs](https://doi.org/10.1016/j.xcrm.2023.101121)
+1. AACR 2023 abstract: [TimiGP: Dissect the tumor immune microenvironment and its association with survival and immunotherapy response](https://aacrjournals.org/cancerres/article/83/7_Supplement/2080/723394/Abstract-2080-TimiGP-Dissect-the-tumor-immune)
+2. bioRxiv preprint: [TimiGP: inferring cell-cell functional interactions and clinical values in the tumor immune microenvironment through gene pairs.](https://www.biorxiv.org/content/10.1101/2022.11.17.515465v1.full)
 
 ## TimiGP system To-do-list
 
-- [x] TimiGP concept: prognosis module 
-- [x] Publish preprint and package for [prognosis module](https://www.biorxiv.org/content/10.1101/2022.11.17.515465v1.full)
-- [x] Update prognosis module 
-- [x] Publish peer-reviewed paper of prognosis module (In press, Cell Reports Medicine, July 18 online)
-- [x] Code optimization (v1.2.0) and publish the protocol for the prognosis module (wrap-up)
+- [x] TimiGP concept: [prognosis module](https://doi.org/10.1016/j.xcrm.2023.101121) and R package (v1.2.0)
+- [ ] Code optimization (v1.2.0) and publish the protocol for the prognosis module (wrap-up)
 - [x] TimiGP analysis: response module (wrap-up)
 - [ ] Publish preprint for **response module** (Expected: Oct 2023)
 - [ ] Publish peer-reviewed paper of **response module** 
@@ -98,7 +96,7 @@ Here is a summary of the functions in the package:
 | 1.1   Preprocess of Clinical Info                                  | `TimiCheckEvent`(info = NULL) |  
 | 1.2   Preprocess of Transcriptome Profile                          | `TimiPrePropress`(marker, rna = NULL, cohort, log = TRUE, GMNorm=TRUE)|
 | 2.1   Pairwise Comparison                                          | `TimiGenePair`(rna = NULL, cont = FALSE)|
-| 2.2.1   Prognostic IMGP Selection with Cox regression              | `TimiCOX`(mps = NULL,info = NULL, p.adj = "BH")|
+| 2.2   Prognostic IMGP Selection with Cox regression              | `TimiCOX`(mps = NULL,info = NULL, p.adj = "BH")|
 | 2.3   Directed Gene Network                                        | `TimiGeneNetwork`(resdata = NULL, select = NULL, dataset = NULL, geneset = NULL, condition = "QV", cutoff = 0.05, export = TRUE, path = NULL)|
 | 3.1   Cell Interaction Annotation                                  | `TimiCellPair`(geneset = NULL, dataset = NULL, core = 1)|
 | 3.2   Prepare Enrichment Background                                | `TimiBG`(marker.pair = NULL)|
@@ -174,6 +172,7 @@ mps <- TimiGenePair(rna)
 ```
 #### 2.2   Directed IMGP Selection
 `TimiCOX` will perform univariate Cox regression that fits each marker pair as a variable. The result of Cox regression is returned as the first list. If a Pair A_B is associated with a poor prognosis(HR > 1), even if not significant, it will be changed to B_A and reverse its value in the matrix of the pair. The new matrix of Marker Pair Score(MPS) is returned as the second list.
+
 
 This step takes about 20-30 min, which depends on the number of gene pairs.
 
