@@ -84,6 +84,9 @@ for (i in 1:3) {
   
   
   # 9. Generate Cell Interaction Annotation: TimiCellPair ----------------------
+  # “CellType_Charoentong2017_Bindea2013_Xu2018_Immune” 
+  # contains three different immune cell-type annotations.
+  # so we used "dataset" parameter to specify the dataset name.
   cell_pair <- TimiCellPair(geneset = geneset, dataset= t[i],core = 20)
   # 10. Enrichment Analysis: TimiEnrich ----
   res[[t[i]]] <- TimiEnrich(gene = GP, background = background, 
