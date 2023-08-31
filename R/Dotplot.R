@@ -102,7 +102,7 @@ TimiDotplot<-  function(resdata = NULL,
             length = unit(0.3, "cm"), ends = "last"))) +
     scale_y_continuous(limits=c(0, max), breaks=seq(0,max, 2),expand = c(0,0)) +
     guides(shape = "none") +
-    annotate("text", x = -1, y = max, label = "Good\nPrognosis")+
+    annotate("text", x = -1, y = max, label = "Favorable\nOutcome")+
     coord_cartesian(xlim = c(1,nrow(resdata[se,] )),
                     clip = 'off')
   
