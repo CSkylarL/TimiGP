@@ -123,10 +123,17 @@ TimiCellNetwork<-  function(resdata = NULL,
       stop('No Cell Type were found in given geneset')
     }
     
-    att <- data.frame(row.names =cell,group=group)
-    node <- table(geneset[2]) %>% 
+    att <- data.frame(row.names =cell,group=group[as.character(cell)])
+    node <- table(geneset[1]) %>% 
       data.frame(row.names = 1) %>% merge(att,by=0) 
     names(node) <- c("Key", "No.Markers", "Group")
+
+    # check if all the cell types are assigned to a group
+    se <- which(is.na(node$Group))
+    if(length(se) > 0) {
+         warning(paste0(node$Key[se],collapse=","),
+         ' are not assigned to group. Please check the group names.')
+    }
     
     
     
