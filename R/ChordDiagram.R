@@ -19,6 +19,7 @@
 ##' @param group A vector of self-defined cell groups, 
 ##' whose names are the all favorable and unfavorable cells types in selection. 
 ##' @param color A vector of self-defined cell colors, 
+##' whose names are the all favorable and unfavorable cells types in selection. 
 ##' @param condition A value in one of 
 ##' c("P.Value","Adjust.P.Value","Permutation.FDR"),
 ##' which is the column name of resdata.
