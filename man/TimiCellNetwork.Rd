@@ -27,8 +27,8 @@ c("Bindea2013","Bindea2013_Cancer",
 "Charoentong2017", "Xu2018",
 "Newman2015",  
 "Tirosh2016","Zheng2021","Other")
-The first four options include default group and color settings. 
-If you use other dataset or want to change group and colors, 
+The first 7 options include default group settings. 
+If you use other dataset or want to change group, 
 please choose "Other".}
 
 \item{group}{A  vector of self-defined cell groups, 

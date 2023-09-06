@@ -31,7 +31,8 @@ please choose "Other".}
 \item{group}{A vector of self-defined cell groups, 
 whose names are the all favorable and unfavorable cells types in selection.}
 
-\item{color}{A vector of self-defined cell colors,}
+\item{color}{A vector of self-defined cell colors, 
+whose names are the all favorable and unfavorable cells types in selection.}
 
 \item{condition}{A value in one of 
 c("P.Value","Adjust.P.Value","Permutation.FDR"),

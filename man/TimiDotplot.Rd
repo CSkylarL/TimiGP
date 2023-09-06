@@ -4,13 +4,28 @@
 \alias{TimiDotplot}
 \title{Dotplot}
 \usage{
-TimiDotplot(resdata = NULL, select = 1:5)
+TimiDotplot(
+  resdata = NULL,
+  select = 1:5,
+  condition = "Adjust.P.Value",
+  cutoff = 0.05
+)
 }
 \arguments{
 \item{resdata}{TimiGP enrichment result generated from TimiEnrich}
 
 \item{select}{a numeric vector of selected cell interactions according to "Index" column in resdata. 
-Default selection is top 5 enrichment}
+Default selection is top 5 enrichment.}
+
+\item{condition}{A value in one of 
+c("P.Value","Adjust.P.Value","Permutation.FDR"),
+which is the column name of resdata and will be represented by color for the dot plot.
+The default value is the "Adjust.P.Value".}
+
+\item{cutoff}{The maximum value for the color bar.
+The default value is 0.05, which is used for the default condition "Adjust.P.Value". 
+For other conditions, 0.01 is recommended for "P.Value",
+and 0.2 is recommended for "Permutation.FDR".}
 }
 \value{
 Enrichment dotpot
@@ -18,7 +33,7 @@ Enrichment dotpot
 \description{
 A dotplot shows the results of selected cell interaction enrichment.
 The x-axis shows selected cell interactions. The y-axis shows Enrichment Ratio.
-The color of dots represents adjusted P-value. 
+The color of dots represents FDR. 
 The size of dots represents the number of marker pairs 
 shared by query pairs and annotation pairs.
 }
