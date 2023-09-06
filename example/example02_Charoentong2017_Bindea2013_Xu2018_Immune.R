@@ -44,7 +44,7 @@ for (i in 1:3) {
 Immune3_COX_MP_SKCM06 <- cox_res
 Immune3_MPS_SKCM06 <- mps
 
-# This step takes about 20-30 min, the result has been saved in data as examples
+# This step takes about 5-10 min, the result has been saved in data as examples
 #save(Immune3_COX_MP_SKCM06, file = "data/Immune3_COX_MP_SKCM06.rda")
 
 

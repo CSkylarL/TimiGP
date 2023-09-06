@@ -34,7 +34,7 @@ cox_res <- res$cox_res
 Newman2015_COX_MP_SKCM06 <- cox_res
 Newman2015_MPS_SKCM06 <- mps
 
-# This step takes about 20-30 min, the result has been saved in data as examples
+# This step takes about 5-10 min, the result has been saved in data as examples
 #save(Newman2015_COX_MP_SKCM06, file = "data/Newman2015_COX_MP_SKCM06.rda")
 
 

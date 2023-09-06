@@ -40,7 +40,7 @@ cox_res <- res$cox_res
 Bindea2013c_COX_MP_SKCM06_CONT <- cox_res
 Bindea2013c_MPS_SKCM06_CONT <- mps
 
-# This step takes about 20-30 min, please be patient
+# This step takes about 5-10 min, please be patient
 
 
 #B Gene Pair and gene network ##################################################

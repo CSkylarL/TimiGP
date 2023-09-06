@@ -34,7 +34,7 @@ cox_res <- res$cox_res
 Bindea2013c_COX_MP_SKCM06 <- cox_res
 Bindea2013c_MPS_SKCM06 <- mps
 
-# This step takes about 20-30 min, the result has been saved in data as examples
+# This step takes about 5-10 min, the result has been saved in data as examples
 #save(Bindea2013c_COX_MP_SKCM06, file = "data/Bindea2013c_COX_MP_SKCM06.rda")
 
 
