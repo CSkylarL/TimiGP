@@ -174,7 +174,7 @@ mps <- TimiGenePair(rna)
 `TimiCOX` will perform univariate Cox regression that fits each marker pair as a variable. The result of Cox regression is returned as the first list. If a Pair A_B is associated with a poor prognosis(HR > 1), even if not significant, it will be changed to B_A and reverse its value in the matrix of the pair. The new matrix of Marker Pair Score(MPS) is returned as the second list.
 
 
-This step takes about 20-30 min, which depends on the number of gene pairs.
+This step takes about 5-10 min, which depends on the number of gene pairs.
 
 ```R
 #5. Perform univariate Cox regression to find the association between marker pair and survival: TimiCOX ----
