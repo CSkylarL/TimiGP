@@ -34,7 +34,7 @@ If using the function for general cell type enrichment analysis,
 please choose FALSE.}
 }
 \value{
-A dataframe of enrichment results including inter-cell interactions
+A dataframe of enrichment results including cell-cell interactions
 }
 \description{
 It statistically determines the inter-interactions

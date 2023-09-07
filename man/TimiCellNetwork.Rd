@@ -20,7 +20,7 @@ TimiCellNetwork(
 \item{resdata}{TimiGP enrichment result generated from TimiEnrich}
 
 \item{select}{A  numeric vector of selected cell interactions according to "Index" column in resdata. 
-Default selection is all inter-cell interactions(adjusted p value < 0.05).}
+Default selection is all cell-cell interactions(adjusted p value < 0.05).}
 
 \item{dataset}{A  value in one of 
 c("Bindea2013","Bindea2013_Cancer",

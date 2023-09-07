@@ -51,7 +51,7 @@ TimiBG <- function(marker.pair = NULL){
 ##' please choose FALSE.
 ##' @import foreach
 ##' @import doParallel
-##' @return A dataframe of enrichment results including inter-cell interactions
+##' @return A dataframe of enrichment results including cell-cell interactions
 ##' @export 
 ##' @examples
 ##' \dontrun{

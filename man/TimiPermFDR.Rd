@@ -33,7 +33,7 @@ for parallel execution. The default value is 1.}
 }
 \value{
 A new column "Permutation.FDR" is appended to 
-dataframe of inter-cell interactions generated from TimiEnrich
+dataframe of cell-cell interactions generated from TimiEnrich
 }
 \description{
 It conservatively permutates marker gene sets for all cell types 

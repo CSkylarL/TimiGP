@@ -20,7 +20,7 @@
 ##' @param core a numeric value shows the number of cores 
 ##' for parallel execution. The default value is 1.
 ##' @return A new column "Permutation.FDR" is appended to 
-##' dataframe of inter-cell interactions generated from TimiEnrich
+##' dataframe of cell-cell interactions generated from TimiEnrich
 ##' @export 
 ##' @examples
 ##' \dontrun{

@@ -8,7 +8,7 @@
 ##'
 ##' @param resdata TimiGP enrichment result generated from TimiEnrich
 ##' @param select A  numeric vector of selected cell interactions according to "Index" column in resdata. 
-##' Default selection is all inter-cell interactions(adjusted p value < 0.05).
+##' Default selection is all cell-cell interactions(adjusted p value < 0.05).
 ##' @param dataset A  value in one of 
 ##' c("Bindea2013","Bindea2013_Cancer",
 ##' "Charoentong2017", "Xu2018",
@@ -75,7 +75,7 @@ TimiCellNetwork<-  function(resdata = NULL,
     se.r <- which(resdata[,condition] < cutoff)
     
     if (length(se.r) < 5){
-      stop('There are less than 5 inter-cell interactions.')
+      stop('There are less than 5 cell-cell interactions.')
     } else {
       message('Using inte-cell interactions(',
               condition, ' < ', cutoff, ')')
@@ -409,7 +409,7 @@ TimiCellNetwork<-  function(resdata = NULL,
 ##'
 ##' @param resdata TimiGP cox result generated from TimiCOX
 ##' @param select A  character vector of selected gene pairs according to rownames in resdata. 
-##' Default selection is all inter-cell interactions(adjusted p value < 0.05).
+##' Default selection is all cell-cell interactions(adjusted p value < 0.05).
 ##' @param dataset A  value in one of 
 ##' c("Bindea2013_Cancer","Immune3", 
 ##' "Newman2015", 
