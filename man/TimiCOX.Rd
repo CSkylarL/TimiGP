@@ -4,7 +4,7 @@
 \alias{TimiCOX}
 \title{Find marker pairs associated with favorable prognosis}
 \usage{
-TimiCOX(mps = NULL, info = NULL, p.adj = "BH")
+TimiCOX(mps = NULL, info = NULL, p.adj = "BH", parallel = FALSE, core = 1)
 }
 \arguments{
 \item{mps}{a matrix of Marker Pair Score}
@@ -15,6 +15,12 @@ and the 2nd column is days-to-event.}
 \item{p.adj}{p.adjust.methods. 
 One of "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none".
 The default value is "BH".}
+
+\item{parallel}{a logical value. If TRUE, enable parallel computing. 
+The default value if FALSE}
+
+\item{core}{a numeric value shows the number of cores for parallel execution. 
+The default value is 1.}
 }
 \value{
 A list of two results: 

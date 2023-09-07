@@ -10,11 +10,18 @@
 ##' @param p.adj p.adjust.methods. 
 ##' One of "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none".
 ##' The default value is "BH".
+##' @param parallel a logical value. If TRUE, enable parallel computing. 
+##' The default value if FALSE
+##' @param core a numeric value shows the number of cores for parallel execution. 
+##' The default value is 1.
 ##' @return A list of two results: 
 ##' 1. Result of cox regression(cox_res)
 ##' (HR: Hazard.Ratio,PV: P-Value,QV: Adjust P-value). 
 ##' 2. modified marker pair score(mps)
 ##' @import survival
+##' @import dplyr
+##' @import foreach
+##' @import doParallel
 ##' @export 
 ##' @examples
 ##' \dontrun{
@@ -34,7 +41,9 @@
 
 TimiCOX <-  function(mps = NULL,
                      info = NULL,
-                     p.adj = "BH"){
+                     p.adj = "BH",
+                     parallel = FALSE,
+                     core = 1){
   # examine required parameters-------------------------------------------------
   if (is.null(mps)){
     stop('The parameter "mps" is required. ')
@@ -62,45 +71,84 @@ TimiCOX <-  function(mps = NULL,
     }
     
   }
+  
+  # cox function ---------------------------------------------------------------
+  MyCox <- function(mytag = NULL,
+                    info = NULL,
+                    logic = T # T: 0 or 1; F: numeric
+                    ){
+    if (logic == T){
+      mytag <- as.factor(mytag)
+     
+    } else if (logic == F) {
+      mytag <- as.numeric(mytag)
+    }
+    
+    tmp <- as.data.frame(cbind(info, mytag))
+    test <- coxph(Surv(as.numeric(info[,2]),
+                       as.numeric( info[,1]))~mytag, 
+                  tmp) 
+    test <- summary(test)
+    res <- c( test$conf.int[1], test$coefficients[5])
+    names(res) <- c("HR","PV")
+    return (res)
+  }
   # perform cox ----------------------------------------------------------------
   # examine the mps is generated from logical relation or continuous relation
   
-  if (is.logical(mps) == T) {
-    # perform cox logical ------------------------------------------------------
-    pval <- hr  <- rep(0, nrow(mps))
-    for(k in 1:nrow(mps)){
-      cat("\rCOX:", k,"/",nrow(mps))
-      mytag <- ifelse(mps[k,], 1, 0) # only diff
-      xx <- as.data.frame(cbind(info, mytag))
-      mycox <- coxph(Surv(as.numeric(info[,2]), as.numeric( info[,1]))~mytag, xx) 
-      mycox <- summary(mycox)
-      pval[k] <- mycox$coefficients[5]
-      tmp <- mycox$conf.int
-      hr[k] <- tmp[1]
+  if (parallel == F) { # No parallel, use apply
+    message("------------- Calculating -------------") 
+    message("Please be patient. This step usually takes approximately 5 minutes.")  
+    message("The computation time may be increased if there are a larger number of cell type markers (e.g., > 1000 markers for > 30 mins).")
+    message('To speed up, you can enable parallel computing by setting "parallel = T" and the number of cores (core).')
+    if (is.logical(mps) == T) {
+      
+      # perform cox logical ------------------------------------------------------
+      cox_res <- apply(mps * 1, 1, function (x) 
+        MyCox(mytag = x,info = info, logic = T))
+      
+    } else if (is.numeric(mps) == T) {
+      # perform cox continuous ---------------------------------------------------
+      cox_res <- apply(mps, 1, function (x) 
+        MyCox(mytag = x,info = info, logic = F))
+      
+    } else {
+      stop('The matrix are neither logical nor numeric values')
     }
-    cat("\n")
+  } else if (parallel == T) { # parallel, select core
+    message("Enable parallel computing.")
+    if (core == 1) {
+      warning("Only 1 core specified. You may want to change core > 1")
+    }
     
-  } else if (is.numeric(mps) == T) {
-    # perform cox continuous ---------------------------------------------------
-    pval <- hr  <- rep(0, nrow(mps))
-    for(k in 1:nrow(mps)){
-      cat("\rCOX:", k,"/",nrow(mps))
-      mytag <- as.numeric(mps[k,]) # only diff
-      xx <- as.data.frame(cbind(info, mytag))
-      mycox <- coxph(Surv(as.numeric(info[,2]), as.numeric( info[,1]))~mytag, xx) 
-      mycox <- summary(mycox)
-      pval[k] <- mycox$coefficients[5]
-      tmp <- mycox$conf.int
-      hr[k] <- tmp[1]
+    message("------------- Calculating -------------") 
+    message("Please be patient.")  
+    message("The computation time may be increased if there are a larger number of cell type markers.")
+    registerDoParallel(cores=core)
+
+    if (is.logical(mps) == T) {
+      
+      # perform cox logical ------------------------------------------------------
+      cox_res <- foreach (i = 1:nrow(mps), .combine=cbind) %dopar% {
+        MyCox(mytag = mps[i,]*1,info = info, logic = T)
+      }
+      
+    } else if (is.numeric(mps) == T) {
+      # perform cox continuous ---------------------------------------------------
+      cox_res <- foreach (i = 1:nrow(mps), .combine=cbind) %dopar% {
+        MyCox(mytag = mps[i,]*1,info = info, logic = F)
+      }
+      
+    } else {
+      stop('The matrix are neither logical nor numeric values')
     }
-    cat("\n")
-  } else {
-    stop('The matrix are neither logical nor numeric values')
-  }
+    
+  } 
   
-  QV <- p.adjust(pval, method=p.adj)
-  
-  cox_res <- data.frame(HR=hr, PV=pval, QV=QV)
+  cox_res <- cox_res %>%
+    t() %>% 
+    data.frame() %>%
+    mutate(QV = p.adjust(PV, method=p.adj))
   row.names(cox_res) <- row.names(mps)
   # change pair direction of cox result-----------------------------------------
   se <- which(cox_res$HR>1)
