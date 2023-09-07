@@ -27,15 +27,13 @@ mps <- TimiGenePair(rna)
 dim(mps)
 #5. Perform univariate Cox regression: TimiCOX ---------------------------------
 
-res <- TimiCOX(mps = mps,info = info,p.adj = "BH")
+res <- TimiCOX(mps = mps,info = info,p.adj = "BH",parallel = T, core=20)
 mps <- res$mps
 cox_res <- res$cox_res
 
 Tcell_COX_MP_SKCM06 <- cox_res
 Tcell_MPS_SKCM06 <- mps
 
-# This step takes about 5-10 min, the result has been saved in data as examples
-#save(Tcell_COX_MP_SKCM06, file = "data/Tcell_COX_MP_SKCM06.rda")
 
 
 

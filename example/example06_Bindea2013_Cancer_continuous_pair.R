@@ -33,7 +33,7 @@ mps <- TimiGenePair(rna, cont = T)
 dim(mps)
 #5. Perform univariate Cox regression: TimiCOX ---------------------------------
 
-res <- TimiCOX(mps = mps,info = info,p.adj = "BH")
+res <- TimiCOX(mps = mps,info = info,p.adj = "BH",parallel = T, core=20)
 mps <- res$mps
 cox_res <- res$cox_res
 

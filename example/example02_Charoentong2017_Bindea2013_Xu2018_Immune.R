@@ -37,15 +37,14 @@ for (i in 1:3) {
   dim(mps)
   #5. Perform univariate Cox regression: TimiCOX -------------------------------
 
-  res<- TimiCOX(mps = mps_tmp,info = info,p.adj = "BH")
+  res<- TimiCOX(mps = mps_tmp,info = info,p.adj = "BH",parallel = T, core=20)
   mps[[ names(t)[i] ]]  <- res$mps
   cox_res[[names(t)[i]]]  <- res$cox_res
 }
 Immune3_COX_MP_SKCM06 <- cox_res
 Immune3_MPS_SKCM06 <- mps
 
-# This step takes about 5-10 min, the result has been saved in data as examples
-#save(Immune3_COX_MP_SKCM06, file = "data/Immune3_COX_MP_SKCM06.rda")
+
 
 
 #B Gene Pair and gene network ##################################################
