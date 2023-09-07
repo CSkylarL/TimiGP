@@ -44,7 +44,10 @@ for (i in 1:3) {
 Immune3_COX_MP_SKCM06 <- cox_res
 Immune3_MPS_SKCM06 <- mps
 
-
+# save(Immune3_COX_MP_SKCM06, file = "~/Mypackage/MSofTimiGP/Fig4/Immune3_COX_MP_SKCM06.rda")
+# The file is saved to the manuscript code repo: https://github.com/CSkylarL/MSofTimiGP
+# You can find it here: 
+# https://github.com/CSkylarL/MSofTimiGP/blob/master/Fig4/Immune3_COX_MP_SKCM06.rda
 
 
 #B Gene Pair and gene network ##################################################

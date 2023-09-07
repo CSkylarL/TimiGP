@@ -35,7 +35,10 @@ Newman2015_COX_MP_SKCM06 <- cox_res
 Newman2015_MPS_SKCM06 <- mps
 
 
-
+#save(Newman2015_COX_MP_SKCM06, file = "~/Mypackage/MSofTimiGP/Fig4/Newman2015//Newman2015_COX_MP_SKCM06.rda")
+# The file is saved to the manuscript code repo: https://github.com/CSkylarL/MSofTimiGP
+# You can find it here: 
+# https://github.com/CSkylarL/MSofTimiGP/blob/master/Fig4/Newman2015/Newman2015_COX_MP_SKCM06.rda
 
 #B Gene Pair and gene network ##################################################
 rm(list=ls())

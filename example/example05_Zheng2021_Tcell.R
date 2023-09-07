@@ -35,6 +35,10 @@ Tcell_COX_MP_SKCM06 <- cox_res
 Tcell_MPS_SKCM06 <- mps
 
 
+#save(Tcell_COX_MP_SKCM06, file = "~/Mypackage/MSofTimiGP/Fig6/Zheng2021_Tcell/Tcell_COX_MP_SKCM06.rda")
+# The file is saved to the manuscript code repo: https://github.com/CSkylarL/MSofTimiGP
+# You can find it here: 
+# https://github.com/CSkylarL/MSofTimiGP/blob/master/Fig6/Zheng2021_Tcell/Tcell_COX_MP_SKCM06.rda
 
 
 #B Gene Pair and gene network ##################################################

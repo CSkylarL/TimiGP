@@ -36,6 +36,10 @@ cox_res <- res$cox_res
 melanoma_TME_COX_MP_SKCM06 <- cox_res
 melanoma_TME_MPS_SKCM06 <- mps
 
+#save(melanoma_TME_COX_MP_SKCM06, file = "~/Mypackage/MSofTimiGP/Fig6/Tirosh2016_melanoma_TME/melanoma_TME_COX_MP_SKCM06.rda")
+# The file is saved to the manuscript code repo: https://github.com/CSkylarL/MSofTimiGP
+# You can find it here: 
+# https://github.com/CSkylarL/MSofTimiGP/blob/master/Fig6/Tirosh2016_melanoma_TME/melanoma_TME_COX_MP_SKCM06.rda
 
 #B Gene Pair and gene network ##################################################
 rm(list=ls())
