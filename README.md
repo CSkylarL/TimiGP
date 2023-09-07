@@ -61,10 +61,8 @@ Li, C. et al. TimiGP: Inferring cell-cell interactions and prognostic associatio
 ## TimiGP system To-do-list
 
 - [x] TimiGP concept: [prognosis module](https://doi.org/10.1016/j.xcrm.2023.101121) and R package (v1.2.0)
-- [ ] Code optimization (v1.2.0) and publish the protocol for the prognosis module (wrap-up)
+- [x] Code optimization (v1.2.0) and publish the protocol for the prognosis module (submission)
 - [x] TimiGP analysis: response module (wrap-up)
-- [ ] Publish preprint for **response module** (Expected: Oct 2023)
-- [ ] Publish peer-reviewed paper of **response module** 
 - [x] TimiGP tool: **single sample module** (validated)
 - [ ] Publish preprint and package for **response module** (Expected: Oct 2023)
 - [ ] Publish peer-reviewed paper of **response module** 
