@@ -69,7 +69,7 @@ TimiPermFDR <-  function(resdata = NULL,
     mygen <-  perm.set$Gene
     perm.set$Gene <- mygen[sample(1:length(mygen))]
     
-    message("Permetation#",seed, 
+    message("Permeutation#",seed, 
             ": Different / Total markers: ",
             sum(perm.set$Gene != geneset$Gene),"/", nrow(geneset) )
     
