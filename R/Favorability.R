@@ -45,7 +45,7 @@ TimiFS<-  function(resdata = NULL,
   }
   
   resdata <- resdata[which(resdata[,condition] < cutoff),]
-  message('Using inte-cell interactions(',
+  message('Using cell-cell interactions(',
           condition, ' < ', cutoff, ')')
   # favorable cells-------------------------------------------------------------
   total_ct <- unique(c(resdata$Favorable.Cell.Type,
