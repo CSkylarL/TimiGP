@@ -79,7 +79,7 @@ TimiCellChord<-  function(resdata = NULL,
     if (length(se.r) < 5){
       stop('There are less than 5 cell-cell interactions.')
     } else {
-      message('Using inte-cell interactions(',
+      message('Using cell-cell interactions(',
       condition, ' < ', cutoff, ')')
       p.data <- resdata[se.r, se.c]
     }
