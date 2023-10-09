@@ -119,7 +119,7 @@ TimiCellNetwork<-  function(resdata = NULL,
       stop('No Cell Type were found in given group')
     }
     
-    if(sum(unique(geneset[1]) %in% cell) == 0) {
+    if(sum(unique(geneset[,1]) %in% cell) == 0) {
       stop('No Cell Type were found in given geneset')
     }
     
