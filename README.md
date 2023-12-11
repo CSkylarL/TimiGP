@@ -55,16 +55,18 @@ Li, C. et al. TimiGP: Inferring cell-cell interactions and prognostic associatio
 
 ### Relavant publications
 1. Cell Reports Medicine: [TimiGP: Inferring cell-cell interactions and prognostic associations in the tumor immune microenvironment through gene pairs](https://doi.org/10.1016/j.xcrm.2023.101121)
-1. AACR 2023 abstract: [TimiGP: Dissect the tumor immune microenvironment and its association with survival and immunotherapy response](https://aacrjournals.org/cancerres/article/83/7_Supplement/2080/723394/Abstract-2080-TimiGP-Dissect-the-tumor-immune)
-2. bioRxiv preprint: [TimiGP: inferring cell-cell functional interactions and clinical values in the tumor immune microenvironment through gene pairs.](https://www.biorxiv.org/content/10.1101/2022.11.17.515465v1.full)
+2. STAR Protocols: [TimiGP: An R package to depict the tumor microenvironment from bulk transcriptomic](https://star-protocols.cell.com/protocols/3156)
+3. AACR 2023 abstract: [TimiGP: Dissect the tumor immune microenvironment and its association with survival and immunotherapy response](https://aacrjournals.org/cancerres/article/83/7_Supplement/2080/723394/Abstract-2080-TimiGP-Dissect-the-tumor-immune)
+4. ASHG 2023 abstract: [Utilizing TimiGP for in-depth analysis of the tumor immune microenvironment and its association with clinical outcomes of various cancers after immunotherapy]([https://aacrjournals.org/cancerres/article/83/7_Supplement/2080/723394/Abstract-2080-TimiGP-Dissect-the-tumor-immune](https://eppro01.ativ.me/web/index.php?page=IntHtml&project=ASHG23&id=2578))
+5. bioRxiv preprint: [TimiGP: inferring cell-cell functional interactions and clinical values in the tumor immune microenvironment through gene pairs.](https://www.biorxiv.org/content/10.1101/2022.11.17.515465v1.full)
 
 ## TimiGP system To-do-list
 
 - [x] TimiGP concept: [prognosis module](https://doi.org/10.1016/j.xcrm.2023.101121) and R package (v1.1.0)
-- [x] Code optimization (v1.2.0) and publish the protocol for the prognosis module (Under Revision)
+- [x] Code optimization (v1.2.0) and publish the [protocol for the prognosis module](https://star-protocols.cell.com/protocols/3156)
 - [x] TimiGP analysis: response module (wrap-up)
 - [x] TimiGP tool: **single sample module** (validated)
-- [ ] Publish preprint and package for **response module** (Expected: Oct 2023)
+- [ ] Publish preprint and package for **response module** 
 - [ ] Publish peer-reviewed paper of **response module** 
 - [ ] TimiGP upgrade: **single cell module** (conceptualized)
 - [ ] TimiGP WebApp
