@@ -289,3 +289,94 @@
 #' 
 #' @source example result generated from function TimiEnrich(example/example01_Bindea2013_Cancer.R)
 "Bindea2013c_enrich"
+
+
+#' Cell Type customized for TNBC (anti-PD1/PD-L1)
+#'
+#' A dataset containing the cell type and markers customized for 
+#' Triple-negative breast cancer (TNBC) cohorts 
+#' treated with anti-PD1/PD-L1 therapy. 
+#' This cell type annotation generated from single cell RNA-seq (GSE169246) 
+#' and it includes 11 immune cell types consistent with 
+#' the imaging mass cytometry (IMC) (zenodo.7990870).
+#'
+#' 
+#' @docType data
+#'
+#' @usage data(CellType_TNBC_aPDL1)
+#' 
+#' @keywords datasets
+#' 
+#' @format A data frame with 449 rows and 3 variables:
+#' \describe{
+#'   \item{CellType}{Immune cell type}
+#'   \item{Gene}{Marker gene of the cell type}
+#'   \item{Dataset}{The source of the annotation}
+#' }
+#' 
+#' @references Li C1,, HongW, Reuben A,Wang L, Anirban M, Zhang J, Cheng C. TimiGP-Response Module: Illustrates the pan-cancer immune landscape associated with response to immunotherapy. bioRxiv. (2024)
+#'
+#' @source For more details, please refer: https://github.com/CSkylarL/MSofTimiGP-Response/blob/master/Fig1/code/Fig1.script2_generate_TimiGP_markers.R
+"CellType_TNBC_aPDL1"
+
+
+
+#' GSE194040 TNBC chemoimmunotherapy cohort microarray expression
+#'
+#' A dataset containing 19,134 genes from 26 
+#' Triple-negative breast cancer (TNBC) patients,
+#' treated with the combination of anti-PD1 immunotherapy and chemotherpay
+#' 
+#' @docType data
+#'
+#' @usage data(TNBCaPD1rna)
+#' 
+#' @keywords datasets
+#' 
+#' @format A data frame with 19,134 rows and 26 variables:
+#' \describe{
+#'   \item{row}{Gene}
+#'   \item{column}{Sample(patient) ID}
+#' }
+#' 
+#' 
+#' @references \url{"https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE194040"}
+#' 
+#' @source Codes can be found in inst/extdata/build_TNBCaPD1_RNA_info.R
+"TNBCaPD1rna"
+
+
+
+
+
+
+
+
+
+
+
+
+
+#' GSE194040 TNBC chemoimmunotherapy cohort therapy response infomation 
+#'
+#' A dataset containing therapy response from 26 
+#' Triple-negative breast cancer (TNBC) patients,
+#' treated with the combination of anti-PD1 immunotherapy and chemotherpay
+#' 
+#' @docType data
+#'
+#' @usage data(TNBCaPD1info)
+#' 
+#' @keywords datasets
+#' 
+#' @format A data frame with 26 rows and 1 variables:
+#' \describe{
+#'   \item{row}{Patient ID}
+#'   \item{column}{Response: 1=responder, 0=non-responder }
+#' }
+#' 
+#' 
+#' @references \url{"https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE194040"}
+#' 
+#' @source Codes can be found in inst/extdata/build_TNBCaPD1_RNA_info.R
+"TNBCaPD1info"
