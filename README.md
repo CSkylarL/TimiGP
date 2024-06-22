@@ -75,7 +75,7 @@ Li, C. et al. TimiGP-Response: the pan-cancer immune landscape associated with r
 - STAR Protocols: [TimiGP: An R package to depict the tumor microenvironment from bulk transcriptomic](https://star-protocols.cell.com/protocols/3156)
 
 `TimiGP v1.3.0 Response Module`:
-- bioRxiv preprint: TimiGP-Response: the pan-cancer immune landscape associated with response to immunotherapy.
+- bioRxiv preprint: [TimiGP-Response: the pan-cancer immune landscape associated with response to immunotherapy](https://www.biorxiv.org/content/10.1101/2024.06.21.600089v1.full)
 - Code & Resources: [MSofTimiGP-Response](https://github.com/CSkylarL/MSofTimiGP-Response)
 - ASHG 2023 abstract (Page 135): [Utilizing TimiGP for in-depth analysis of the tumor immune microenvironment and its association with clinical outcomes of various cancers after immunotherapy](https://www.ashg.org/wp-content/uploads/2023/10/ASHG2023-PlatformAbstracts.pdf)
 - AACR 2023 abstract: [TimiGP: Dissect the tumor immune microenvironment and its association with survival and immunotherapy response](https://aacrjournals.org/cancerres/article/83/7_Supplement/2080/723394/Abstract-2080-TimiGP-Dissect-the-tumor-immune)
