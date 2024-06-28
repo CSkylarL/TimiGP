@@ -59,11 +59,15 @@ This package is intended for research use only.
 
 If you use TimiGP-Prognosis in your publication, please cite the paper:
 
-Li, C. et al. TimiGP: Inferring cell-cell interactions and prognostic associations in the tumor immune microenvironment through gene pairs. Cell Reports Medicine. (2023).
+Li, C. et al. TimiGP: Inferring cell-cell interactions and prognostic associations in the tumor immune microenvironment through gene pairs. Cell Rep Med 4, 101121, doi:10.1016/j.xcrm.2023.101121 (2023).
 
 If you use TimiGP-Response in your publication, please cite the paper:
 
-Li, C. et al. TimiGP-Response: the pan-cancer immune landscape associated with response to immunotherapy. bioRxiv. (2024)
+Li, C. et al. TimiGP-Response: the pan-cancer immune landscape associated with response to immunotherapy. bioRxiv, 2024.2006.2021.600089, doi:10.1101/2024.06.21.600089 (2024).
+
+For the detailed protocol, please refer to:
+
+Li, C., Zhang, J. & Cheng, C. TimiGP: An R package to depict the tumor microenvironment from bulk transcriptomics. STAR protocols 4, 102742 (2023).
 
 ## Publication & Resources
 `TimiGP v1.1.0 Prognosis Module:` Base version
